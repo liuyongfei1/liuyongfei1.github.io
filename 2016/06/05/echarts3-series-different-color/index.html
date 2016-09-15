@@ -86,12 +86,42 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="PHPING|记录工作中的点点滴滴">
-<meta property="og:url" content="http://phping1.github.io/index.html">
+<meta name="description" content="本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。
+一.场景在使用echarts3做图表的时候，可能会遇到一些特殊的需求：
+
+星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。
+
+二.效果图先看一下效果图，你会有一个更清晰的认识:
+
+从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echarts3的折线图怎么分段显示不同的颜色">
+<meta property="og:url" content="http://phping1.github.io/2016/06/05/echarts3-series-different-color/index.html">
 <meta property="og:site_name" content="PHPING|记录工作中的点点滴滴">
+<meta property="og:description" content="本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。
+一.场景在使用echarts3做图表的时候，可能会遇到一些特殊的需求：
+
+星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。
+
+二.效果图先看一下效果图，你会有一个更清晰的认识:
+
+从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。这">
+<meta property="og:image" content="http://phping1.github.io/./img/2016-06-05/QQ20160605-2@2x.png">
+<meta property="og:image" content="http://phping1.github.io/./img/images.png">
+<meta property="og:image" content="http://phping1.github.io/./img/2016-06-05/QQ20160605-1@2x.png">
+<meta property="og:image" content="http://phping1.github.io/./img/2016-06-05/QQ20160605-3@2x.png">
+<meta property="og:updated_time" content="2016-09-15T13:59:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHPING|记录工作中的点点滴滴">
+<meta name="twitter:title" content="echarts3的折线图怎么分段显示不同的颜色">
+<meta name="twitter:description" content="本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。
+一.场景在使用echarts3做图表的时候，可能会遇到一些特殊的需求：
+
+星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。
+
+二.效果图先看一下效果图，你会有一个更清晰的认识:
+
+从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。这">
+<meta name="twitter:image" content="http://phping1.github.io/./img/2016-06-05/QQ20160605-2@2x.png">
 
 
 
@@ -112,9 +142,9 @@
 
 
 
-  <link rel="canonical" href="http://phping1.github.io/"/>
+  <link rel="canonical" href="http://phping1.github.io/2016/06/05/echarts3-series-different-color/"/>
 
-  <title> PHPING|记录工作中的点点滴滴 </title>
+  <title> echarts3的折线图怎么分段显示不同的颜色 | PHPING|记录工作中的点点滴滴 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,9 +165,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,9 +262,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -256,112 +284,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/15/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-15T17:58:28+08:00" content="2016-09-15">
-              2016-09-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/05/echarts3-series-different-color/" itemprop="url">
-                  echarts3的折线图怎么分段显示不同的颜色
-                </a>
+                echarts3的折线图怎么分段显示不同的颜色
               
             
           </h1>
@@ -401,9 +324,7 @@
       
 
       
-        
-          
-            <p>本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。</p>
+        <p>本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。</p>
 <h2 id="一-场景"><a href="#一-场景" class="headerlink" title="一.场景"></a>一.场景</h2><p>在使用echarts3做图表的时候，可能会遇到一些特殊的需求：</p>
 <blockquote>
 <p>星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。</p>
@@ -444,16 +365,20 @@
 </ol>
 <p>码字不易，转载请注明出处。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -461,19 +386,32 @@
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/15/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -481,6 +419,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -500,8 +442,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -627,6 +578,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-场景"><span class="nav-number">1.</span> <span class="nav-text">一.场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-效果图"><span class="nav-number">2.</span> <span class="nav-text">二.效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-echarts3的api支持吗"><span class="nav-number">3.</span> <span class="nav-text">三.echarts3的api支持吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-思路"><span class="nav-number">4.</span> <span class="nav-text">四.思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-折线图的数据点在哪里被赋值的"><span class="nav-number">4.1.</span> <span class="nav-text">1.折线图的数据点在哪里被赋值的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-拆分为多个series"><span class="nav-number">4.2.</span> <span class="nav-text">2.拆分为多个series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-普及一小技巧"><span class="nav-number">4.3.</span> <span class="nav-text">3.普及一小技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-转化数据集"><span class="nav-number">4.4.</span> <span class="nav-text">4.转化数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-摞代码"><span class="nav-number">5.</span> <span class="nav-text">五.摞代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-option的配置和主要代码如下："><span class="nav-number">5.1.</span> <span class="nav-text">1.option的配置和主要代码如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-走一个试试"><span class="nav-number">5.2.</span> <span class="nav-text">2.走一个试试:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1原来的格式"><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1原来的格式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2修改为现在的格式"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2修改为现在的格式:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-总结"><span class="nav-number">6.</span> <span class="nav-text">六.总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -722,6 +684,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
