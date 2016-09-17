@@ -12,6 +12,8 @@
 
 
 
+    <meta name="description" content=", Rome was not built in a day!" />
+
 
 
 
@@ -211,6 +213,13 @@
 
         
           
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/09/15/hello-world/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/15/hello-world/"></span>
+            </a>
+          </span>
+          
         
       </div>
     </div>
@@ -222,16 +231,13 @@
 
       
         
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/15/hello-world/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -296,6 +302,13 @@
 
         
           
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/06/05/echarts3-series-different-color/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/echarts3-series-different-color/"></span>
+            </a>
+          </span>
+          
         
       </div>
     </div>
@@ -316,38 +329,13 @@
 <p><img src="./img/2016-06-05/QQ20160605-2@2x.png" alt="QQ20160605-0@2x.png"></p>
 <p>从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。<br>这样一来，是不是就有个很明显的强调区别的作用啦。</p>
 <p><img src="./img/images.png" alt="images.png"></p>
-<p><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</p>
+<p><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git">这里</a>。</p>
 <p>++那么，怎么去实现这个效果呢?别着急，一步一步来，往下看。++</p>
-<h2 id="三-echarts3的api支持吗"><a href="#三-echarts3的api支持吗" class="headerlink" title="三.echarts3的api支持吗"></a>三.echarts3的api支持吗</h2><p>看到这样的需求，第一反应就是去api里看看有支持的函数没。。。<br>在api找到半天，果然不支持。领导非要这样做，echarts3的api里又不支持，那么怎么办？<br><strong>答案：换思路</strong></p>
-<h2 id="四-思路"><a href="#四-思路" class="headerlink" title="四.思路"></a>四.思路</h2><h3 id="1-折线图的数据点在哪里被赋值的"><a href="#1-折线图的数据点在哪里被赋值的" class="headerlink" title="1.折线图的数据点在哪里被赋值的?"></a>1.折线图的数据点在哪里被赋值的?</h3><p>我们知道在echarts中图表是通过series来实现的：</p>
-<p><img src="./img/2016-06-05/QQ20160605-1@2x.png" alt="QQ20160605-1@2x.png"></p>
-<p>++其中圈红的第一个就是图形类型为折线图时用到的配置，折线图的这些数据点都是通过里面的这个data数组来生成的。++</p>
-<h3 id="2-拆分为多个series"><a href="#2-拆分为多个series" class="headerlink" title="2.拆分为多个series"></a>2.拆分为多个series</h3><p><strong>将一个完整的折线分成两段折线，不同的折线显示不同的颜色即可。</strong></p>
-<p><em>我们知道周一到周日总共是7个点，series的data数据为:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data: [4, 8, 16, 32, 64, 128, 256]</div><div class="line">        &#125;</div><div class="line">    ]</div></pre></td></tr></table></figure></p>
-<p><em>如果拆分成两段折线的话，就得用两个series,两个series就得有两个数据集(data数组).</em></p>
-<p>其中第一个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4, 8, 16, 32, 64</div></pre></td></tr></table></figure></p>
-<p>第二个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">128,256</div></pre></td></tr></table></figure></p>
-<p><strong>但是在echarts中，图形的每一个点都要有与x轴和y轴对应的，否则，画出来的图形是与数据对应不上的。</strong></p>
-<p>所以我们需要对上面的两个数组进行一下改造。</p>
-<h3 id="3-普及一小技巧"><a href="#3-普及一小技巧" class="headerlink" title="3.普及一小技巧"></a>3.普及一小技巧</h3><p>在echarts中，若是不想让某个点展示，<strong>则这个点对应的data数值可以用’-‘来表示。</strong><br>反正这个知识点没有在echarts3的api里提到，应该在echarts2中继承下来的知识点吧。</p>
-<h3 id="4-转化数据集"><a href="#4-转化数据集" class="headerlink" title="4.转化数据集"></a>4.转化数据集</h3><p>知道上面这个小技巧后，我们就可以把这两个数据集写成下面这种格式了:<br>series[0].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;]</div></pre></td></tr></table></figure></p>
-<p>series[1].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256]</div></pre></td></tr></table></figure></p>
-<h2 id="五-摞代码"><a href="#五-摞代码" class="headerlink" title="五.摞代码"></a>五.摞代码</h2><p>既然思路都有了，那么我们开始试试吧。</p>
-<h3 id="1-option的配置和主要代码如下："><a href="#1-option的配置和主要代码如下：" class="headerlink" title="1.option的配置和主要代码如下："></a>1.option的配置和主要代码如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">// blog: phping.sinaapp.com</div><div class="line">var dom = document.getElementById(&quot;container&quot;);</div><div class="line">var myChart = echarts.init(dom);</div><div class="line">option = null;</div><div class="line">option = &#123;</div><div class="line">    title: &#123;</div><div class="line">        text: &apos;echarts3的折线图分段显示不同的颜色&apos;,</div><div class="line">        left: &apos;center&apos;,</div><div class="line">        link: &apos;http://phping.sinaapp.com&apos;</div><div class="line">    &#125;,</div><div class="line">    tooltip: &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter: &apos;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125;&apos;</div><div class="line">    &#125;,</div><div class="line">    legend: &#123;</div><div class="line">        left: &apos;left&apos;,</div><div class="line">        data: [&apos;指数&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis: &#123;</div><div class="line">        type: &apos;category&apos;,</div><div class="line">        name: &apos;x&apos;,</div><div class="line">        splitLine: &#123;show: false&#125;,</div><div class="line">        data: [&apos;星期一&apos;, &apos;星期二&apos;, &apos;星期三&apos;, &apos;星期四&apos;, &apos;星期五&apos;, &apos;星期六&apos;, &apos;星期日&apos;]</div><div class="line">    &#125;,</div><div class="line">    grid: &#123;</div><div class="line">        left: &apos;3%&apos;,</div><div class="line">        right: &apos;4%&apos;,</div><div class="line">        bottom: &apos;3%&apos;,</div><div class="line">        containLabel: true</div><div class="line">    &#125;,</div><div class="line">    yAxis: &#123;</div><div class="line">        type: &apos;log&apos;,</div><div class="line">        name: &apos;y&apos;</div><div class="line">    &#125;,</div><div class="line">    series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;;</div><div class="line">if (option &amp;&amp; typeof option === &quot;object&quot;) &#123;</div><div class="line">    var startTime = +new Date();</div><div class="line">    option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">    option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div><div class="line">    myChart.setOption(option, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-走一个试试"><a href="#2-走一个试试" class="headerlink" title="2.走一个试试:"></a>2.走一个试试:</h3><p><img src="./img/2016-06-05/QQ20160605-3@2x.png" alt="QQ20160605-3@2x.png"></p>
-<p>==两条线是分出来了，但是中间是有个断点。如果你觉得这样影响需求的话，则直接在series[1].data里把这个点补出来即可。==</p>
-<h4 id="2-1原来的格式"><a href="#2-1原来的格式" class="headerlink" title="2.1原来的格式:"></a>2.1原来的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256];</div></pre></td></tr></table></figure>
-<h4 id="2-2修改为现在的格式"><a href="#2-2修改为现在的格式" class="headerlink" title="2.2修改为现在的格式:"></a>2.2修改为现在的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div></pre></td></tr></table></figure>
-<p>再次刷新，是不是两条断线连上了呢。效果就跟文首的demo是一样的了。</p>
-<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六.总结"></a>六.总结</h2><ol>
-<li>遇见此类需求时，先看看api里提供了类似的方法没有,有的话，就不用费大头筋儿了；</li>
-<li>没有的话，就得转变思路了，将一个折线分成多个折线。</li>
-<li>巧妙利用四.3中的小知识点来绘制空点</li>
-<li>实际开发中可能要比这个demo要复杂一些，但是基本思路都是一样的。</li>
-<li><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</li>
-</ol>
-<p>码字不易，转载请注明出处。</p>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/05/echarts3-series-different-color/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -415,7 +403,7 @@
           <img class="site-author-image" src="/xirong.jpg" alt="PHPING" />
           <p class="site-author-name">PHPING</p>
         </div>
-        <p class="site-description motion-element"></p>
+        <p class="site-description motion-element">Rome was not built in a day!</p>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -452,7 +440,7 @@
           <div class="links-of-author motion-element">
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/jackieliuxirong" target="_blank">微博</a>
+              <a href="http://weibo.com/1797633405/profile?topnav=1&wvr=6&is_all=1" target="_blank">微博</a>
             </span>
             
               <span class="links-of-author-item">
@@ -497,7 +485,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.read.org.cn/" target="_blank">战隼</a>
+              <a href="http://phping.sinaapp.com/" target="_blank">SaeBlog</a>
               </span>
             
               <span class="links-of-author-item">
@@ -788,13 +776,19 @@ $(function(){
   
   
 
-  
-
-
-
 
   
   
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e9c2033659ba96c6e498f134706e150e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
   
 </body>
 </html>

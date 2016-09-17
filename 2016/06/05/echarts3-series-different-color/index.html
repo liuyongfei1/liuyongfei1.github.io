@@ -14,6 +14,8 @@
 
 
 
+    <meta name="description" content="echarts3的折线图怎么分段显示不同的颜色, Rome was not built in a day!" />
+
 
 
 
@@ -220,6 +222,13 @@
 
         
           
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/06/05/echarts3-series-different-color/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/echarts3-series-different-color/"></span>
+            </a>
+          </span>
+          
         
       </div>
     </div>
@@ -241,6 +250,7 @@
 <p><img src="./img/images.png" alt="images.png"></p>
 <p><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</p>
 <p>++那么，怎么去实现这个效果呢?别着急，一步一步来，往下看。++</p>
+<a id="more"></a>
 <h2 id="三-echarts3的api支持吗"><a href="#三-echarts3的api支持吗" class="headerlink" title="三.echarts3的api支持吗"></a>三.echarts3的api支持吗</h2><p>看到这样的需求，第一反应就是去api里看看有支持的函数没。。。<br>在api找到半天，果然不支持。领导非要这样做，echarts3的api里又不支持，那么怎么办？<br><strong>答案：换思路</strong></p>
 <h2 id="四-思路"><a href="#四-思路" class="headerlink" title="四.思路"></a>四.思路</h2><h3 id="1-折线图的数据点在哪里被赋值的"><a href="#1-折线图的数据点在哪里被赋值的" class="headerlink" title="1.折线图的数据点在哪里被赋值的?"></a>1.折线图的数据点在哪里被赋值的?</h3><p>我们知道在echarts中图表是通过series来实现的：</p>
 <p><img src="./img/2016-06-05/QQ20160605-1@2x.png" alt="QQ20160605-1@2x.png"></p>
@@ -354,6 +364,25 @@
     
       <div class="comments" id="comments">
         
+
+<div class="ds-share" data-thread-key="2016/06/05/echarts3-series-different-color/" data-title="echarts3的折线图怎么分段显示不同的颜色" data-images="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-content="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+          <!-- 评论框 -->
+          <div class="ds-thread" data-thread-key="2016/06/05/echarts3-series-different-color/"
+               data-title="echarts3的折线图怎么分段显示不同的颜色" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+          </div>
+        
       </div>
     
   </div>
@@ -396,7 +425,7 @@
           <img class="site-author-image" src="/xirong.jpg" alt="PHPING" />
           <p class="site-author-name">PHPING</p>
         </div>
-        <p class="site-description motion-element"></p>
+        <p class="site-description motion-element">Rome was not built in a day!</p>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -433,7 +462,7 @@
           <div class="links-of-author motion-element">
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/jackieliuxirong" target="_blank">微博</a>
+              <a href="http://weibo.com/1797633405/profile?topnav=1&wvr=6&is_all=1" target="_blank">微博</a>
             </span>
             
               <span class="links-of-author-item">
@@ -478,7 +507,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.read.org.cn/" target="_blank">战隼</a>
+              <a href="http://phping.sinaapp.com/" target="_blank">SaeBlog</a>
               </span>
             
               <span class="links-of-author-item">
@@ -1097,15 +1126,38 @@ $(function(){
 
   
   
-  
 
   
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"phping-github"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
+  
 
 
   
   
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e9c2033659ba96c6e498f134706e150e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
   
 </body>
 </html>
