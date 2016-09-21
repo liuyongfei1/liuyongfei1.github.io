@@ -10,11 +10,11 @@
 <meta http-equiv=”Cache-Control” content=”no-siteapp” />
 
 
-  <meta name="keywords" content=" ,echarts3,折线图,分段显示不同颜色, " />
+  <meta name="keywords" content="php,javascript,shell,mysql,echarts " />
 
 
 
-    <meta name="description" content="echarts3的折线图怎么分段显示不同的颜色, Rome was not built in a day!" />
+    <meta name="description" content=", Rome was not built in a day!" />
 
 
 
@@ -49,7 +49,7 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
 
 
-  <title> echarts3的折线图怎么分段显示不同的颜色 - PHPING|记录工作中的点点滴滴 </title>
+  <title>  - PHPING|记录工作中的点点滴滴 </title>
 </head>
 
 <body>
@@ -211,7 +211,7 @@
           
           
             
-              echarts3的折线图怎么分段显示不同的颜色
+              
             
           
         </h1>
@@ -219,28 +219,17 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2016-06-04
+          发表于 2016-09-19
         </span>
 
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/echarts3/">echarts3</a>
-
-              
-              
-
-            
-          </span>
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2016/06/05/echarts3-series-different-color/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/echarts3-series-different-color/"></span>
+            <a href="/2016/09/19/echarts-line-drill-down/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/echarts-line-drill-down/"></span>
             </a>
           </span>
           
@@ -248,7 +237,7 @@
 
         
         
-        	 <span id="/2016/06/05/echarts3-series-different-color/"class="leancloud_visitors"  data-flag-title="echarts3的折线图怎么分段显示不同的颜色">
+        	 <span id="/2016/09/19/echarts-line-drill-down/"class="leancloud_visitors"  data-flag-title="">
                 &nbsp; | &nbsp; 阅读次数
                 </span>
         
@@ -261,47 +250,42 @@
       
 
       
-        <p>本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。</p>
-<h2 id="一-场景"><a href="#一-场景" class="headerlink" title="一.场景"></a>一.场景</h2><p>在使用echarts3做图表的时候，可能会遇到一些特殊的需求：</p>
-<blockquote>
-<p>星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。</p>
+        <h1 id="一-抛出需求：折线图-下钻功能"><a href="#一-抛出需求：折线图-下钻功能" class="headerlink" title="一.抛出需求：折线图-下钻功能"></a>一.抛出需求：折线图-下钻功能</h1><blockquote>
+<p>最近接到领导的一个需求:说是想在原来的月份数据的折线图上，点击某个月份后能显示一个该月份对应的每一天的一个折线图。</p>
 </blockquote>
-<h2 id="二-效果图"><a href="#二-效果图" class="headerlink" title="二.效果图"></a>二.效果图</h2><p>先看一下效果图，你会有一个更清晰的认识:</p>
-<p><img src="/images/2016-06-05/QQ20160605-2@2x.png" alt="QQ20160605-0@2x.png"></p>
-<p>从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。<br>这样一来，是不是就有个很明显的强调区别的作用啦。</p>
-<p><img src="/images/images.png" alt="images.png"></p>
-<p><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</p>
-<p><strong> 那么，怎么去实现这个效果呢?别着急，一步一步来，往下看。</strong></p>
-<a id="more"></a>
-<h2 id="三-echarts3的api支持吗"><a href="#三-echarts3的api支持吗" class="headerlink" title="三.echarts3的api支持吗"></a>三.echarts3的api支持吗</h2><p>看到这样的需求，第一反应就是去api里看看有支持的函数没。。。<br>在api找到半天，果然不支持。领导非要这样做，echarts3的api里又不支持，那么怎么办？<br><strong>答案：换思路</strong></p>
-<h2 id="四-思路"><a href="#四-思路" class="headerlink" title="四.思路"></a>四.思路</h2><h3 id="1-折线图的数据点在哪里被赋值的"><a href="#1-折线图的数据点在哪里被赋值的" class="headerlink" title="1.折线图的数据点在哪里被赋值的?"></a>1.折线图的数据点在哪里被赋值的?</h3><p>我们知道在echarts中图表是通过series来实现的：</p>
-<p><img src="/images/2016-06-05/QQ20160605-1@2x.png" alt="QQ20160605-1@2x.png"></p>
-<p><strong> 其中圈红的第一个就是图形类型为折线图时用到的配置，折线图的这些数据点都是通过里面的这个data数组来生成的。</strong></p>
-<h3 id="2-拆分为多个series"><a href="#2-拆分为多个series" class="headerlink" title="2.拆分为多个series"></a>2.拆分为多个series</h3><p><strong> 将一个完整的折线分成两段折线，不同的折线显示不同的颜色即可。</strong></p>
-<p><em>我们知道周一到周日总共是7个点，series的data数据为:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data: [4, 8, 16, 32, 64, 128, 256]</div><div class="line">        &#125;</div><div class="line">    ]</div></pre></td></tr></table></figure></p>
-<p><em>如果拆分成两段折线的话，就得用两个series,两个series就得有两个数据集(data数组).</em></p>
-<p>其中第一个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4, 8, 16, 32, 64</div></pre></td></tr></table></figure></p>
-<p>第二个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">128,256</div></pre></td></tr></table></figure></p>
-<p><strong> 但是在echarts中，图形的每一个点都要有与x轴和y轴对应的，否则，画出来的图形是与数据对应不上的。</strong></p>
-<p>所以我们需要对上面的两个数组进行一下改造。</p>
-<h3 id="3-普及一小技巧"><a href="#3-普及一小技巧" class="headerlink" title="3.普及一小技巧"></a>3.普及一小技巧</h3><p>在echarts中，若是不想让某个点展示，<strong>则这个点对应的data数值可以用’-‘来表示。</strong><br>反正这个知识点没有在echarts3的api里提到，应该在echarts2中继承下来的知识点吧。</p>
-<h3 id="4-转化数据集"><a href="#4-转化数据集" class="headerlink" title="4.转化数据集"></a>4.转化数据集</h3><p>知道上面这个小技巧后，我们就可以把这两个数据集写成下面这种格式了:<br>series[0].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;]</div></pre></td></tr></table></figure></p>
-<p>series[1].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256]</div></pre></td></tr></table></figure></p>
-<h2 id="五-摞代码"><a href="#五-摞代码" class="headerlink" title="五.摞代码"></a>五.摞代码</h2><p>既然思路都有了，那么我们开始试试吧。</p>
-<h3 id="1-option的配置和主要代码如下："><a href="#1-option的配置和主要代码如下：" class="headerlink" title="1.option的配置和主要代码如下："></a>1.option的配置和主要代码如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">// blog: phping.sinaapp.com</div><div class="line">var dom = document.getElementById(&quot;container&quot;);</div><div class="line">var myChart = echarts.init(dom);</div><div class="line">option = null;</div><div class="line">option = &#123;</div><div class="line">    title: &#123;</div><div class="line">        text: &apos;echarts3的折线图分段显示不同的颜色&apos;,</div><div class="line">        left: &apos;center&apos;,</div><div class="line">        link: &apos;http://phping.sinaapp.com&apos;</div><div class="line">    &#125;,</div><div class="line">    tooltip: &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter: &apos;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125;&apos;</div><div class="line">    &#125;,</div><div class="line">    legend: &#123;</div><div class="line">        left: &apos;left&apos;,</div><div class="line">        data: [&apos;指数&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis: &#123;</div><div class="line">        type: &apos;category&apos;,</div><div class="line">        name: &apos;x&apos;,</div><div class="line">        splitLine: &#123;show: false&#125;,</div><div class="line">        data: [&apos;星期一&apos;, &apos;星期二&apos;, &apos;星期三&apos;, &apos;星期四&apos;, &apos;星期五&apos;, &apos;星期六&apos;, &apos;星期日&apos;]</div><div class="line">    &#125;,</div><div class="line">    grid: &#123;</div><div class="line">        left: &apos;3%&apos;,</div><div class="line">        right: &apos;4%&apos;,</div><div class="line">        bottom: &apos;3%&apos;,</div><div class="line">        containLabel: true</div><div class="line">    &#125;,</div><div class="line">    yAxis: &#123;</div><div class="line">        type: &apos;log&apos;,</div><div class="line">        name: &apos;y&apos;</div><div class="line">    &#125;,</div><div class="line">    series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;;</div><div class="line">if (option &amp;&amp; typeof option === &quot;object&quot;) &#123;</div><div class="line">    var startTime = +new Date();</div><div class="line">    option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">    option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div><div class="line">    myChart.setOption(option, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-走一个试试"><a href="#2-走一个试试" class="headerlink" title="2.走一个试试:"></a>2.走一个试试:</h3><p><img src="/images/2016-06-05/QQ20160605-3@2x.png" alt="QQ20160605-3@2x.png"></p>
-<p>==两条线是分出来了，但是中间是有个断点。如果你觉得这样影响需求的话，则直接在series[1].data里把这个点补出来即可。==</p>
-<h4 id="2-1原来的格式"><a href="#2-1原来的格式" class="headerlink" title="2.1原来的格式:"></a>2.1原来的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256];</div></pre></td></tr></table></figure>
-<h4 id="2-2修改为现在的格式"><a href="#2-2修改为现在的格式" class="headerlink" title="2.2修改为现在的格式:"></a>2.2修改为现在的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div></pre></td></tr></table></figure>
-<p>再次刷新，是不是两条断线连上了呢。效果就跟文首的demo是一样的了。</p>
-<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六.总结"></a>六.总结</h2><ol>
-<li>遇见此类需求时，先看看api里提供了类似的方法没有,有的话，就不用费大头筋儿了；</li>
-<li>没有的话，就得转变思路了，将一个折线分成多个折线。</li>
-<li>巧妙利用四.3中的小知识点来绘制空点</li>
-<li>实际开发中可能要比这个demo要复杂一些，但是基本思路都是一样的。</li>
-<li><strong> demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</li>
-</ol>
-<p>码字不易，转载请注明出处。</p>
+<p>折线图图一如下：</p>
+<p><img src="/images/2016-09-19/QQ20160919-0@2x.png" alt="QQ20160919-0@2x.png"></p>
+<p>领导的意图是:<strong>比如，点击201609月份这个点后,能够出现一个新的折线图，显示的是201609月份的每一天的数据。</strong></p>
+<p>需求看到这里,相信以前接触或使用过highcharts的童鞋就知道了，这是一个下钻的功能。</p>
+<h1 id="二-highcharts的下钻功能"><a href="#二-highcharts的下钻功能" class="headerlink" title="二.highcharts的下钻功能"></a>二.highcharts的下钻功能</h1><h2 id="1-看图表"><a href="#1-看图表" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>我们来看<a href="http://www.highcharts.com/demo/column-drilldown/" target="_blank" rel="external">highcharts官网</a>的一个例子,显示的是各个主流浏览器的一个数值比重，我这里截图如图二所示：</p>
+<p><img src="/images/2016-09-19/QQ20160920-0@2x.png" alt="QQ20160920-0@2x.png"></p>
+<p>然后点击随意的一个柱子，会出现一个新的图表,如下图图三:(我点击的是第一个柱子:IE浏览器)：</p>
+<p><img src="/images/2016-09-19/QQ20160920-1@2x.png" alt="QQ20160920-1@2x.png"></p>
+<p>从图三可以看出：</p>
+<ul>
+<li>显示的是 IE浏览器的各个版本使用率的占比.</li>
+<li>点击圈红的后退按钮，可以返回上一级的图表.</li>
+</ul>
+<h2 id="2-看API"><a href="#2-看API" class="headerlink" title="2.看API"></a>2.看API</h2><p>看一下API对钻取的支持：</p>
+<p><img src="/images/2016-09-19/QQ20160920-2@2x.png" alt="QQ20160920-2@2x.png"></p>
+<h2 id="3-疑问"><a href="#3-疑问" class="headerlink" title="3.疑问"></a>3.疑问</h2><p>既然highcharts对下钻功能支持那么好，<code>那么echarts在这一块做的怎么样呢？</code></p>
+<h1 id="三-echarts的下钻功能-drilldown"><a href="#三-echarts的下钻功能-drilldown" class="headerlink" title="三.echarts的下钻功能-drilldown"></a>三.echarts的下钻功能-drilldown</h1><h2 id="1-看图表-1"><a href="#1-看图表-1" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>翻了半天，只找到一个矩形树图的例子，类似有那么点下钻的意思，感觉很鸡肋。想了解的点这里。</p>
+<h2 id="2-看API-1"><a href="#2-看API-1" class="headerlink" title="2.看API"></a>2.看API</h2><p>只找到了series的type=treemap类型，如图四：</p>
+<p><img src="/images/2016-09-19/QQ20160920-4@2x.png" alt="QQ20160920-4@2x.png"></p>
+<p><code>感觉好鸡肋呀，折线图，柱状图的这些都不支持下钻。。。</code></p>
+<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>去github的echarts项目issue区域看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
+<p><img src="/images/2016-09-19/QQ20160920-5@2x.png" alt="QQ20160920-5@2x.png"></p>
+<h3 id="4-翻译一下"><a href="#4-翻译一下" class="headerlink" title="4.翻译一下"></a>4.翻译一下</h3><p>好吧，翻译一下：<code>大概意思就是告诉我们echarts不会提供什么钻取的接口，大家要想使用钻取功能，请使用万能的setOption吧。。。</code></p>
+<h1 id="四-总结"><a href="#四-总结" class="headerlink" title="四.总结"></a>四.总结</h1><p>看到这里你大概会想说：</p>
+<ul>
+<li>BB了那么久，怎么还不入正题呢？</li>
+<li>echarts的折线图究竟怎么来实现下钻(drilldown)功能呢？</li>
+</ul>
+<h1 id="五-未完待续"><a href="#五-未完待续" class="headerlink" title="五.未完待续"></a>五.未完待续</h1><ul>
+<li>不要着急，本篇主要讲了一下遇见需求后分析问题和解决问题的一些思路。</li>
+<li>下篇我会从代码的角度详细介绍怎么一步一步来实现，敬请关注!</li>
+<li><code>码字不易，转载请注明出处!</code></li>
+</ul>
 
       
     </div>
@@ -351,26 +335,18 @@
 
 <! -- end 添加捐赠图标 -->
       
-        <div class="post-tags">
-          
-            <a href="/tags/echarts3/"> #echarts3 </a>
-          
-            <a href="/tags/折线图/"> #折线图 </a>
-          
-            <a href="/tags/分段显示不同颜色/"> #分段显示不同颜色 </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/19/echarts-line-drill-down/"></a>
+              <a href="/2016/09/21/echarts-line-drill-down-code/"></a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/05/echarts3-series-different-color/">echarts3的折线图怎么分段显示不同的颜色</a>
             
           </div>
         </div>
@@ -387,7 +363,7 @@
       <div class="comments" id="comments">
         
 
-<div class="ds-share" data-thread-key="2016/06/05/echarts3-series-different-color/" data-title="echarts3的折线图怎么分段显示不同的颜色" data-images="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-content="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+<div class="ds-share" data-thread-key="2016/09/19/echarts-line-drill-down/" data-title="" data-images="http://phping1.github.io/2016/09/19/echarts-line-drill-down/" data-content="http://phping1.github.io/2016/09/19/echarts-line-drill-down/" data-url="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -401,8 +377,8 @@
  </div>
 
           <!-- 评论框 -->
-          <div class="ds-thread" data-thread-key="2016/06/05/echarts3-series-different-color/"
-               data-title="echarts3的折线图怎么分段显示不同的颜色" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+          <div class="ds-thread" data-thread-key="2016/09/19/echarts-line-drill-down/"
+               data-title="" data-url="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">
           </div>
         
       </div>
@@ -537,7 +513,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-场景"><span class="nav-number">1.</span> <span class="nav-text">一.场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-效果图"><span class="nav-number">2.</span> <span class="nav-text">二.效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-echarts3的api支持吗"><span class="nav-number">3.</span> <span class="nav-text">三.echarts3的api支持吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-思路"><span class="nav-number">4.</span> <span class="nav-text">四.思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-折线图的数据点在哪里被赋值的"><span class="nav-number">4.1.</span> <span class="nav-text">1.折线图的数据点在哪里被赋值的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-拆分为多个series"><span class="nav-number">4.2.</span> <span class="nav-text">2.拆分为多个series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-普及一小技巧"><span class="nav-number">4.3.</span> <span class="nav-text">3.普及一小技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-转化数据集"><span class="nav-number">4.4.</span> <span class="nav-text">4.转化数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-摞代码"><span class="nav-number">5.</span> <span class="nav-text">五.摞代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-option的配置和主要代码如下："><span class="nav-number">5.1.</span> <span class="nav-text">1.option的配置和主要代码如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-走一个试试"><span class="nav-number">5.2.</span> <span class="nav-text">2.走一个试试:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1原来的格式"><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1原来的格式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2修改为现在的格式"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2修改为现在的格式:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-总结"><span class="nav-number">6.</span> <span class="nav-text">六.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-抛出需求：折线图-下钻功能"><span class="nav-number">1.</span> <span class="nav-text">一.抛出需求：折线图-下钻功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-highcharts的下钻功能"><span class="nav-number">2.</span> <span class="nav-text">二.highcharts的下钻功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-看图表"><span class="nav-number">2.1.</span> <span class="nav-text">1.看图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-看API"><span class="nav-number">2.2.</span> <span class="nav-text">2.看API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-疑问"><span class="nav-number">2.3.</span> <span class="nav-text">3.疑问</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-echarts的下钻功能-drilldown"><span class="nav-number">3.</span> <span class="nav-text">三.echarts的下钻功能-drilldown</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-看图表-1"><span class="nav-number">3.1.</span> <span class="nav-text">1.看图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-看API-1"><span class="nav-number">3.2.</span> <span class="nav-text">2.看API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-echarts项目issue区域"><span class="nav-number">3.3.</span> <span class="nav-text">3.echarts项目issue区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-翻译一下"><span class="nav-number">3.3.1.</span> <span class="nav-text">4.翻译一下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-总结"><span class="nav-number">4.</span> <span class="nav-text">四.总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-未完待续"><span class="nav-number">5.</span> <span class="nav-text">五.未完待续</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

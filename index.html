@@ -213,8 +213,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/09/20/echarts-line-drill-down/">
-                手把手教你echarts3的折线图怎么实现下钻drilldown功能
+              <a class="post-title-link" href="/2016/09/21/echarts-line-drill-down-code/">
+                未命名
               </a>
             
           
@@ -223,28 +223,17 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2016-09-19
+          发表于 2016-09-21
         </span>
 
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/echarts3/">echarts3</a>
-
-              
-              
-
-            
-          </span>
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2016/09/20/echarts-line-drill-down/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/20/echarts-line-drill-down/"></span>
+            <a href="/2016/09/21/echarts-line-drill-down-code/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/echarts-line-drill-down-code/"></span>
             </a>
           </span>
           
@@ -252,7 +241,7 @@
 
         
         
-        	 <span id="/2016/09/20/echarts-line-drill-down/"class="leancloud_visitors"  data-flag-title="手把手教你echarts3的折线图怎么实现下钻drilldown功能">
+        	 <span id="/2016/09/21/echarts-line-drill-down-code/"class="leancloud_visitors"  data-flag-title="">
                 &nbsp; | &nbsp; 阅读次数
                 </span>
         
@@ -266,17 +255,24 @@
 
       
         
-          <h2 id="一-抛出需求：折线图-下钻功能"><a href="#一-抛出需求：折线图-下钻功能" class="headerlink" title="一.抛出需求：折线图-下钻功能"></a>一.抛出需求：折线图-下钻功能</h2><blockquote>
-<p>最近接到领导的一个需求:说是想在原来的月份数据的折线图上，点击某个月份后能显示一个该月份对应的每一天的一个折线图。</p>
+          <h1 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h1><blockquote>
+<p>好了,上一篇介绍了关于echarts下钻的一些信息，通过上一篇文章我们知道echarts折线图，柱状图没有支持下钻功能的api，那就需要我们自己动手，丰衣足食了。<br>这一篇我开始进行实质性的代码演示。你可以按照我的步骤一步一步来做，有什么疑问可以留言我。</p>
 </blockquote>
-<p>折线图图一如下：<br><img src="/images/2016-09-19/QQ20160919-0@2x.png" alt="QQ20160919-0@2x.png"></p>
-<p>领导的意图是:比如，点击201609月份这个点后,能够出现一个新的折线图，显示的是201609月份的每一天的数据。</p>
-<p>需求看到这里,相信以前接触或使用过highcharts的童鞋就知道了，这是一个下钻的功能。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/echarts-line-drill-down/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<h1 id="一-效果贴图"><a href="#一-效果贴图" class="headerlink" title="一.效果贴图"></a>一.效果贴图</h1><p>为了避免枯燥无味，我先不贴代码，写贴上我的demo图,这里还会拿上一篇的那个demo图为例。</p>
+<h2 id="1-下钻前效果"><a href="#1-下钻前效果" class="headerlink" title="1.下钻前效果"></a>1.下钻前效果</h2><p><img src="/images/2016-09-20/QQ20160921-0@2x.png" alt="QQ20160921-0@2x.png"></p>
+<p>从图可以看出：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">下钻开始：比如我点击2016年9月份(201609)的这个点，则应该显示一个属于2016年9月份下的每一天的一个折线图。</div><div class="line"></div><div class="line">## 2.下钻后效果：</div><div class="line"></div><div class="line">![QQ20160921-1@2x.png](/images/2016-09-20/QQ20160921-1@2x.png)</div><div class="line"></div><div class="line">从图可以看出：```这是展示的从2016年9月份0901号开始直到0930号这30天的一个折线图。</div></pre></td></tr></table></figure></p>
+<p><strong>完全符合我们的要求，对吧。</strong></p>
+<p>不废话了，下面开始贴出详细的代码，准备好了吗？</p>
+<h1 id="二-折线图界面line-drill-down-html"><a href="#二-折线图界面line-drill-down-html" class="headerlink" title="二.折线图界面line-drill-down.html"></a>二.折线图界面line-drill-down.html</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">style</span>=<span class="string">"height: 100%"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"height: 100%; margin: 0"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"margin-left:40%;margin-top:2%"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'return-button'</span> <span class="attr">value</span>=<span class="string">''</span>&gt;</span>返回<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">style</span>=<span class="string">"height: 50%;width: 50%"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./drillDown.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">          var dom = document.getElementById("container");</div><div class="line">          var myChart = echarts.init(dom);</div><div class="line">          var option = drillDown.getOption();</div><div class="line">          drillDown.initChart(myChart,option);</div><div class="line"></div><div class="line">          $('#return-button').on('click',function()&#123;</div><div class="line">              var myChart = echarts.init(dom);</div><div class="line">              var option = drillDown.getOption();</div><div class="line">              drillDown.initChart(myChart,option);</div><div class="line">          &#125;);</div><div class="line">      <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="三-drillDown-js代码"><a href="#三-drillDown-js代码" class="headerlink" title="三.drillDown.js代码"></a>三.drillDown.js代码</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drillDown = &#123;</div><div class="line">    getOption : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> option = <span class="literal">null</span>;</div><div class="line">                option = &#123;</div><div class="line">                    title: &#123;</div><div class="line">                        text: <span class="string">'折线图下钻示例'</span>,</div><div class="line">                        left: <span class="string">'center'</span></div><div class="line">                    &#125;,</div><div class="line">                    tooltip: &#123;</div><div class="line">                        trigger: <span class="string">'item'</span>,</div><div class="line">                        formatter: <span class="string">'&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125;'</span></div><div class="line">                    &#125;,</div><div class="line">                    legend: &#123;</div><div class="line">                        left: <span class="string">'left'</span>,</div><div class="line">                        data: [<span class="string">'月数据'</span>]</div><div class="line">                    &#125;,</div><div class="line">                    xAxis: &#123;</div><div class="line">                        type: <span class="string">'category'</span>,</div><div class="line">                        name: <span class="string">'x'</span>,</div><div class="line">                        splitLine: &#123;show: <span class="literal">false</span>&#125;,</div><div class="line">                        data: [<span class="string">'201601'</span>, <span class="string">'201602'</span>, <span class="string">'201603'</span>, <span class="string">'201604'</span>, <span class="string">'201605'</span>, <span class="string">'201606'</span>, <span class="string">'201607'</span>, <span class="string">'201608'</span>, <span class="string">'201609'</span>]</div><div class="line">                    &#125;,</div><div class="line">                    grid: &#123;</div><div class="line">                        left: <span class="string">'3%'</span>,</div><div class="line">                        right: <span class="string">'4%'</span>,</div><div class="line">                        bottom: <span class="string">'3%'</span>,</div><div class="line">                        containLabel: <span class="literal">true</span></div><div class="line">                    &#125;,</div><div class="line">                    yAxis: &#123;</div><div class="line">                        type: <span class="string">'log'</span>,</div><div class="line">                        name: <span class="string">'y'</span></div><div class="line">                    &#125;,</div><div class="line">                    series: [</div><div class="line">                        &#123;</div><div class="line">                            name: <span class="string">'月数据'</span>,</div><div class="line">                            type: <span class="string">'line'</span>,</div><div class="line">                            data: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>, <span class="number">64</span>, <span class="number">128</span>, <span class="number">256</span>]</div><div class="line">                        &#125;</div><div class="line">                    ]</div><div class="line">                &#125;;</div><div class="line">                <span class="keyword">return</span> option;</div><div class="line">    &#125;,</div><div class="line">    initChart : <span class="function"><span class="keyword">function</span> (<span class="params">myChart,option</span>) </span>&#123;</div><div class="line">        myChart.setOption(option);</div><div class="line">        myChart.on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">object</span>)</span>&#123;</div><div class="line">            <span class="comment">// object为当前的这个echart对象，大家可以自己打印出来看看</span></div><div class="line">            <span class="built_in">console</span>.dir(object);</div><div class="line">            <span class="comment">// 我们可以看到name属性即为当前点击点的对应月份值，那么我们可以通过这个值去接口查询对应201609月份下的每一天的值.</span></div><div class="line">            <span class="comment">// 此处的201609月份数据可以通过接口读取</span></div><div class="line">            <span class="comment">// $.ajax(</span></div><div class="line">            <span class="comment">//     type : 'get',</span></div><div class="line">            <span class="comment">//     url : interfaceUrl + '&amp;month=' + object.name, // 此处可以替换为你的接口地址</span></div><div class="line">            <span class="comment">//     dataType : 'json',</span></div><div class="line">            <span class="comment">//     success : function (msg)&#123;</span></div><div class="line">            <span class="comment">//         option.xAxis.data = msg.xAxis;</span></div><div class="line">            <span class="comment">//         option.series[0].data = msg.yAxis[0];</span></div><div class="line">            <span class="comment">//         myChart.setOption(option, true);</span></div><div class="line">            <span class="comment">//     &#125;</span></div><div class="line">            <span class="comment">// );</span></div><div class="line"></div><div class="line">            <span class="comment">// 我这里就模拟一个测试数据，做为demo演示</span></div><div class="line">            option.xAxis.data = [</div><div class="line">            <span class="string">'2016-09-01'</span>,<span class="string">'2016-09-02'</span>,<span class="string">'2016-09-03'</span>,<span class="string">'2016-09-04'</span>,<span class="string">'2016-09-05'</span>,<span class="string">'2016-09-06'</span>,<span class="string">'2016-09-07'</span>,<span class="string">'2016-09-08'</span>,</div><div class="line">            <span class="string">'2016-09-09'</span>,<span class="string">'2016-09-10'</span>,<span class="string">'2016-09-11'</span>,<span class="string">'2016-09-12'</span>,<span class="string">'2016-09-13'</span>,<span class="string">'2016-09-14'</span>,<span class="string">'2016-09-15'</span>,<span class="string">'2016-09-16'</span>,</div><div class="line">            <span class="string">'2016-09-17'</span>,<span class="string">'2016-09-18'</span>,<span class="string">'2016-09-19'</span>,<span class="string">'2016-09-20'</span>,<span class="string">'2016-09-21'</span>,<span class="string">'2016-09-22'</span>,<span class="string">'2016-09-23'</span>,<span class="string">'2016-09-24'</span>,</div><div class="line">            <span class="string">'2016-09-25'</span>,<span class="string">'2016-09-26'</span>,<span class="string">'2016-09-27'</span>,<span class="string">'2016-09-28'</span>,<span class="string">'2016-09-29'</span>,<span class="string">'2016-09-30'</span></div><div class="line">            ];</div><div class="line">            option.series[<span class="number">0</span>].data = [</div><div class="line">                <span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">9</span>,</div><div class="line">                <span class="number">12</span>,<span class="number">13</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">20</span>,<span class="number">12</span>,<span class="number">30</span>,<span class="number">21</span>,<span class="number">22</span>,<span class="number">29</span>,</div><div class="line">                <span class="number">30</span>,<span class="number">31</span>,<span class="number">33</span>,<span class="number">34</span>,<span class="number">35</span>,<span class="number">36</span>,<span class="number">20</span>,<span class="number">29</span>,<span class="number">33</span>,<span class="number">40</span></div><div class="line">            ];</div><div class="line">            myChart.setOption(option, <span class="literal">true</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h1 id="四-后台数据接口代码data-php"><a href="#四-后台数据接口代码data-php" class="headerlink" title="四.后台数据接口代码data.php"></a>四.后台数据接口代码data.php</h1><p><em>这里我写了伪代码，大家看一下应该就能够明白了:</em><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="comment">// 这里的接口代码伪代码大概如下:</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getInterfaceData</span><span class="params">($month)</span> </span>&#123;</div><div class="line">        <span class="comment">// 1.写查询语句,这里只是写伪代码,自己做防sql注入</span></div><div class="line">        $sql =  <span class="string">"select ... from table where month = $month"</span>;</div><div class="line">        <span class="comment">// 2.连接数据库,查询结果为$data</span></div><div class="line">        <span class="comment">// 3.对查询的结果进行组装,返回json格式的数组</span></div><div class="line">        $chartResult = [];</div><div class="line">        <span class="comment">// 4.取出x轴的值</span></div><div class="line">        $chartResult[<span class="string">'xAxis'</span>] = $data[<span class="string">'report_date'</span>];</div><div class="line">        <span class="comment">// 5.为第一个series赋值，我们这里的demo只有一条折线</span></div><div class="line">        $yAxisArr[<span class="string">'yAxis'</span>][<span class="number">0</span>] = $data[<span class="string">'data0'</span>];</div><div class="line"></div><div class="line">        <span class="comment">// 如果有多条折线的情况下,可以这样写</span></div><div class="line">        <span class="comment">// $yAxisArr['yAxis'][1] = $data['data1'];</span></div><div class="line">        <span class="comment">// $yAxisArr['yAxis'][2] = $data['data2'];</span></div><div class="line"></div><div class="line">        <span class="comment">// 6.为y轴赋值</span></div><div class="line">        $chartResult[<span class="string">'yAxis'</span>] = $yAxisArr;</div><div class="line">        <span class="comment">// 7.返回json格式的数据</span></div><div class="line">        <span class="keyword">exit</span>(json_encode($chartResult));</div><div class="line">    &#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="五-总结"><a href="#五-总结" class="headerlink" title="五.总结"></a>五.总结</h1><ul>
+<li>好了，如果在第二部分中直接使用我模拟的测试数据的话，可以先不理会data.php的代码。<br>直接打开line-drill-down.html运行即可测试。</li>
+<li>跑通后，需要与后台接口打通时，可以看一下data.php的一个思路，根据自己的业务写逻辑，然后再说测试即可。</li>
+<li>大家在测试的过程中有什么问题，可以跟我留言，我会在第一时间回复。</li>
+<li>码字不易，转载请注明出处。</li>
+</ul>
+
         
       
     </div>
@@ -290,15 +286,120 @@
 
 <! -- end 添加捐赠图标 -->
       
-        <div class="post-tags">
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
           
-            <a href="/tags/echarts3/"> #echarts3 </a>
           
-            <a href="/tags/折线图/"> #折线图 </a>
+            
+              <a class="post-title-link" href="/2016/09/19/echarts-line-drill-down/">
+                未命名
+              </a>
+            
           
-            <a href="/tags/drilldown功能/"> #drilldown功能 </a>
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2016-09-19
+        </span>
+
+        
+
+        
           
-        </div>
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/09/19/echarts-line-drill-down/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/echarts-line-drill-down/"></span>
+            </a>
+          </span>
+          
+        
+
+        
+        
+        	 <span id="/2016/09/19/echarts-line-drill-down/"class="leancloud_visitors"  data-flag-title="">
+                &nbsp; | &nbsp; 阅读次数
+                </span>
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="一-抛出需求：折线图-下钻功能"><a href="#一-抛出需求：折线图-下钻功能" class="headerlink" title="一.抛出需求：折线图-下钻功能"></a>一.抛出需求：折线图-下钻功能</h1><blockquote>
+<p>最近接到领导的一个需求:说是想在原来的月份数据的折线图上，点击某个月份后能显示一个该月份对应的每一天的一个折线图。</p>
+</blockquote>
+<p>折线图图一如下：</p>
+<p><img src="/images/2016-09-19/QQ20160919-0@2x.png" alt="QQ20160919-0@2x.png"></p>
+<p>领导的意图是:<strong>比如，点击201609月份这个点后,能够出现一个新的折线图，显示的是201609月份的每一天的数据。</strong></p>
+<p>需求看到这里,相信以前接触或使用过highcharts的童鞋就知道了，这是一个下钻的功能。</p>
+<h1 id="二-highcharts的下钻功能"><a href="#二-highcharts的下钻功能" class="headerlink" title="二.highcharts的下钻功能"></a>二.highcharts的下钻功能</h1><h2 id="1-看图表"><a href="#1-看图表" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>我们来看<a href="http://www.highcharts.com/demo/column-drilldown/" target="_blank" rel="external">highcharts官网</a>的一个例子,显示的是各个主流浏览器的一个数值比重，我这里截图如图二所示：</p>
+<p><img src="/images/2016-09-19/QQ20160920-0@2x.png" alt="QQ20160920-0@2x.png"></p>
+<p>然后点击随意的一个柱子，会出现一个新的图表,如下图图三:(我点击的是第一个柱子:IE浏览器)：</p>
+<p><img src="/images/2016-09-19/QQ20160920-1@2x.png" alt="QQ20160920-1@2x.png"></p>
+<p>从图三可以看出：</p>
+<ul>
+<li>显示的是 IE浏览器的各个版本使用率的占比.</li>
+<li>点击圈红的后退按钮，可以返回上一级的图表.</li>
+</ul>
+<h2 id="2-看API"><a href="#2-看API" class="headerlink" title="2.看API"></a>2.看API</h2><p>看一下API对钻取的支持：</p>
+<p><img src="/images/2016-09-19/QQ20160920-2@2x.png" alt="QQ20160920-2@2x.png"></p>
+<h2 id="3-疑问"><a href="#3-疑问" class="headerlink" title="3.疑问"></a>3.疑问</h2><p>既然highcharts对下钻功能支持那么好，<code>那么echarts在这一块做的怎么样呢？</code></p>
+<h1 id="三-echarts的下钻功能-drilldown"><a href="#三-echarts的下钻功能-drilldown" class="headerlink" title="三.echarts的下钻功能-drilldown"></a>三.echarts的下钻功能-drilldown</h1><h2 id="1-看图表-1"><a href="#1-看图表-1" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>翻了半天，只找到一个矩形树图的例子，类似有那么点下钻的意思，感觉很鸡肋。想了解的点这里。</p>
+<h2 id="2-看API-1"><a href="#2-看API-1" class="headerlink" title="2.看API"></a>2.看API</h2><p>只找到了series的type=treemap类型，如图四：</p>
+<p><img src="/images/2016-09-19/QQ20160920-4@2x.png" alt="QQ20160920-4@2x.png"></p>
+<p><code>感觉好鸡肋呀，折线图，柱状图的这些都不支持下钻。。。</code></p>
+<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>去github的echarts项目issue区域看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
+<p><img src="/images/2016-09-19/QQ20160920-5@2x.png" alt="QQ20160920-5@2x.png"></p>
+<h3 id="4-翻译一下"><a href="#4-翻译一下" class="headerlink" title="4.翻译一下"></a>4.翻译一下</h3><p>好吧，翻译一下：<code>大概意思就是告诉我们echarts不会提供什么钻取的接口，大家要想使用钻取功能，请使用万能的setOption吧。。。</code></p>
+<h1 id="四-总结"><a href="#四-总结" class="headerlink" title="四.总结"></a>四.总结</h1><p>看到这里你大概会想说：</p>
+<ul>
+<li>BB了那么久，怎么还不入正题呢？</li>
+<li>echarts的折线图究竟怎么来实现下钻(drilldown)功能呢？</li>
+</ul>
+<h1 id="五-未完待续"><a href="#五-未完待续" class="headerlink" title="五.未完待续"></a>五.未完待续</h1><ul>
+<li>不要着急，本篇主要讲了一下遇见需求后分析问题和解决问题的一些思路。</li>
+<li>下篇我会从代码的角度详细介绍怎么一步一步来实现，敬请关注!</li>
+<li><code>码字不易，转载请注明出处!</code></li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
       
 
       
@@ -463,7 +564,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
