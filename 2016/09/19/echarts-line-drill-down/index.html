@@ -281,12 +281,13 @@
 <h2 id="2-看API"><a href="#2-看API" class="headerlink" title="2.看API"></a>2.看API</h2><p>看一下API对钻取的支持：</p>
 <p><img src="/images/2016-09-19/QQ20160920-2@2x.png" alt="QQ20160920-2@2x.png"></p>
 <h2 id="3-疑问"><a href="#3-疑问" class="headerlink" title="3.疑问"></a>3.疑问</h2><p>既然highcharts对下钻功能支持那么好，<code>那么echarts在这一块做的怎么样呢？</code></p>
-<h1 id="三-echarts的下钻功能-drilldown"><a href="#三-echarts的下钻功能-drilldown" class="headerlink" title="三.echarts的下钻功能-drilldown"></a>三.echarts的下钻功能-drilldown</h1><h2 id="1-看图表-1"><a href="#1-看图表-1" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>翻了半天，只找到一个矩形树图的例子，类似有那么点下钻的意思，感觉很鸡肋。想了解的点这里。</p>
+<h1 id="三-echarts的下钻功能-drilldown"><a href="#三-echarts的下钻功能-drilldown" class="headerlink" title="三.echarts的下钻功能-drilldown"></a>三.echarts的下钻功能-drilldown</h1><h2 id="1-看图表-1"><a href="#1-看图表-1" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>翻了半天，只找到一个矩形树图的例子，类似有那么点下钻的意思，感觉很鸡肋。想了解的<a href="http://echarts.baidu.com/demo.html#treemap-disk" target="_blank" rel="external">点这里</a>。</p>
 <h2 id="2-看API-1"><a href="#2-看API-1" class="headerlink" title="2.看API"></a>2.看API</h2><p>只找到了series的type=treemap类型，如图四：</p>
-<p><img src="/images/2016-09-19/QQ20160920-4@2x.png" alt="QQ20160920-4@2x.png"></p>
-<p><code>感觉好鸡肋呀，折线图，柱状图的这些都不支持下钻。。。</code></p>
-<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>去github的echarts项目<a href="https://github.com/ecomfe/echarts/issues/1097" target="_blank" rel="external">issue区域</a>看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
-<p><img src="/images/2016-09-19/QQ20160920-5@2x.png" alt="QQ20160920-5@2x.png"></p>
+<p><img src="/images/2016-09-19/QQ20160920-3@2x.png" alt="QQ20160920-4@2x.png"></p>
+<p><code>是不是感觉好鸡肋呀，折线图，柱状图的这些都不支持下钻。。。</code></p>
+<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>3.1 去github的echarts项目<a href="https://github.com/ecomfe/echarts/issues/1097" target="_blank" rel="external">issue区域</a>看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
+<p><img src="/images/2016-09-19/QQ20160920-4@2x.png" alt="QQ20160920-5@2x.png"></p>
+<p>3.2 然后点最下面的一条件进去看了看，返现是echarts的作者林峰的回复，哈哈，终于看见大神了。<br><img src="/images/2016-09-19/QQ20160920-5@2x.png" alt="QQ20160920-5@2x.png"></p>
 <h3 id="4-翻译一下"><a href="#4-翻译一下" class="headerlink" title="4.翻译一下"></a>4.翻译一下</h3><p>好吧，翻译一下：<code>大概意思就是告诉我们echarts不会提供什么钻取的接口，大家要想使用钻取功能，请使用万能的setOption吧。。。</code></p>
 <h1 id="四-总结"><a href="#四-总结" class="headerlink" title="四.总结"></a>四.总结</h1><p>看到这里你大概会想说：</p>
 <ul>
