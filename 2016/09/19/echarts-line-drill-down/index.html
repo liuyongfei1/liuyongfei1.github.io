@@ -10,11 +10,11 @@
 <meta http-equiv=”Cache-Control” content=”no-siteapp” />
 
 
-  <meta name="keywords" content="php,javascript,shell,mysql,echarts " />
+  <meta name="keywords" content=" ,echarts3,折线图,drilldown,highcharts, " />
 
 
 
-    <meta name="description" content=", Rome was not built in a day!" />
+    <meta name="description" content="echarts3的折线图下钻drilldown功能, Rome was not built in a day!" />
 
 
 
@@ -49,7 +49,7 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
 
 
-  <title>  - PHPING|记录工作中的点点滴滴 </title>
+  <title> echarts3的折线图下钻drilldown功能 - PHPING|记录工作中的点点滴滴 </title>
 </head>
 
 <body>
@@ -211,7 +211,7 @@
           
           
             
-              
+              echarts3的折线图下钻drilldown功能
             
           
         </h1>
@@ -219,9 +219,20 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2016-09-19
+          发表于 2016-09-18
         </span>
 
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/echarts3/">echarts3</a>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -237,7 +248,7 @@
 
         
         
-        	 <span id="/2016/09/19/echarts-line-drill-down/"class="leancloud_visitors"  data-flag-title="">
+        	 <span id="/2016/09/19/echarts-line-drill-down/"class="leancloud_visitors"  data-flag-title="echarts3的折线图下钻drilldown功能">
                 &nbsp; | &nbsp; 阅读次数
                 </span>
         
@@ -257,6 +268,7 @@
 <p><img src="/images/2016-09-19/QQ20160919-0@2x.png" alt="QQ20160919-0@2x.png"></p>
 <p>领导的意图是:<strong>比如，点击201609月份这个点后,能够出现一个新的折线图，显示的是201609月份的每一天的数据。</strong></p>
 <p>需求看到这里,相信以前接触或使用过highcharts的童鞋就知道了，这是一个下钻的功能。</p>
+<p><strong>我的项目现在使用的是echarts3，以前是用过highcharts</strong></p>
 <h1 id="二-highcharts的下钻功能"><a href="#二-highcharts的下钻功能" class="headerlink" title="二.highcharts的下钻功能"></a>二.highcharts的下钻功能</h1><h2 id="1-看图表"><a href="#1-看图表" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>我们来看<a href="http://www.highcharts.com/demo/column-drilldown/" target="_blank" rel="external">highcharts官网</a>的一个例子,显示的是各个主流浏览器的一个数值比重，我这里截图如图二所示：</p>
 <p><img src="/images/2016-09-19/QQ20160920-0@2x.png" alt="QQ20160920-0@2x.png"></p>
 <p>然后点击随意的一个柱子，会出现一个新的图表,如下图图三:(我点击的是第一个柱子:IE浏览器)：</p>
@@ -273,7 +285,7 @@
 <h2 id="2-看API-1"><a href="#2-看API-1" class="headerlink" title="2.看API"></a>2.看API</h2><p>只找到了series的type=treemap类型，如图四：</p>
 <p><img src="/images/2016-09-19/QQ20160920-4@2x.png" alt="QQ20160920-4@2x.png"></p>
 <p><code>感觉好鸡肋呀，折线图，柱状图的这些都不支持下钻。。。</code></p>
-<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>去github的echarts项目issue区域看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
+<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>去github的echarts项目<a href="https://github.com/ecomfe/echarts/issues/1097" target="_blank" rel="external">issue区域</a>看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
 <p><img src="/images/2016-09-19/QQ20160920-5@2x.png" alt="QQ20160920-5@2x.png"></p>
 <h3 id="4-翻译一下"><a href="#4-翻译一下" class="headerlink" title="4.翻译一下"></a>4.翻译一下</h3><p>好吧，翻译一下：<code>大概意思就是告诉我们echarts不会提供什么钻取的接口，大家要想使用钻取功能，请使用万能的setOption吧。。。</code></p>
 <h1 id="四-总结"><a href="#四-总结" class="headerlink" title="四.总结"></a>四.总结</h1><p>看到这里你大概会想说：</p>
@@ -335,12 +347,24 @@
 
 <! -- end 添加捐赠图标 -->
       
+        <div class="post-tags">
+          
+            <a href="/tags/echarts3/"> #echarts3 </a>
+          
+            <a href="/tags/折线图/"> #折线图 </a>
+          
+            <a href="/tags/drilldown/"> #drilldown </a>
+          
+            <a href="/tags/highcharts/"> #highcharts </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/21/echarts-line-drill-down-code/"></a>
+              <a href="/2016/09/21/echarts-line-drill-down-code/">echarts3的折线图下钻drilldown功能</a>
             
           </div>
 
@@ -363,7 +387,7 @@
       <div class="comments" id="comments">
         
 
-<div class="ds-share" data-thread-key="2016/09/19/echarts-line-drill-down/" data-title="" data-images="http://phping1.github.io/2016/09/19/echarts-line-drill-down/" data-content="http://phping1.github.io/2016/09/19/echarts-line-drill-down/" data-url="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">
+<div class="ds-share" data-thread-key="2016/09/19/echarts-line-drill-down/" data-title="echarts3的折线图下钻drilldown功能" data-images="http://phping1.github.io/2016/09/19/echarts-line-drill-down/" data-content="http://phping1.github.io/2016/09/19/echarts-line-drill-down/" data-url="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -378,7 +402,7 @@
 
           <!-- 评论框 -->
           <div class="ds-thread" data-thread-key="2016/09/19/echarts-line-drill-down/"
-               data-title="" data-url="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">
+               data-title="echarts3的折线图下钻drilldown功能" data-url="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">
           </div>
         
       </div>
@@ -441,7 +465,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
