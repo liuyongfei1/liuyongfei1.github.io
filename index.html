@@ -272,9 +272,6 @@
 <h1 id="一-效果贴图"><a href="#一-效果贴图" class="headerlink" title="一.效果贴图"></a>一.效果贴图</h1><p>为了避免枯燥无味，我先不贴代码，写贴上我的demo图,这里还会拿上一篇的那个demo图为例。</p>
 <h2 id="1-下钻（drilldown）前效果"><a href="#1-下钻（drilldown）前效果" class="headerlink" title="1.下钻（drilldown）前效果"></a>1.下钻（drilldown）前效果</h2><p><img src="/images/2016-09-20/QQ20160921-0@2x.png" alt="QQ20160921-0@2x.png"></p>
 <p>从图可以看出：<code>这是展示2016年1月一直到2016年9月份的数据的折线图。</code></p>
-<p><strong>下钻（drilldown）开始：比如我点击2016年9月份(201609)的这个点，则应该显示一个属于2016年9月份下的每一天的一个折线图。</strong></p>
-<h2 id="2-下钻（drilldown）后效果："><a href="#2-下钻（drilldown）后效果：" class="headerlink" title="2.下钻（drilldown）后效果："></a>2.下钻（drilldown）后效果：</h2><p><img src="/images/2016-09-20/QQ20160921-1@2x.png" alt="QQ20160921-1@2x.png"></p>
-<p>从图可以看出：<code>这是展示的从2016年9月份0901号开始直到0930号这30天的一个折线图。</code><br><strong>完全符合我们的要求，对吧。</strong></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/echarts-line-drill-down-code/#more">
               阅读全文 &raquo;
@@ -389,37 +386,13 @@
 <p>领导的意图是:<strong>比如，点击201609月份这个点后,能够出现一个新的折线图，显示的是201609月份的每一天的数据。</strong></p>
 <p>需求看到这里,相信以前接触或使用过highcharts的童鞋就知道了，这是一个下钻的功能。</p>
 <p><strong>我的项目现在使用的是echarts3，以前是用过highcharts</strong></p>
-<h1 id="二-highcharts的下钻功能"><a href="#二-highcharts的下钻功能" class="headerlink" title="二.highcharts的下钻功能"></a>二.highcharts的下钻功能</h1><h2 id="1-看图表"><a href="#1-看图表" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>我们来看<a href="http://www.highcharts.com/demo/column-drilldown/" target="_blank" rel="external">highcharts官网</a>的一个例子,显示的是各个主流浏览器的一个数值比重，我这里截图如图二所示：</p>
+<h1 id="二-highcharts的下钻功能"><a href="#二-highcharts的下钻功能" class="headerlink" title="二.highcharts的下钻功能"></a>二.highcharts的下钻功能</h1><h2 id="1-看图表"><a href="#1-看图表" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>我们来看<a href="http://www.highcharts.com/demo/column-drilldown/">highcharts官网</a>的一个例子,显示的是各个主流浏览器的一个数值比重，我这里截图如图二所示：</p>
 <p><img src="/images/2016-09-19/QQ20160920-0@2x.png" alt="QQ20160920-0@2x.png"></p>
-<p>然后点击随意的一个柱子，会出现一个新的图表,如下图图三:(我点击的是第一个柱子:IE浏览器)：</p>
-<p><img src="/images/2016-09-19/QQ20160920-1@2x.png" alt="QQ20160920-1@2x.png"></p>
-<p>从图三可以看出：</p>
-<ul>
-<li>显示的是 IE浏览器的各个版本使用率的占比.</li>
-<li>点击圈红的后退按钮，可以返回上一级的图表.</li>
-</ul>
-<h2 id="2-看API"><a href="#2-看API" class="headerlink" title="2.看API"></a>2.看API</h2><p>看一下API对钻取的支持：</p>
-<p><img src="/images/2016-09-19/QQ20160920-2@2x.png" alt="QQ20160920-2@2x.png"></p>
-<h2 id="3-疑问"><a href="#3-疑问" class="headerlink" title="3.疑问"></a>3.疑问</h2><p>既然highcharts对下钻功能支持那么好，<code>那么echarts在这一块做的怎么样呢？</code></p>
-<h1 id="三-echarts的下钻功能-drilldown"><a href="#三-echarts的下钻功能-drilldown" class="headerlink" title="三.echarts的下钻功能-drilldown"></a>三.echarts的下钻功能-drilldown</h1><h2 id="1-看图表-1"><a href="#1-看图表-1" class="headerlink" title="1.看图表"></a>1.看图表</h2><p>翻了半天，只找到一个矩形树图的例子，类似有那么点下钻的意思，感觉很鸡肋。想了解的<a href="http://echarts.baidu.com/demo.html#treemap-disk" target="_blank" rel="external">点这里</a>。</p>
-<h2 id="2-看API-1"><a href="#2-看API-1" class="headerlink" title="2.看API"></a>2.看API</h2><p>只找到了series的type=treemap类型，如图四：</p>
-<p><img src="/images/2016-09-19/QQ20160920-3@2x.png" alt="QQ20160920-4@2x.png"></p>
-<p><code>是不是感觉好鸡肋呀，折线图，柱状图的这些都不支持下钻。。。</code></p>
-<h2 id="3-echarts项目issue区域"><a href="#3-echarts项目issue区域" class="headerlink" title="3.echarts项目issue区域"></a>3.echarts项目issue区域</h2><p>3.1 去github的echarts项目<a href="https://github.com/ecomfe/echarts/issues/1097" target="_blank" rel="external">issue区域</a>看了看，发现已经有了好几条关于钻取的问题，如图五:</p>
-<p><img src="/images/2016-09-19/QQ20160920-4@2x.png" alt="QQ20160920-5@2x.png"></p>
-<p>3.2 然后点最下面的一条件进去看了看，返现是echarts的作者林峰的回复，哈哈，终于看见大神了。<br><img src="/images/2016-09-19/QQ20160920-5@2x.png" alt="QQ20160920-5@2x.png"></p>
-<h3 id="4-翻译一下"><a href="#4-翻译一下" class="headerlink" title="4.翻译一下"></a>4.翻译一下</h3><p>好吧，翻译一下：<code>大概意思就是告诉我们echarts不会提供什么钻取的接口，大家要想使用钻取功能，请使用万能的setOption吧。。。</code></p>
-<h1 id="四-总结"><a href="#四-总结" class="headerlink" title="四.总结"></a>四.总结</h1><p>看到这里你大概会想说：</p>
-<ul>
-<li>BB了那么久，怎么还不入正题呢？</li>
-<li>echarts的折线图究竟怎么来实现下钻(drilldown)功能呢？</li>
-</ul>
-<h1 id="五-未完待续"><a href="#五-未完待续" class="headerlink" title="五.未完待续"></a>五.未完待续</h1><ul>
-<li>不要着急，本篇主要讲了一下遇见需求后分析问题和解决问题的一些思路。</li>
-<li><a href="http://phping1.github.io/2016/09/21/echarts-line-drill-down-code/">下篇</a> 我会从代码的角度详细介绍怎么一步一步来实现，敬请关注!</li>
-<li><code>码字不易，转载请注明出处!</code></li>
-</ul>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/19/echarts-line-drill-down/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
