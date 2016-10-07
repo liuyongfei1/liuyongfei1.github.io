@@ -10,11 +10,11 @@
 <meta http-equiv=”Cache-Control” content=”no-siteapp” />
 
 
-  <meta name="keywords" content=" ,echarts3,折线图,分段显示不同颜色, " />
+  <meta name="keywords" content=" ,从零开始,nodejs,HTTP小爬虫,cheerio模块, " />
 
 
 
-    <meta name="description" content="echarts3的折线图怎么分段显示不同的颜色, Rome was not built in a day!" />
+    <meta name="description" content="从零开始nodejs系列之案例一：HTTP小爬虫, Rome was not built in a day!" />
 
 
 
@@ -49,7 +49,7 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
 
 
-  <title> echarts3的折线图怎么分段显示不同的颜色 - PHPING|记录工作中的点点滴滴 </title>
+  <title> 从零开始nodejs系列之案例一：HTTP小爬虫 - PHPING|记录工作中的点点滴滴 </title>
 </head>
 
 <body>
@@ -211,7 +211,7 @@
           
           
             
-              echarts3的折线图怎么分段显示不同的颜色
+              从零开始nodejs系列之案例一：HTTP小爬虫
             
           
         </h1>
@@ -219,14 +219,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2016-06-04
+          发表于 2016-10-07
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/echarts3/">echarts3</a>
+              <a href="/categories/nodejs/">nodejs</a>
 
               
               
@@ -239,8 +239,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2016/06/05/echarts3-series-different-color/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/echarts3-series-different-color/"></span>
+            <a href="/2016/10/08/nodejs-demo1-crawler/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/08/nodejs-demo1-crawler/"></span>
             </a>
           </span>
           
@@ -248,7 +248,7 @@
 
         
         
-        	 <span id="/2016/06/05/echarts3-series-different-color/"class="leancloud_visitors"  data-flag-title="echarts3的折线图怎么分段显示不同的颜色">
+        	 <span id="/2016/10/08/nodejs-demo1-crawler/"class="leancloud_visitors"  data-flag-title="从零开始nodejs系列之案例一：HTTP小爬虫">
                 &nbsp; | &nbsp; 阅读次数
                 </span>
         
@@ -261,47 +261,80 @@
       
 
       
-        <p>本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。</p>
-<h2 id="一-场景"><a href="#一-场景" class="headerlink" title="一.场景"></a>一.场景</h2><p>在使用echarts3做图表的时候，可能会遇到一些特殊的需求：</p>
-<blockquote>
-<p>星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。</p>
+        <h1 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h1><blockquote>
+<p>漫漫长路，从脚下开始；<br>那么就从一个一个案例开始吧，在这个叫做blog的地方做为笔记记录下来。。。</p>
 </blockquote>
-<h2 id="二-效果图"><a href="#二-效果图" class="headerlink" title="二.效果图"></a>二.效果图</h2><p>先看一下效果图，你会有一个更清晰的认识:</p>
-<p><img src="/images/2016-06-05/QQ20160605-2@2x.png" alt="QQ20160605-0@2x.png"></p>
-<p>从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。<br>这样一来，是不是就有个很明显的强调区别的作用啦。</p>
-<p><img src="/images/images.png" alt="images.png"></p>
-<p><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</p>
-<p><strong> 那么，怎么去实现这个效果呢?别着急，一步一步来，往下看。</strong></p>
+<h2 id="二-案例一：HTTP小爬虫"><a href="#二-案例一：HTTP小爬虫" class="headerlink" title="二.案例一：HTTP小爬虫"></a>二.案例一：HTTP小爬虫</h2><h3 id="1-从零开始nodejs系列之案例一：HTTP小爬虫"><a href="#1-从零开始nodejs系列之案例一：HTTP小爬虫" class="headerlink" title="1. 从零开始nodejs系列之案例一：HTTP小爬虫"></a>1. 从零开始nodejs系列之案例一：HTTP小爬虫</h3><p>本案例用来抓取==慕课网的nodejs课程列表==,如下：</p>
+<p><img src="/images/2016-09-25/QQ20160925-0@2x.png" alt="QQ20160925-0@2x.png"></p>
+<h3 id="2-爬虫抓取结果如下："><a href="#2-爬虫抓取结果如下：" class="headerlink" title="2.爬虫抓取结果如下："></a>2.爬虫抓取结果如下：</h3><p><img src="/images/2016-09-25/QQ20160925-1@2x.png" alt="QQ20160925-1@2x.png"><br><strong>注意：</strong>篇幅所限，这里我就截取了前三章的课程列表。</p>
 <a id="more"></a>
-<h2 id="三-echarts3的api支持吗"><a href="#三-echarts3的api支持吗" class="headerlink" title="三.echarts3的api支持吗"></a>三.echarts3的api支持吗</h2><p>看到这样的需求，第一反应就是去api里看看有支持的函数没。。。<br>在api找到半天，果然不支持。领导非要这样做，echarts3的api里又不支持，那么怎么办？<br><strong>答案：换思路</strong></p>
-<h2 id="四-思路"><a href="#四-思路" class="headerlink" title="四.思路"></a>四.思路</h2><h3 id="1-折线图的数据点在哪里被赋值的"><a href="#1-折线图的数据点在哪里被赋值的" class="headerlink" title="1.折线图的数据点在哪里被赋值的?"></a>1.折线图的数据点在哪里被赋值的?</h3><p>我们知道在echarts中图表是通过series来实现的：</p>
-<p><img src="/images/2016-06-05/QQ20160605-1@2x.png" alt="QQ20160605-1@2x.png"></p>
-<p><strong> 其中圈红的第一个就是图形类型为折线图时用到的配置，折线图的这些数据点都是通过里面的这个data数组来生成的。</strong></p>
-<h3 id="2-拆分为多个series"><a href="#2-拆分为多个series" class="headerlink" title="2.拆分为多个series"></a>2.拆分为多个series</h3><p><strong> 将一个完整的折线分成两段折线，不同的折线显示不同的颜色即可。</strong></p>
-<p><em>我们知道周一到周日总共是7个点，series的data数据为:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data: [4, 8, 16, 32, 64, 128, 256]</div><div class="line">        &#125;</div><div class="line">    ]</div></pre></td></tr></table></figure></p>
-<p><em>如果拆分成两段折线的话，就得用两个series,两个series就得有两个数据集(data数组).</em></p>
-<p>其中第一个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4, 8, 16, 32, 64</div></pre></td></tr></table></figure></p>
-<p>第二个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">128,256</div></pre></td></tr></table></figure></p>
-<p><strong> 但是在echarts中，图形的每一个点都要有与x轴和y轴对应的，否则，画出来的图形是与数据对应不上的。</strong></p>
-<p>所以我们需要对上面的两个数组进行一下改造。</p>
-<h3 id="3-普及一小技巧"><a href="#3-普及一小技巧" class="headerlink" title="3.普及一小技巧"></a>3.普及一小技巧</h3><p>在echarts中，若是不想让某个点展示，<strong>则这个点对应的data数值可以用’-‘来表示。</strong><br>反正这个知识点没有在echarts3的api里提到，应该在echarts2中继承下来的知识点吧。</p>
-<h3 id="4-转化数据集"><a href="#4-转化数据集" class="headerlink" title="4.转化数据集"></a>4.转化数据集</h3><p>知道上面这个小技巧后，我们就可以把这两个数据集写成下面这种格式了:<br>series[0].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;]</div></pre></td></tr></table></figure></p>
-<p>series[1].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256]</div></pre></td></tr></table></figure></p>
-<h2 id="五-摞代码"><a href="#五-摞代码" class="headerlink" title="五.摞代码"></a>五.摞代码</h2><p>既然思路都有了，那么我们开始试试吧。</p>
-<h3 id="1-option的配置和主要代码如下："><a href="#1-option的配置和主要代码如下：" class="headerlink" title="1.option的配置和主要代码如下："></a>1.option的配置和主要代码如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">// blog: phping.sinaapp.com</div><div class="line">var dom = document.getElementById(&quot;container&quot;);</div><div class="line">var myChart = echarts.init(dom);</div><div class="line">option = null;</div><div class="line">option = &#123;</div><div class="line">    title: &#123;</div><div class="line">        text: &apos;echarts3的折线图分段显示不同的颜色&apos;,</div><div class="line">        left: &apos;center&apos;,</div><div class="line">        link: &apos;http://phping.sinaapp.com&apos;</div><div class="line">    &#125;,</div><div class="line">    tooltip: &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter: &apos;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125;&apos;</div><div class="line">    &#125;,</div><div class="line">    legend: &#123;</div><div class="line">        left: &apos;left&apos;,</div><div class="line">        data: [&apos;指数&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis: &#123;</div><div class="line">        type: &apos;category&apos;,</div><div class="line">        name: &apos;x&apos;,</div><div class="line">        splitLine: &#123;show: false&#125;,</div><div class="line">        data: [&apos;星期一&apos;, &apos;星期二&apos;, &apos;星期三&apos;, &apos;星期四&apos;, &apos;星期五&apos;, &apos;星期六&apos;, &apos;星期日&apos;]</div><div class="line">    &#125;,</div><div class="line">    grid: &#123;</div><div class="line">        left: &apos;3%&apos;,</div><div class="line">        right: &apos;4%&apos;,</div><div class="line">        bottom: &apos;3%&apos;,</div><div class="line">        containLabel: true</div><div class="line">    &#125;,</div><div class="line">    yAxis: &#123;</div><div class="line">        type: &apos;log&apos;,</div><div class="line">        name: &apos;y&apos;</div><div class="line">    &#125;,</div><div class="line">    series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;;</div><div class="line">if (option &amp;&amp; typeof option === &quot;object&quot;) &#123;</div><div class="line">    var startTime = +new Date();</div><div class="line">    option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">    option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div><div class="line">    myChart.setOption(option, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-走一个试试"><a href="#2-走一个试试" class="headerlink" title="2.走一个试试:"></a>2.走一个试试:</h3><p><img src="/images/2016-06-05/QQ20160605-3@2x.png" alt="QQ20160605-3@2x.png"></p>
-<p>==两条线是分出来了，但是中间是有个断点。如果你觉得这样影响需求的话，则直接在series[1].data里把这个点补出来即可。==</p>
-<h4 id="2-1原来的格式"><a href="#2-1原来的格式" class="headerlink" title="2.1原来的格式:"></a>2.1原来的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256];</div></pre></td></tr></table></figure>
-<h4 id="2-2修改为现在的格式"><a href="#2-2修改为现在的格式" class="headerlink" title="2.2修改为现在的格式:"></a>2.2修改为现在的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div></pre></td></tr></table></figure>
-<p>再次刷新，是不是两条断线连上了呢。效果就跟文首的demo是一样的了。</p>
-<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六.总结"></a>六.总结</h2><ol>
-<li>遇见此类需求时，先看看api里提供了类似的方法没有,有的话，就不用费大头筋儿了；</li>
-<li>没有的话，就得转变思路了，将一个折线分成多个折线。</li>
-<li>巧妙利用四.3中的小知识点来绘制空点</li>
-<li>实际开发中可能要比这个demo要复杂一些，但是基本思路都是一样的。</li>
-<li><strong> demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</li>
+<h2 id="三-HTTP模块"><a href="#三-HTTP模块" class="headerlink" title="三.HTTP模块"></a>三.HTTP模块</h2><p>在讲HTTP小爬虫之前，先来大概介绍一下HTTP模块。<br>关于HTTP的api，<a href="http://nodejs.cn/doc/node/http.html" target="_blank" rel="external">点这里</a>，我这里就不一一列出来了。让我们从一个简单的例子开始。</p>
+<h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h3><p>   <strong>目的：建立一个lesson项目，通过在其中编写代码，当在浏览器中访问：http:://localhost:3000时，输出：Hello World</strong><br>   代码如下：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const http = require(&apos;http&apos;);</div><div class="line"></div><div class="line">const hostname = &apos;127.0.0.1&apos;;</div><div class="line">const port = 3000;</div><div class="line"></div><div class="line">const server = http.createServer((req, res) =&gt; &#123;</div><div class="line">  res.statusCode = 200;</div><div class="line">  res.setHeader(&apos;Content-Type&apos;, &apos;text/plain&apos;);</div><div class="line">  res.end(&apos;Hello World\n&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  console.log(`Server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>   在命令行中执行:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node server.js</div></pre></td></tr></table></figure></p>
+<p>   浏览器访问：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:3000/</div></pre></td></tr></table></figure></p>
+<p>   即可看到输出结果：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Hello World</div></pre></td></tr></table></figure></p>
+<h3 id="2-代码分析："><a href="#2-代码分析：" class="headerlink" title="2.代码分析："></a>2.代码分析：</h3><ol>
+<li>通过”require”引入NodeJS自带的”http”模块，并且把它赋值给http变量;</li>
+<li><p>“requestListener”这个回调函数，它提供了两个参数（request，response），我在代码里分别简写为req,res。每次收到一个请求时触发。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http.createServer([requestListener])</div></pre></td></tr></table></figure>
+<blockquote>
+<p>返回一个新的web服务器对象。参数 requestListener 是一个函数,它将会自动加入到 ‘request’ 事件的监听队列.</p>
+</blockquote>
+</li>
+<li><p>statusCode是一个三位的HTTP状态码, 例如：”404” 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.statusCode = 404;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当使用默认headers时（没有显式地调用 response.writeHead() 来修改headers），这个属性决定headers更新时被传回客户端的HTTP状态码。</p>
+</blockquote>
+</li>
+<li><p>setHeader</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.setHeader(name, value)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>为默认或者已存在的头设置一条单独的头内容。如果这个头已经存在于 将被送出的头中，将会覆盖原来的内容。如果我想设置更多的头， 就使用一个相同名字的字符串数组</p>
+</blockquote>
+</li>
+<li>server.listen(port, [hostname], [backlog], [callback])<blockquote>
+<p>开始在指定的主机名和端口接收连接。如果省略主机名，服务器会接收指向任意IPv4地址的链接（INADDR_ANY）。</p>
+</blockquote>
+</li>
 </ol>
-<p>码字不易，转载请注明出处。</p>
+<h2 id="四-cheerio模块"><a href="#四-cheerio模块" class="headerlink" title="四.cheerio模块"></a>四.cheerio模块</h2><blockquote>
+<p>抓取到网页之后如何获取到想要的数据呢？然后就发现了cheerio，用来解析html非常方便，就像在浏览器中使用jquery一样；<br>为服务器特别定制的，快速、灵活、实施的jQuery核心实现。</p>
+</blockquote>
+<p>github项目地址点<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">这里</a>。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install cheerio</div></pre></td></tr></table></figure>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a><a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">API</a></h2><p>我们再来看<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">cheerio的API</a>举的例子</p>
+<h3 id="Markup-example-we’ll-be-using"><a href="#Markup-example-we’ll-be-using" class="headerlink" title="Markup example we’ll be using:"></a>Markup example we’ll be using:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul id=<span class="string">"fruits"</span>&gt;</div><div class="line">  &lt;li class=<span class="string">"apple"</span>&gt;Apple&lt;/li&gt;</div><div class="line">  &lt;li class=<span class="string">"orange"</span>&gt;Orange&lt;/li&gt;</div><div class="line">  &lt;li class=<span class="string">"pear"</span>&gt;Pear&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<h3 id="Loading"><a href="#Loading" class="headerlink" title="Loading"></a>Loading</h3><p>First you need to load in the HTML. This step in jQuery is implicit, since jQuery operates on the one, baked-in DOM. With Cheerio, we need to pass in the HTML document.<br>This is the preferred method:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cheerio = require(<span class="string">'cheerio'</span>),</div><div class="line">$ = cheerio.load(<span class="string">'&lt;ul id="fruits"&gt;...&lt;/ul&gt;'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h3><p>Cheerio’s selector implementation is nearly identical to jQuery’s, so the API is very similar.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.apple'</span>, <span class="string">'#fruits'</span>).text()</div><div class="line">//=&gt; Apple</div><div class="line"></div><div class="line">$(<span class="string">'ul .pear'</span>).attr(<span class="string">'class'</span>)</div><div class="line">//=&gt; pear</div><div class="line"></div><div class="line">$(<span class="string">'li[class=orange]'</span>).html()</div><div class="line">//=&gt; Orange</div></pre></td></tr></table></figure></p>
+<h3 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h3><p>Methods for getting and modifying attributes.</p>
+<h4 id="attr-name-value"><a href="#attr-name-value" class="headerlink" title=".attr( name, value )"></a>.attr( name, value )</h4><p>Method for getting and setting attributes. Gets the attribute value for only the first element in the matched set. If you set an attribute’s value to null, you remove that attribute. You may also pass a map and function like jQuery.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'ul'</span>).attr(<span class="string">'id'</span>)</div><div class="line">//=&gt; fruits</div><div class="line"></div><div class="line">$(<span class="string">'.apple'</span>).attr(<span class="string">'id'</span>, <span class="string">'favorite'</span>).html()</div><div class="line">//=&gt; &lt;li class=<span class="string">"apple"</span> id=<span class="string">"favorite"</span>&gt;Apple&lt;/li&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="再看一个小demo"><a href="#再看一个小demo" class="headerlink" title="再看一个小demo"></a>再看一个小demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cheerio = require(<span class="string">'cheerio'</span>)</div><div class="line">$ = cheerio.load(<span class="string">'&lt;h2 class="title"&gt;Hello world&lt;/h2&gt;'</span>)</div><div class="line">$(<span class="string">'h2.title'</span>).text(<span class="string">'Hello there!'</span>)</div><div class="line">$(<span class="string">'h2'</span>).addClass(<span class="string">'welcome'</span>)</div><div class="line">console.log($.html());</div></pre></td></tr></table></figure>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出:"></a>输出:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h2 class=<span class="string">"title welcome"</span>&gt;Hello there!&lt;/h2&gt;</div></pre></td></tr></table></figure>
+<p>等等，我就不再一一贴出来了，大家看一些这些语法，是不是就跟jquery的语法差不多呢。。。</p>
+<p>==HTTP模块和cheerio模块已经做了简单的介绍，详细的使用大家可以翻阅对应的API。==<br><strong>好，准备工作也做得差不多了，让我们步入正题，开始来做HTTP爬虫吧。</strong></p>
+<hr>
+<h1 id="HTTP爬虫所需模块"><a href="#HTTP爬虫所需模块" class="headerlink" title="HTTP爬虫所需模块"></a>HTTP爬虫所需模块</h1><ul>
+<li>HTTP模块: 既然是HTTP小爬虫，肯定需要HTTP模块.</li>
+<li>cheerio模块: 抓取到网页之后如何获取到想要的数据,这个时候就需要cheerio，用来解析html非常方便，就像在浏览器中使用jquery一样。</li>
+</ul>
+<p>==开始摞码:==</p>
+<h3 id="一-代码区1"><a href="#一-代码区1" class="headerlink" title="一.代码区1"></a>一.代码区1</h3><p>加载所需模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var http = require(<span class="string">'http'</span>)</div><div class="line">var cheerio = require(<span class="string">'cheerio'</span>)</div><div class="line">var url = <span class="string">'http://www.imooc.com/learn/348'</span>;</div></pre></td></tr></table></figure>
+<h4 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h4><ol>
+<li>加载http模块;</li>
+<li>加载cheerio模块;</li>
+<li>指定要抓取的地址;</li>
+</ol>
+<h3 id="二-代码区2"><a href="#二-代码区2" class="headerlink" title="二.代码区2"></a>二.代码区2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">http.get(url,<span class="keyword">function</span>(res) &#123;</div><div class="line">  var html = <span class="string">''</span>;</div><div class="line">  res.on(<span class="string">'data'</span>,<span class="keyword">function</span>(data) &#123;</div><div class="line">    html += data</div><div class="line">  &#125;)</div><div class="line">  res.on(<span class="string">'end'</span>,<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var courseData = filterChapters(html)</div><div class="line">    <span class="built_in">print</span>CourseInfo(courseData)</div><div class="line">  &#125;)</div><div class="line">&#125;).on(<span class="string">'error'</span>,<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  console.log(<span class="string">'出错了哦'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="代码解释-1"><a href="#代码解释-1" class="headerlink" title="代码解释"></a>代码解释</h4><h4 id="http-get-options-callback"><a href="#http-get-options-callback" class="headerlink" title="http.get(options, callback)"></a>http.get(options, callback)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">因为大部分的请求是没有报文体的GET请求，所以Node提供了这种便捷的方法。</div><div class="line">该方法与http.request()的唯一区别是它设置的是GET方法并自动调用req.end()。</div></pre></td></tr></table></figure>
+<p>http.request的用例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// make a request</div><div class="line">  var options = &#123;</div><div class="line">    port: 1337,</div><div class="line">    hostname: <span class="string">'127.0.0.1'</span>,</div><div class="line">    headers: &#123;</div><div class="line">      <span class="string">'Connection'</span>: <span class="string">'Upgrade'</span>,</div><div class="line">      <span class="string">'Upgrade'</span>: <span class="string">'websocket'</span></div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var req = http.request(options);</div><div class="line">  req.end();</div></pre></td></tr></table></figure></p>
+<h4 id="response-end"><a href="#response-end" class="headerlink" title="response.end"></a>response.end</h4><blockquote>
+<p>结束响应，告诉客户端所有消息已经发送。当所有要返回的内容发送完毕时，该函数必须被调用一次。<br>如何不调用该函数，客户端将永远处于等待状态。</p>
+</blockquote>
+<h4 id="filterChapters函数"><a href="#filterChapters函数" class="headerlink" title="filterChapters函数"></a>filterChapters函数</h4><p>filterChapters函数为封装好的过滤html的函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> filterChapters(html) &#123;</div><div class="line">  var $ = cheerio.load(html)</div><div class="line">  var charpters = $(<span class="string">'.chapter'</span>)</div><div class="line">  var courseData = []</div><div class="line">  charpters.each(<span class="keyword">function</span>(item) &#123;</div><div class="line">    var chapter =  $(this)</div><div class="line"></div><div class="line">    var chapterTmpTitle = chapter.find(<span class="string">'strong'</span>).clone()</div><div class="line">    chapterTmpTitle.find(<span class="string">'div'</span>).remove()</div><div class="line"></div><div class="line">    // var chapterTitle = chapter.find(<span class="string">'strong'</span>).text()</div><div class="line">    var chapterTitle = chapterTmpTitle.text().match(/\S+\s\S+/)</div><div class="line">    var videos = chapter.find(<span class="string">'.video'</span>).children(<span class="string">'li'</span>)</div><div class="line">    var chapterData = &#123;</div><div class="line">      chapterTitle: chapterTitle,</div><div class="line">      videos: []</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    videos.each(<span class="keyword">function</span>(item) &#123;</div><div class="line">      var video = $(this).find(<span class="string">'.J-media-item'</span>)</div><div class="line">      var videoTmpTitle = video.clone()</div><div class="line">      videoTmpTitle.find(<span class="string">'button'</span>).remove()</div><div class="line">      var videoTitle = videoTmpTitle.text().match(/[0-9]+-[0-9]+\s\S*\s?\S*/)</div><div class="line">      // console.log(chapterTitle)</div><div class="line">      // var videoTitle = video.text()</div><div class="line">      var id = video.attr(<span class="string">'href'</span>).split(<span class="string">'video/'</span>)[1]</div><div class="line">      chapterData.videos.push(&#123;</div><div class="line">        title : videoTitle,</div><div class="line">        id: id</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">    courseData.push(chapterData)</div><div class="line">  &#125;)</div><div class="line">  <span class="built_in">return</span> courseData</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="printCourseInfo函数"><a href="#printCourseInfo函数" class="headerlink" title="printCourseInfo函数"></a>printCourseInfo函数</h4><p>printCourseInfo函数用来打印课程信息的函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="built_in">print</span>CourseInfo(courseData) &#123;</div><div class="line">  courseData.forEach(<span class="keyword">function</span>(item) &#123;</div><div class="line">    var chapterTitle = item.chapterTitle</div><div class="line">    console.log(chapterTitle + <span class="string">'\n'</span>)</div><div class="line">    item.videos.forEach(<span class="keyword">function</span>(video) &#123;</div><div class="line">      console.log(<span class="string">' 【'</span> + video.id + <span class="string">' 】'</span> + video.title + <span class="string">'\n'</span>)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>好了，主要代码大概就是这些。</p>
 
       
     </div>
@@ -354,11 +387,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/echarts3/"> #echarts3 </a>
+            <a href="/tags/从零开始/"> #从零开始 </a>
           
-            <a href="/tags/折线图/"> #折线图 </a>
+            <a href="/tags/nodejs/"> #nodejs </a>
           
-            <a href="/tags/分段显示不同颜色/"> #分段显示不同颜色 </a>
+            <a href="/tags/HTTP小爬虫/"> #HTTP小爬虫 </a>
+          
+            <a href="/tags/cheerio模块/"> #cheerio模块 </a>
           
         </div>
       
@@ -367,11 +402,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/19/echarts-line-drill-down/">手把手教你实现echarts3的折线图下钻drilldown功能系列篇一</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/21/echarts-line-drill-down-code/">手把手教你实现echarts3的折线图下钻drilldown功能系列篇二</a>
             
           </div>
         </div>
@@ -388,7 +423,7 @@
       <div class="comments" id="comments">
         
 
-<div class="ds-share" data-thread-key="2016/06/05/echarts3-series-different-color/" data-title="echarts3的折线图怎么分段显示不同的颜色" data-images="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-content="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+<div class="ds-share" data-thread-key="2016/10/08/nodejs-demo1-crawler/" data-title="从零开始nodejs系列之案例一：HTTP小爬虫" data-images="http://phping1.github.io/2016/10/08/nodejs-demo1-crawler/" data-content="http://phping1.github.io/2016/10/08/nodejs-demo1-crawler/" data-url="http://phping1.github.io/2016/10/08/nodejs-demo1-crawler/">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -402,8 +437,8 @@
  </div>
 
           <!-- 评论框 -->
-          <div class="ds-thread" data-thread-key="2016/06/05/echarts3-series-different-color/"
-               data-title="echarts3的折线图怎么分段显示不同的颜色" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+          <div class="ds-thread" data-thread-key="2016/10/08/nodejs-demo1-crawler/"
+               data-title="从零开始nodejs系列之案例一：HTTP小爬虫" data-url="http://phping1.github.io/2016/10/08/nodejs-demo1-crawler/">
           </div>
         
       </div>
@@ -538,7 +573,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-场景"><span class="nav-number">1.</span> <span class="nav-text">一.场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-效果图"><span class="nav-number">2.</span> <span class="nav-text">二.效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-echarts3的api支持吗"><span class="nav-number">3.</span> <span class="nav-text">三.echarts3的api支持吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-思路"><span class="nav-number">4.</span> <span class="nav-text">四.思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-折线图的数据点在哪里被赋值的"><span class="nav-number">4.1.</span> <span class="nav-text">1.折线图的数据点在哪里被赋值的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-拆分为多个series"><span class="nav-number">4.2.</span> <span class="nav-text">2.拆分为多个series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-普及一小技巧"><span class="nav-number">4.3.</span> <span class="nav-text">3.普及一小技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-转化数据集"><span class="nav-number">4.4.</span> <span class="nav-text">4.转化数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-摞代码"><span class="nav-number">5.</span> <span class="nav-text">五.摞代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-option的配置和主要代码如下："><span class="nav-number">5.1.</span> <span class="nav-text">1.option的配置和主要代码如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-走一个试试"><span class="nav-number">5.2.</span> <span class="nav-text">2.走一个试试:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1原来的格式"><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1原来的格式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2修改为现在的格式"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2修改为现在的格式:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-总结"><span class="nav-number">6.</span> <span class="nav-text">六.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-前言"><span class="nav-number">1.</span> <span class="nav-text">一.前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二-案例一：HTTP小爬虫"><span class="nav-number">1.1.</span> <span class="nav-text">二.案例一：HTTP小爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-从零开始nodejs系列之案例一：HTTP小爬虫"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 从零开始nodejs系列之案例一：HTTP小爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-爬虫抓取结果如下："><span class="nav-number">1.1.2.</span> <span class="nav-text">2.爬虫抓取结果如下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-HTTP模块"><span class="nav-number">1.2.</span> <span class="nav-text">三.HTTP模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-需求"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-代码分析："><span class="nav-number">1.2.2.</span> <span class="nav-text">2.代码分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-cheerio模块"><span class="nav-number">1.3.</span> <span class="nav-text">四.cheerio模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">1.5.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Markup-example-we’ll-be-using"><span class="nav-number">1.5.1.</span> <span class="nav-text">Markup example we’ll be using:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loading"><span class="nav-number">1.5.2.</span> <span class="nav-text">Loading</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Selectors"><span class="nav-number">1.5.3.</span> <span class="nav-text">Selectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attributes"><span class="nav-number">1.5.4.</span> <span class="nav-text">Attributes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#attr-name-value"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">.attr( name, value )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再看一个小demo"><span class="nav-number">1.6.</span> <span class="nav-text">再看一个小demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.6.1.</span> <span class="nav-text">输出:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP爬虫所需模块"><span class="nav-number">2.</span> <span class="nav-text">HTTP爬虫所需模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-代码区1"><span class="nav-number">2.0.1.</span> <span class="nav-text">一.代码区1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码解释"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">代码解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-代码区2"><span class="nav-number">2.0.2.</span> <span class="nav-text">二.代码区2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码解释-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">代码解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-get-options-callback"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">http.get(options, callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response-end"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">response.end</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filterChapters函数"><span class="nav-number">2.0.2.4.</span> <span class="nav-text">filterChapters函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#printCourseInfo函数"><span class="nav-number">2.0.2.5.</span> <span class="nav-text">printCourseInfo函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
