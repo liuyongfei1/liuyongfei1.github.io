@@ -424,7 +424,7 @@
 <h2 id="再看一个小demo"><a href="#再看一个小demo" class="headerlink" title="再看一个小demo"></a>再看一个小demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cheerio = require(<span class="string">'cheerio'</span>)</div><div class="line">$ = cheerio.load(<span class="string">'&lt;h2 class="title"&gt;Hello world&lt;/h2&gt;'</span>)</div><div class="line">$(<span class="string">'h2.title'</span>).text(<span class="string">'Hello there!'</span>)</div><div class="line">$(<span class="string">'h2'</span>).addClass(<span class="string">'welcome'</span>)</div><div class="line">console.log($.html());</div></pre></td></tr></table></figure>
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出:"></a>输出:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h2 class=<span class="string">"title welcome"</span>&gt;Hello there!&lt;/h2&gt;</div></pre></td></tr></table></figure>
 <p>等等，我就不再一一贴出来了，大家看一些这些语法，是不是就跟jquery的语法差不多呢。。。</p>
-<p>==HTTP模块和cheerio模块已经做了简单的介绍，详细的使用大家可以翻阅对应的API。==<br><strong>好，准备工作也做得差不多了，让我们步入正题，开始来做HTTP爬虫吧。</strong></p>
+<p>HTTP模块和cheerio模块已经做了简单的介绍，详细的使用大家可以翻阅对应的API。<br><strong>好，准备工作也做得差不多了，让我们步入正题，开始来做HTTP爬虫吧。</strong></p>
 <hr>
 <h1 id="HTTP爬虫所需模块"><a href="#HTTP爬虫所需模块" class="headerlink" title="HTTP爬虫所需模块"></a>HTTP爬虫所需模块</h1><ul>
 <li>HTTP模块: 既然是HTTP小爬虫，肯定需要HTTP模块.</li>
