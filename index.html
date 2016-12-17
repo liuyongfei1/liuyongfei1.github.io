@@ -213,6 +213,106 @@
           
           
             
+              <a class="post-title-link" href="/2016/12/17/nodejs-install-express/">
+                未命名
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2016-12-17
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/17/nodejs-install-express/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/17/nodejs-install-express/"></span>
+            </a>
+          </span>
+          
+        
+
+        
+        
+        	 <span id="/2016/12/17/nodejs-install-express/"class="leancloud_visitors"  data-flag-title="">
+                &nbsp; | &nbsp; 阅读次数
+                </span>
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="nodejs新手小笔记之-express安装"><a href="#nodejs新手小笔记之-express安装" class="headerlink" title="nodejs新手小笔记之-express安装"></a>nodejs新手小笔记之-express安装</h3><h4 id="express概述"><a href="#express概述" class="headerlink" title="express概述"></a>express概述</h4><p>Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。使用express我们可以快速的搭建一个网站。<br>很多流行的nodejs框架都是基于express，例如：<a href="http://feathersjs.com/" target="_blank" rel="external">Feathers</a>，<a href="https://www.itemsapi.com/" target="_blank" rel="external">ItemsAPI</a><br><a href="http://keystonejs.com/" target="_blank" rel="external">KeystoneJS</a>等。</p>
+<h4 id="express安装"><a href="#express安装" class="headerlink" title="express安装"></a>express安装</h4><p><strong>注:前提是已经安装过node.js</strong></p>
+<ol>
+<li><p>创建一个目录用来当做你的工作目录，保存你的应用程序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir myapp</div><div class="line">$ <span class="built_in">cd</span> myapp</div></pre></td></tr></table></figure>
+</li>
+<li><p>为你的应用创建一个包配置文件。如果想详细了解这个配置文件是如何工作的，<a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">可以点这里</a>。</p>
+<p> $ npm init<br>执行这个命令后，会提示你一些信息，比如你想为你的应用程序起的名字,版本号,描述信息等。通常情况下，我们选默认的，直接回车即可。<br>执行完毕后，会在<code>myapp</code>目录下面生成一个<code>package.json</code>文件，如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"myapp"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果我们想把main文件的名字起为<code>app.js</code>的话，可以在</p>
+<pre><code>entry point: (index.js)
+</code></pre><p>的时候输入 <code>app.js</code>即可。</p>
+<ol>
+<li>安装express<br>配置文件生成后，就可以安装express框架了.<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install express --save</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>命令执行完后，会生成一个 <code>node_modules</code> 目录，同时再次打开pack.json文件，会发现新添加了一个依赖列表，如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"test2"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;</div><div class="line">    <span class="string">"express"</span>: <span class="string">"^4.14.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">express --version</div><div class="line">4.14.0</div></pre></td></tr></table></figure>
+<p>至此,express已经安装成功，是不是很简单呢…</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2016/10/16/nodejs-fs/">
                 nodejs之文件操作(fs模块)
               </a>
@@ -379,75 +479,12 @@
 </blockquote>
 <h2 id="二-案例一：HTTP小爬虫"><a href="#二-案例一：HTTP小爬虫" class="headerlink" title="二.案例一：HTTP小爬虫"></a>二.案例一：HTTP小爬虫</h2><h3 id="1-从零开始nodejs系列之案例一：HTTP小爬虫"><a href="#1-从零开始nodejs系列之案例一：HTTP小爬虫" class="headerlink" title="1. 从零开始nodejs系列之案例一：HTTP小爬虫"></a>1. 从零开始nodejs系列之案例一：HTTP小爬虫</h3><p>本案例用来抓取<strong>慕课网的nodejs课程列表</strong>,如下：</p>
 <p><img src="/images/2016-09-25/QQ20160925-0@2x.png" alt="QQ20160925-0@2x.png"></p>
-<h3 id="2-爬虫抓取结果如下："><a href="#2-爬虫抓取结果如下：" class="headerlink" title="2.爬虫抓取结果如下："></a>2.爬虫抓取结果如下：</h3><p><img src="/images/2016-09-25/QQ20160925-1@2x.png" alt="QQ20160925-1@2x.png"><br><strong>注意：</strong>篇幅所限，这里我就截取了前三章的课程列表。</p>
-<h2 id="三-HTTP模块"><a href="#三-HTTP模块" class="headerlink" title="三.HTTP模块"></a>三.HTTP模块</h2><p>在讲HTTP小爬虫之前，先来大概介绍一下HTTP模块。<br>关于HTTP的api，<a href="http://nodejs.cn/doc/node/http.html" target="_blank" rel="external">点这里</a>，我这里就不一一列出来了。让我们从一个简单的例子开始。</p>
-<h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h3><p>   <strong>目的：建立一个lesson项目，通过在其中编写代码，当在浏览器中访问：http:://localhost:3000时，输出：Hello World</strong><br>   代码如下：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const http = require(&apos;http&apos;);</div><div class="line"></div><div class="line">const hostname = &apos;127.0.0.1&apos;;</div><div class="line">const port = 3000;</div><div class="line"></div><div class="line">const server = http.createServer((req, res) =&gt; &#123;</div><div class="line">  res.statusCode = 200;</div><div class="line">  res.setHeader(&apos;Content-Type&apos;, &apos;text/plain&apos;);</div><div class="line">  res.end(&apos;Hello World\n&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  console.log(`Server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>   在命令行中执行:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node server.js</div></pre></td></tr></table></figure></p>
-<p>   浏览器访问：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:3000/</div></pre></td></tr></table></figure></p>
-<p>   即可看到输出结果：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Hello World</div></pre></td></tr></table></figure></p>
-<h3 id="2-代码分析："><a href="#2-代码分析：" class="headerlink" title="2.代码分析："></a>2.代码分析：</h3><ol>
-<li>通过”require”引入NodeJS自带的”http”模块，并且把它赋值给http变量;</li>
-<li><p>“requestListener”这个回调函数，它提供了两个参数（request，response），我在代码里分别简写为req,res。每次收到一个请求时触发。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http.createServer([requestListener])</div></pre></td></tr></table></figure>
-<blockquote>
-<p>返回一个新的web服务器对象。参数 requestListener 是一个函数,它将会自动加入到 ‘request’ 事件的监听队列.</p>
-</blockquote>
-</li>
-<li><p>statusCode是一个三位的HTTP状态码, 例如：”404” 。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.statusCode = 404;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>当使用默认headers时（没有显式地调用 response.writeHead() 来修改headers），这个属性决定headers更新时被传回客户端的HTTP状态码。</p>
-</blockquote>
-</li>
-<li><p>setHeader</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.setHeader(name, value)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>为默认或者已存在的头设置一条单独的头内容。如果这个头已经存在于 将被送出的头中，将会覆盖原来的内容。如果我想设置更多的头， 就使用一个相同名字的字符串数组</p>
-</blockquote>
-</li>
-<li>server.listen(port, [hostname], [backlog], [callback])<blockquote>
-<p>开始在指定的主机名和端口接收连接。如果省略主机名，服务器会接收指向任意IPv4地址的链接（INADDR_ANY）。</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="四-cheerio模块"><a href="#四-cheerio模块" class="headerlink" title="四.cheerio模块"></a>四.cheerio模块</h2><blockquote>
-<p>抓取到网页之后如何获取到想要的数据呢？然后就发现了cheerio，用来解析html非常方便，就像在浏览器中使用jquery一样；<br>为服务器特别定制的，快速、灵活、实施的jQuery核心实现。</p>
-</blockquote>
-<p>github项目地址点<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">这里</a>。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install cheerio</div></pre></td></tr></table></figure>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a><a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">API</a></h2><p>我们再来看<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">cheerio的API</a>举的例子</p>
-<h3 id="Markup-example-we’ll-be-using"><a href="#Markup-example-we’ll-be-using" class="headerlink" title="Markup example we’ll be using:"></a>Markup example we’ll be using:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul id=<span class="string">"fruits"</span>&gt;</div><div class="line">  &lt;li class=<span class="string">"apple"</span>&gt;Apple&lt;/li&gt;</div><div class="line">  &lt;li class=<span class="string">"orange"</span>&gt;Orange&lt;/li&gt;</div><div class="line">  &lt;li class=<span class="string">"pear"</span>&gt;Pear&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
-<h3 id="Loading"><a href="#Loading" class="headerlink" title="Loading"></a>Loading</h3><p>First you need to load in the HTML. This step in jQuery is implicit, since jQuery operates on the one, baked-in DOM. With Cheerio, we need to pass in the HTML document.<br>This is the preferred method:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cheerio = require(<span class="string">'cheerio'</span>),</div><div class="line">$ = cheerio.load(<span class="string">'&lt;ul id="fruits"&gt;...&lt;/ul&gt;'</span>);</div></pre></td></tr></table></figure></p>
-<h3 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h3><p>Cheerio’s selector implementation is nearly identical to jQuery’s, so the API is very similar.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.apple'</span>, <span class="string">'#fruits'</span>).text()</div><div class="line">//=&gt; Apple</div><div class="line"></div><div class="line">$(<span class="string">'ul .pear'</span>).attr(<span class="string">'class'</span>)</div><div class="line">//=&gt; pear</div><div class="line"></div><div class="line">$(<span class="string">'li[class=orange]'</span>).html()</div><div class="line">//=&gt; Orange</div></pre></td></tr></table></figure></p>
-<h3 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h3><p>Methods for getting and modifying attributes.</p>
-<h4 id="attr-name-value"><a href="#attr-name-value" class="headerlink" title=".attr( name, value )"></a>.attr( name, value )</h4><p>Method for getting and setting attributes. Gets the attribute value for only the first element in the matched set. If you set an attribute’s value to null, you remove that attribute. You may also pass a map and function like jQuery.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'ul'</span>).attr(<span class="string">'id'</span>)</div><div class="line">//=&gt; fruits</div><div class="line"></div><div class="line">$(<span class="string">'.apple'</span>).attr(<span class="string">'id'</span>, <span class="string">'favorite'</span>).html()</div><div class="line">//=&gt; &lt;li class=<span class="string">"apple"</span> id=<span class="string">"favorite"</span>&gt;Apple&lt;/li&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="再看一个小demo"><a href="#再看一个小demo" class="headerlink" title="再看一个小demo"></a>再看一个小demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cheerio = require(<span class="string">'cheerio'</span>)</div><div class="line">$ = cheerio.load(<span class="string">'&lt;h2 class="title"&gt;Hello world&lt;/h2&gt;'</span>)</div><div class="line">$(<span class="string">'h2.title'</span>).text(<span class="string">'Hello there!'</span>)</div><div class="line">$(<span class="string">'h2'</span>).addClass(<span class="string">'welcome'</span>)</div><div class="line">console.log($.html());</div></pre></td></tr></table></figure>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出:"></a>输出:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h2 class=<span class="string">"title welcome"</span>&gt;Hello there!&lt;/h2&gt;</div></pre></td></tr></table></figure>
-<p>等等，我就不再一一贴出来了，大家看一些这些语法，是不是就跟jquery的语法差不多呢。。。</p>
-<p>HTTP模块和cheerio模块已经做了简单的介绍，详细的使用大家可以翻阅对应的API。<br><strong>好，准备工作也做得差不多了，让我们步入正题，开始来做HTTP爬虫吧。</strong></p>
-<hr>
-<h1 id="HTTP爬虫所需模块"><a href="#HTTP爬虫所需模块" class="headerlink" title="HTTP爬虫所需模块"></a>HTTP爬虫所需模块</h1><ul>
-<li>HTTP模块: 既然是HTTP小爬虫，肯定需要HTTP模块.</li>
-<li>cheerio模块: 抓取到网页之后如何获取到想要的数据,这个时候就需要cheerio，用来解析html非常方便，就像在浏览器中使用jquery一样。</li>
-</ul>
-<p>==开始摞码:==</p>
-<h3 id="一-代码区1"><a href="#一-代码区1" class="headerlink" title="一.代码区1"></a>一.代码区1</h3><p>加载所需模块</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var http = require(<span class="string">'http'</span>)</div><div class="line">var cheerio = require(<span class="string">'cheerio'</span>)</div><div class="line">var url = <span class="string">'http://www.imooc.com/learn/348'</span>;</div></pre></td></tr></table></figure>
-<h4 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h4><ol>
-<li>加载http模块;</li>
-<li>加载cheerio模块;</li>
-<li>指定要抓取的地址;</li>
-</ol>
-<h3 id="二-代码区2"><a href="#二-代码区2" class="headerlink" title="二.代码区2"></a>二.代码区2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">http.get(url,<span class="keyword">function</span>(res) &#123;</div><div class="line">  var html = <span class="string">''</span>;</div><div class="line">  res.on(<span class="string">'data'</span>,<span class="keyword">function</span>(data) &#123;</div><div class="line">    html += data</div><div class="line">  &#125;)</div><div class="line">  res.on(<span class="string">'end'</span>,<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var courseData = filterChapters(html)</div><div class="line">    <span class="built_in">print</span>CourseInfo(courseData)</div><div class="line">  &#125;)</div><div class="line">&#125;).on(<span class="string">'error'</span>,<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  console.log(<span class="string">'出错了哦'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h4 id="代码解释-1"><a href="#代码解释-1" class="headerlink" title="代码解释"></a>代码解释</h4><h4 id="http-get-options-callback"><a href="#http-get-options-callback" class="headerlink" title="http.get(options, callback)"></a>http.get(options, callback)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">因为大部分的请求是没有报文体的GET请求，所以Node提供了这种便捷的方法。</div><div class="line">该方法与http.request()的唯一区别是它设置的是GET方法并自动调用req.end()。</div></pre></td></tr></table></figure>
-<p>http.request的用例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// make a request</div><div class="line">  var options = &#123;</div><div class="line">    port: 1337,</div><div class="line">    hostname: <span class="string">'127.0.0.1'</span>,</div><div class="line">    headers: &#123;</div><div class="line">      <span class="string">'Connection'</span>: <span class="string">'Upgrade'</span>,</div><div class="line">      <span class="string">'Upgrade'</span>: <span class="string">'websocket'</span></div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var req = http.request(options);</div><div class="line">  req.end();</div></pre></td></tr></table></figure></p>
-<h4 id="response-end"><a href="#response-end" class="headerlink" title="response.end"></a>response.end</h4><blockquote>
-<p>结束响应，告诉客户端所有消息已经发送。当所有要返回的内容发送完毕时，该函数必须被调用一次。<br>如何不调用该函数，客户端将永远处于等待状态。</p>
-</blockquote>
-<h4 id="filterChapters函数"><a href="#filterChapters函数" class="headerlink" title="filterChapters函数"></a>filterChapters函数</h4><p>filterChapters函数为封装好的过滤html的函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> filterChapters(html) &#123;</div><div class="line">  var $ = cheerio.load(html)</div><div class="line">  var charpters = $(<span class="string">'.chapter'</span>)</div><div class="line">  var courseData = []</div><div class="line">  charpters.each(<span class="keyword">function</span>(item) &#123;</div><div class="line">    var chapter =  $(this)</div><div class="line"></div><div class="line">    var chapterTmpTitle = chapter.find(<span class="string">'strong'</span>).clone()</div><div class="line">    chapterTmpTitle.find(<span class="string">'div'</span>).remove()</div><div class="line"></div><div class="line">    // var chapterTitle = chapter.find(<span class="string">'strong'</span>).text()</div><div class="line">    var chapterTitle = chapterTmpTitle.text().match(/\S+\s\S+/)</div><div class="line">    var videos = chapter.find(<span class="string">'.video'</span>).children(<span class="string">'li'</span>)</div><div class="line">    var chapterData = &#123;</div><div class="line">      chapterTitle: chapterTitle,</div><div class="line">      videos: []</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    videos.each(<span class="keyword">function</span>(item) &#123;</div><div class="line">      var video = $(this).find(<span class="string">'.J-media-item'</span>)</div><div class="line">      var videoTmpTitle = video.clone()</div><div class="line">      videoTmpTitle.find(<span class="string">'button'</span>).remove()</div><div class="line">      var videoTitle = videoTmpTitle.text().match(/[0-9]+-[0-9]+\s\S*\s?\S*/)</div><div class="line">      // console.log(chapterTitle)</div><div class="line">      // var videoTitle = video.text()</div><div class="line">      var id = video.attr(<span class="string">'href'</span>).split(<span class="string">'video/'</span>)[1]</div><div class="line">      chapterData.videos.push(&#123;</div><div class="line">        title : videoTitle,</div><div class="line">        id: id</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">    courseData.push(chapterData)</div><div class="line">  &#125;)</div><div class="line">  <span class="built_in">return</span> courseData</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="printCourseInfo函数"><a href="#printCourseInfo函数" class="headerlink" title="printCourseInfo函数"></a>printCourseInfo函数</h4><p>printCourseInfo函数用来打印课程信息的函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="built_in">print</span>CourseInfo(courseData) &#123;</div><div class="line">  courseData.forEach(<span class="keyword">function</span>(item) &#123;</div><div class="line">    var chapterTitle = item.chapterTitle</div><div class="line">    console.log(chapterTitle + <span class="string">'\n'</span>)</div><div class="line">    item.videos.forEach(<span class="keyword">function</span>(video) &#123;</div><div class="line">      console.log(<span class="string">' 【'</span> + video.id + <span class="string">' 】'</span> + video.title + <span class="string">'\n'</span>)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>好了，主要代码大概就是这些。</p>
-
+<h3 id="2-爬虫抓取结果如下："><a href="#2-爬虫抓取结果如下：" class="headerlink" title="2.爬虫抓取结果如下："></a>2.爬虫抓取结果如下：</h3><p><img src="/images/2016-09-25/QQ20160925-1@2x.png" alt="QQ20160925-1@2x.png"><br><strong>注意：</strong>篇幅所限，这里我就截取了前三章的课程列表。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/07/nodejs-demo1-crawler/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -864,7 +901,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -878,7 +915,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
