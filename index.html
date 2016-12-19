@@ -273,7 +273,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir myapp</div><div class="line">$ <span class="built_in">cd</span> myapp</div></pre></td></tr></table></figure>
 </li>
 <li><p>为你的应用创建一个包配置文件。如果想详细了解这个配置文件是如何工作的，<a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">可以点这里</a>。</p>
-<p> $ npm init<br>执行这个命令后，会提示你一些信息，比如你想为你的应用程序起的名字,版本号,描述信息等。通常情况下，我们选默认的，直接回车即可。<br>执行完毕后，会在<code>myapp</code>目录下面生成一个<code>package.json</code>文件，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure>
+<p>执行这个命令后，会提示你一些信息，比如你想为你的应用程序起的名字,版本号,描述信息等。通常情况下，我们选默认的，直接回车即可。<br>执行完毕后，会在<code>myapp</code>目录下面生成一个<code>package.json</code>文件，如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"myapp"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -288,6 +289,115 @@
 <h4 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">express --version</div><div class="line">4.14.0</div></pre></td></tr></table></figure>
 <p>至此,express已经安装成功，是不是很简单呢…</p>
 
+        
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/"> #nodejs </a>
+          
+            <a href="/tags/express/"> #express </a>
+          
+            <a href="/tags/install/"> #install </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2016/12/17/nodejs-install-express-generator/">
+                nodejs新手小笔记之-express安装
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2016-12-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/nodejs/">nodejs</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/17/nodejs-install-express-generator/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/17/nodejs-install-express-generator/"></span>
+            </a>
+          </span>
+          
+        
+
+        
+        
+        	 <span id="/2016/12/17/nodejs-install-express-generator/"class="leancloud_visitors"  data-flag-title="nodejs新手小笔记之-express安装">
+                &nbsp; | &nbsp; 阅读次数
+                </span>
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="nodejs新手小笔记之-express-generator"><a href="#nodejs新手小笔记之-express-generator" class="headerlink" title="nodejs新手小笔记之-express-generator"></a>nodejs新手小笔记之-express-generator</h3><blockquote>
+<p><a href="http://phping1.github.io/2016/12/17/nodejs-install-express/">上一篇</a>简单的介绍了<code>express</code>的安装，这一篇我们来讲一下<code>express-generator</code>。</p>
+</blockquote>
+<h4 id="什么是express-generator"><a href="#什么是express-generator" class="headerlink" title="什么是express-generator"></a>什么是<code>express-generator</code></h4><p>先来看一下<code>express</code> 在<a href="https://github.com/expressjs/express">github</a>上的介绍，其中有一句话是这样说的:<br><img src="./QQ20161219-0@2x.png" alt="Alt text"><br>翻译一下大概意思是：<br>开始使用<code>express</code>框架最快的方法是利用可执行<code>express(1)</code>生成一个应用程序如下所示:<br>安装可执行文件。可执行的主要版本将匹配<code>express</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator@4</div></pre></td></tr></table></figure></p>
+<p>那么，<code>express-generator</code>是个什么东东呢？<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/17/nodejs-install-express-generator/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -922,7 +1032,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
