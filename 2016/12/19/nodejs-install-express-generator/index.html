@@ -10,11 +10,11 @@
 <meta http-equiv=”Cache-Control” content=”no-siteapp” />
 
 
-  <meta name="keywords" content=" ,nodejs,fs模块,文件拷贝, " />
+  <meta name="keywords" content=" ,nodejs,install,express,express-generator, " />
 
 
 
-    <meta name="description" content="nodejs之文件操作(fs模块), Rome was not built in a day!" />
+    <meta name="description" content="nodejs新手小笔记之-express-generator安装, Rome was not built in a day!" />
 
 
 
@@ -49,7 +49,7 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
 
 
-  <title> nodejs之文件操作(fs模块) - PHPING|记录工作中的点点滴滴 </title>
+  <title> nodejs新手小笔记之-express-generator安装 - PHPING|记录工作中的点点滴滴 </title>
 </head>
 
 <body>
@@ -211,7 +211,7 @@
           
           
             
-              nodejs之文件操作(fs模块)
+              nodejs新手小笔记之-express-generator安装
             
           
         </h1>
@@ -219,7 +219,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2016-10-15
+          发表于 2016-12-18
         </span>
 
         
@@ -239,8 +239,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2016/10/16/nodejs-fs/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/nodejs-fs/"></span>
+            <a href="/2016/12/19/nodejs-install-express-generator/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/19/nodejs-install-express-generator/"></span>
             </a>
           </span>
           
@@ -248,7 +248,7 @@
 
         
         
-        	 <span id="/2016/10/16/nodejs-fs/"class="leancloud_visitors"  data-flag-title="nodejs之文件操作(fs模块)">
+        	 <span id="/2016/12/19/nodejs-install-express-generator/"class="leancloud_visitors"  data-flag-title="nodejs新手小笔记之-express-generator安装">
                 &nbsp; | &nbsp; 阅读次数
                 </span>
         
@@ -261,46 +261,27 @@
       
 
       
-        <h1 id="Nodejs学习之文件操作"><a href="#Nodejs学习之文件操作" class="headerlink" title="Nodejs学习之文件操作"></a>Nodejs学习之文件操作</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>NodeJS 提供一组类似 UNIX（POSIX）标准的文件操作API。</p>
-<h3 id="1-Node-导入文件系统模块"><a href="#1-Node-导入文件系统模块" class="headerlink" title="1.Node 导入文件系统模块"></a>1.Node 导入文件系统模块</h3><p>Node 导入文件系统模块(fs)语法如下所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fs = require(<span class="string">"fs"</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="2-异步和同步"><a href="#2-异步和同步" class="headerlink" title="2.异步和同步"></a>2.异步和同步</h3><blockquote>
-<p>NodeJS能够操作文件。小至文件查找，大至代码编译。<br>NodeJS文件系统（fs 模块）模块中的方法均有异步和同步版本，例如读取文件内容的函数有异步的 fs.readFile() 和同步的 fs.readFileSync()。<br>异步的方法函数最后一个参数为回调函数，回调函数的第一个参数包含了错误信息(error)。<br><a id="more"></a></p>
-<h3 id="3-文件拷贝"><a href="#3-文件拷贝" class="headerlink" title="3.文件拷贝"></a>3.文件拷贝</h3><p>NodeJS提供了基本的文件操作API，但是像文件拷贝这种高级功能就没有提供，因此我们先拿文件拷贝程序练手。与copy命令类似，我们的程序需要能接受源文件路径与目标文件路径两个参数。<br>在编写拷贝程序之前，先来看几个函数的用法。</p>
-<h4 id="writeFileSync：-将文件内容写入目标路径"><a href="#writeFileSync：-将文件内容写入目标路径" class="headerlink" title="writeFileSync： 将文件内容写入目标路径"></a>writeFileSync： 将文件内容写入目标路径</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.writeFileSync(file, data[, options])</div></pre></td></tr></table></figure>
+        <h3 id="nodejs新手小笔记之-express-generator"><a href="#nodejs新手小笔记之-express-generator" class="headerlink" title="nodejs新手小笔记之-express-generator"></a>nodejs新手小笔记之-express-generator</h3><blockquote>
+<p><a href="http://phping1.github.io/2016/12/17/nodejs-install-express/">上一篇</a>简单的介绍了<code>express</code>的安装，这一篇我们来讲一下<code>express-generator</code>。</p>
 </blockquote>
-<p>解释：</p>
-<blockquote>
-<p>1.file为目标路径<br>2.data为文件内容</p>
-</blockquote>
-<h4 id="readFileSync：-读取文件"><a href="#readFileSync：-读取文件" class="headerlink" title="readFileSync： 读取文件"></a>readFileSync： 读取文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.readFileSync(file[, options])</div></pre></td></tr></table></figure>
-<p>解释：</p>
-<blockquote>
-<p>1.src为要读取的文件<br>好，这两个重要的函数理清楚了之后，我们来编写一个文件拷贝程序。</p>
-</blockquote>
-<h4 id="process：进程，它是一个全局变量"><a href="#process：进程，它是一个全局变量" class="headerlink" title="process：进程，它是一个全局变量"></a>process：进程，它是一个全局变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">process<span class="comment">#</span></div><div class="line"></div><div class="line">The process object is a global that provides information about, and control over, the current Node.js process. As a global, it is always available to Node.js applications without using require().</div></pre></td></tr></table></figure>
-<p>解释：<br>process是一个全局变量，获取当前nodejs进程的信息。可以不用require(…)这样的语法而直接使用。</p>
-<h4 id="process脚本"><a href="#process脚本" class="headerlink" title="process脚本"></a>process脚本</h4><p>新建一个名为process.js的文件，内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(process.argv)</div></pre></td></tr></table></figure></p>
-<p>执行process.js：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node process.js /Users/phping/Webserver/htdocs/nodejs/example.js</div></pre></td></tr></table></figure></p>
-<p>输出:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ <span class="string">'/usr/local/Cellar/node/5.1.0/bin/node'</span>,</div><div class="line">  <span class="string">'/Users/liuyongfei/Webserver/htdocs/nodejs/7days/process.js'</span>,</div><div class="line">  <span class="string">'/Users/liuyongfei/Webserver/htdocs/nodejs/example.js'</span> ]</div></pre></td></tr></table></figure></p>
-<p>解释:</p>
-<blockquote>
-<p>process.argv可以获得命令行参数，是一个数组。<br>其中 argv[0]是NodeJS执行程序的绝对路径<br>argv[1]为该脚本的绝对路径<br>argv[2]为输入的参数</p>
-</blockquote>
-<p><strong>好了，几个重要的函数已经解释得差不多了，下面来看一个简单的拷贝脚本：</strong></p>
-<h4 id="Demo-文件拷贝little-file-copy-js"><a href="#Demo-文件拷贝little-file-copy-js" class="headerlink" title="Demo:文件拷贝little-file-copy.js"></a>Demo:文件拷贝little-file-copy.js</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var fs = require(<span class="string">'fs'</span>)</div><div class="line"><span class="keyword">function</span> copy(src,dst) &#123;</div><div class="line">	fs.writeFileSync(dst,fs.readFileSync(src))</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> main(argv) &#123;</div><div class="line">	copy(argv[0],argv[1])</div><div class="line">&#125;</div><div class="line">main(process.argv.slice(2))</div></pre></td></tr></table></figure>
-<p>执行脚本little-file-copy.js，并未该脚本传递两个参数，第一个参数是源文件(要拷贝的文件)，第二个参数为目标文件(将源文件拷贝到哪里)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node little-file-copy.js /Users/phping/Webserver/htdocs/nodejs/example.js  /Users/phping/Webserver/htdocs/nodejs/7days/<span class="built_in">test</span>/test.js</div></pre></td></tr></table></figure></p>
-<h5 id="拷贝脚本解释："><a href="#拷贝脚本解释：" class="headerlink" title="拷贝脚本解释："></a>拷贝脚本解释：</h5><ol>
-<li><p>process.argv.slice(2)的结果如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ <span class="string">'/Users/liuyongfei/Webserver/htdocs/nodejs/example.js'</span>,</div><div class="line">  <span class="string">'/Users/liuyongfei/Webserver/htdocs/nodejs/7days/test/test.js'</span> ]</div></pre></td></tr></table></figure>
-</li>
-<li><p>这两个元素分别作为copy的第一个和第二个参数，即：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">src等于<span class="string">'/Users/liuyongfei/Webserver/htdocs/nodejs/example.js'</span></div><div class="line">dst等于<span class="string">'/Users/liuyongfei/Webserver/htdocs/nodejs/7days/test/test.js'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>fs.readFileSync(src)读取源文件，并返回文件的内容</p>
-</li>
-<li>将文件内容写入目标路径 fs.writeFileSync(‘/Users/liuyongfei/Webserver/htdocs/nodejs/7days/test/test.js’ ，fs.readFileSync(‘/Users/liuyongfei/Webserver/htdocs/nodejs/example.js’))</li>
-</ol>
-<p>然后检查一下test目录下面的确生成一个了个test.js文件，且与example.js文件一样，则证明该脚本的拷贝功能成功。</p>
+<h4 id="什么是express-generator"><a href="#什么是express-generator" class="headerlink" title="什么是express-generator"></a>什么是<code>express-generator</code></h4><p>先来看一下<code>express</code> 在<a href="https://github.com/expressjs/express" target="_blank" rel="external">github</a>上的介绍，其中有一句话是这样说的:<br><img src="./QQ20161219-0@2x.png" alt="Alt text"><br>翻译一下大概意思是：<br>开始使用<code>express</code>框架最快的方法是利用可执行<code>express(1)</code>生成一个应用程序如下所示:<br>安装可执行文件。可执行的主要版本将匹配<code>express</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator@4</div></pre></td></tr></table></figure></p>
+<p>那么，<code>express-generator</code>是个什么东东呢？<br><a id="more"></a><br><strong>解释一下</strong><br><code>express 4.0</code>版本之前，有一个命令行工具 <code>express</code>,可以用来生成express模块的应用结构(网站结构)；<br><code>express4.x</code>之后，<code>express</code>命令被独立出来放在了<code>express-generator</code>模块中。</p>
+<h4 id="安装express-generator"><a href="#安装express-generator" class="headerlink" title="安装express-generator"></a>安装<code>express-generator</code></h4><p>在知道了<code>express-generator</code>是什么东东后，我们来开始使用下面的命令来全局安装express这个命令行工具：</p>
+<pre><code>npm install -g express-generator
+</code></pre><p>安装完成后，可以使查看版本:</p>
+<pre><code>$ express --version
+  4.14.0
+</code></pre><h4 id="创建一个简单的网站"><a href="#创建一个简单的网站" class="headerlink" title="创建一个简单的网站"></a>创建一个简单的网站</h4><pre><code>$ express --view=jade mytest
+</code></pre><p>回车后，输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">create : mytest</div><div class="line">create : mytest/package.json</div><div class="line">create : mytest/app.js</div><div class="line">create : mytest/public</div><div class="line">create : mytest/public/images</div><div class="line">create : mytest/routes</div><div class="line">create : mytest/routes/index.js</div><div class="line">create : mytest/routes/users.js</div><div class="line">create : mytest/public/javascripts</div><div class="line">create : mytest/public/stylesheets</div><div class="line">create : mytest/public/stylesheets/style.css</div><div class="line">create : mytest/views</div><div class="line">create : mytest/views/index.jade</div><div class="line">create : mytest/views/layout.jade</div><div class="line">create : mytest/views/error.jade</div><div class="line">create : mytest/bin</div><div class="line">create : mytest/bin/www</div><div class="line"></div><div class="line">install dependencies:</div><div class="line">  $ <span class="built_in">cd</span> mytest &amp;&amp; npm install</div><div class="line"></div><div class="line">run the app:</div><div class="line">  $ DEBUG=mytest:* npm start</div></pre></td></tr></table></figure></p>
+<p>按照提示，进入到<code>mytest</code>目录，然后安装依赖：</p>
+<pre><code>$ cd mytest &amp;&amp; npm install
+</code></pre><h4 id="访问我们的网站"><a href="#访问我们的网站" class="headerlink" title="访问我们的网站"></a>访问我们的网站</h4><p>安装完成后，启动我们的应用：</p>
+<pre><code>$ npm start
+</code></pre><p>注意：这个命令是 <code>express4.x</code>的版本</p>
+<p>浏览器打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:3000/</div></pre></td></tr></table></figure>
+<p>会看到一个输出，如下图：<br><img src="./QQ20161219-1@2x.png" alt="Alt text"></p>
+<p>至此，大功告成。<br>好的，本篇文章到此结束，后面的系列就进入到实打实的代码开发阶段，敬请关注!</p>
 
       
     </div>
@@ -355,9 +336,11 @@
           
             <a href="/tags/nodejs/"> #nodejs </a>
           
-            <a href="/tags/fs模块/"> #fs模块 </a>
+            <a href="/tags/install/"> #install </a>
           
-            <a href="/tags/文件拷贝/"> #文件拷贝 </a>
+            <a href="/tags/express/"> #express </a>
+          
+            <a href="/tags/express-generator/"> #express-generator </a>
           
         </div>
       
@@ -366,13 +349,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/17/nodejs-install-express/">nodejs新手小笔记之-express安装</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/07/nodejs-demo1-crawler/">从零开始nodejs系列之案例一：HTTP小爬虫</a>
+              <a href="/2016/12/17/nodejs-install-express/">nodejs新手小笔记之-express安装</a>
             
           </div>
         </div>
@@ -389,7 +370,7 @@
       <div class="comments" id="comments">
         
 
-<div class="ds-share" data-thread-key="2016/10/16/nodejs-fs/" data-title="nodejs之文件操作(fs模块)" data-images="http://phping1.github.io/2016/10/16/nodejs-fs/" data-content="http://phping1.github.io/2016/10/16/nodejs-fs/" data-url="http://phping1.github.io/2016/10/16/nodejs-fs/">
+<div class="ds-share" data-thread-key="2016/12/19/nodejs-install-express-generator/" data-title="nodejs新手小笔记之-express-generator安装" data-images="http://phping1.github.io/2016/12/19/nodejs-install-express-generator/" data-content="http://phping1.github.io/2016/12/19/nodejs-install-express-generator/" data-url="http://phping1.github.io/2016/12/19/nodejs-install-express-generator/">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -403,8 +384,8 @@
  </div>
 
           <!-- 评论框 -->
-          <div class="ds-thread" data-thread-key="2016/10/16/nodejs-fs/"
-               data-title="nodejs之文件操作(fs模块)" data-url="http://phping1.github.io/2016/10/16/nodejs-fs/">
+          <div class="ds-thread" data-thread-key="2016/12/19/nodejs-install-express-generator/"
+               data-title="nodejs新手小笔记之-express-generator安装" data-url="http://phping1.github.io/2016/12/19/nodejs-install-express-generator/">
           </div>
         
       </div>
@@ -539,7 +520,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nodejs学习之文件操作"><span class="nav-number">1.</span> <span class="nav-text">Nodejs学习之文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作"><span class="nav-number">1.1.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Node-导入文件系统模块"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.Node 导入文件系统模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-异步和同步"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.异步和同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-文件拷贝"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.文件拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#writeFileSync：-将文件内容写入目标路径"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">writeFileSync： 将文件内容写入目标路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#readFileSync：-读取文件"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">readFileSync： 读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#process：进程，它是一个全局变量"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">process：进程，它是一个全局变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#process脚本"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">process脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Demo-文件拷贝little-file-copy-js"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">Demo:文件拷贝little-file-copy.js</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#拷贝脚本解释："><span class="nav-number">1.1.3.5.1.</span> <span class="nav-text">拷贝脚本解释：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#nodejs新手小笔记之-express-generator"><span class="nav-number">1.</span> <span class="nav-text">nodejs新手小笔记之-express-generator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是express-generator"><span class="nav-number">1.1.</span> <span class="nav-text">什么是express-generator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装express-generator"><span class="nav-number">1.2.</span> <span class="nav-text">安装express-generator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个简单的网站"><span class="nav-number">1.3.</span> <span class="nav-text">创建一个简单的网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问我们的网站"><span class="nav-number">1.4.</span> <span class="nav-text">访问我们的网站</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
