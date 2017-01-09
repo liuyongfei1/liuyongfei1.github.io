@@ -10,11 +10,11 @@
 <meta http-equiv=”Cache-Control” content=”no-siteapp” />
 
 
-  <meta name="keywords" content=" ,echarts3,折线图,分段显示不同颜色, " />
+  <meta name="keywords" content=" ,nodejs express blog, " />
 
 
 
-    <meta name="description" content="echarts3的折线图怎么分段显示不同的颜色, Rome was not built in a day!" />
+    <meta name="description" content="手把手教你开发nodejs微博网站-首页篇, Rome was not built in a day!" />
 
 
 
@@ -49,7 +49,7 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
 
 
-  <title> echarts3的折线图怎么分段显示不同的颜色 - PHPING|记录工作中的点点滴滴 </title>
+  <title> 手把手教你开发nodejs微博网站-首页篇 - PHPING|记录工作中的点点滴滴 </title>
 </head>
 
 <body>
@@ -211,7 +211,7 @@
           
           
             
-              echarts3的折线图怎么分段显示不同的颜色
+              手把手教你开发nodejs微博网站-首页篇
             
           
         </h1>
@@ -219,14 +219,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2016-06-04
+          发表于 2017-01-08
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/echarts3/">echarts3</a>
+              <a href="/categories/nodejs/">nodejs</a>
 
               
               
@@ -239,8 +239,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2016/06/05/echarts3-series-different-color/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/echarts3-series-different-color/"></span>
+            <a href="/2017/01/09/nodeJsBlog-index/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/09/nodeJsBlog-index/"></span>
             </a>
           </span>
           
@@ -248,7 +248,7 @@
 
         
         
-        	 <span id="/2016/06/05/echarts3-series-different-color/"class="leancloud_visitors"  data-flag-title="echarts3的折线图怎么分段显示不同的颜色">
+        	 <span id="/2017/01/09/nodeJsBlog-index/"class="leancloud_visitors"  data-flag-title="手把手教你开发nodejs微博网站-首页篇">
                 &nbsp; | &nbsp; 阅读次数
                 </span>
         
@@ -261,47 +261,41 @@
       
 
       
-        <p>本篇文章主要讲解在echarts3的折线图怎么分段显示不同的颜色。</p>
-<h2 id="一-场景"><a href="#一-场景" class="headerlink" title="一.场景"></a>一.场景</h2><p>在使用echarts3做图表的时候，可能会遇到一些特殊的需求：</p>
-<blockquote>
-<p>星期一到星期四这几个点的折线显示一个颜色，周五到周日这几个点的折线显示另外一个颜色，来起到强调区别的作用。</p>
-</blockquote>
-<h2 id="二-效果图"><a href="#二-效果图" class="headerlink" title="二.效果图"></a>二.效果图</h2><p>先看一下效果图，你会有一个更清晰的认识:</p>
-<p><img src="/images/2016-06-05/QQ20160605-2@2x.png" alt="QQ20160605-0@2x.png"></p>
-<p>从图中大家可以看到,整个折线图分了2段颜色：周一到周四的折线是红色，周五到周日的折线是黑色。<br>这样一来，是不是就有个很明显的强调区别的作用啦。</p>
-<p><img src="/images/images.png" alt="images.png"></p>
-<p><strong>demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</p>
-<p><strong> 那么，怎么去实现这个效果呢?别着急，一步一步来，往下看。</strong></p>
-<a id="more"></a>
-<h2 id="三-echarts3的api支持吗"><a href="#三-echarts3的api支持吗" class="headerlink" title="三.echarts3的api支持吗"></a>三.echarts3的api支持吗</h2><p>看到这样的需求，第一反应就是去api里看看有支持的函数没。。。<br>在api找到半天，果然不支持。领导非要这样做，echarts3的api里又不支持，那么怎么办？<br><strong>答案：换思路</strong></p>
-<h2 id="四-思路"><a href="#四-思路" class="headerlink" title="四.思路"></a>四.思路</h2><h3 id="1-折线图的数据点在哪里被赋值的"><a href="#1-折线图的数据点在哪里被赋值的" class="headerlink" title="1.折线图的数据点在哪里被赋值的?"></a>1.折线图的数据点在哪里被赋值的?</h3><p>我们知道在echarts中图表是通过series来实现的：</p>
-<p><img src="/images/2016-06-05/QQ20160605-1@2x.png" alt="QQ20160605-1@2x.png"></p>
-<p><strong> 其中圈红的第一个就是图形类型为折线图时用到的配置，折线图的这些数据点都是通过里面的这个data数组来生成的。</strong></p>
-<h3 id="2-拆分为多个series"><a href="#2-拆分为多个series" class="headerlink" title="2.拆分为多个series"></a>2.拆分为多个series</h3><p><strong> 将一个完整的折线分成两段折线，不同的折线显示不同的颜色即可。</strong></p>
-<p><em>我们知道周一到周日总共是7个点，series的data数据为:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data: [4, 8, 16, 32, 64, 128, 256]</div><div class="line">        &#125;</div><div class="line">    ]</div></pre></td></tr></table></figure></p>
-<p><em>如果拆分成两段折线的话，就得用两个series,两个series就得有两个数据集(data数组).</em></p>
-<p>其中第一个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4, 8, 16, 32, 64</div></pre></td></tr></table></figure></p>
-<p>第二个series的数据集为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">128,256</div></pre></td></tr></table></figure></p>
-<p><strong> 但是在echarts中，图形的每一个点都要有与x轴和y轴对应的，否则，画出来的图形是与数据对应不上的。</strong></p>
-<p>所以我们需要对上面的两个数组进行一下改造。</p>
-<h3 id="3-普及一小技巧"><a href="#3-普及一小技巧" class="headerlink" title="3.普及一小技巧"></a>3.普及一小技巧</h3><p>在echarts中，若是不想让某个点展示，<strong>则这个点对应的data数值可以用’-‘来表示。</strong><br>反正这个知识点没有在echarts3的api里提到，应该在echarts2中继承下来的知识点吧。</p>
-<h3 id="4-转化数据集"><a href="#4-转化数据集" class="headerlink" title="4.转化数据集"></a>4.转化数据集</h3><p>知道上面这个小技巧后，我们就可以把这两个数据集写成下面这种格式了:<br>series[0].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;]</div></pre></td></tr></table></figure></p>
-<p>series[1].data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256]</div></pre></td></tr></table></figure></p>
-<h2 id="五-摞代码"><a href="#五-摞代码" class="headerlink" title="五.摞代码"></a>五.摞代码</h2><p>既然思路都有了，那么我们开始试试吧。</p>
-<h3 id="1-option的配置和主要代码如下："><a href="#1-option的配置和主要代码如下：" class="headerlink" title="1.option的配置和主要代码如下："></a>1.option的配置和主要代码如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">// blog: phping.sinaapp.com</div><div class="line">var dom = document.getElementById(&quot;container&quot;);</div><div class="line">var myChart = echarts.init(dom);</div><div class="line">option = null;</div><div class="line">option = &#123;</div><div class="line">    title: &#123;</div><div class="line">        text: &apos;echarts3的折线图分段显示不同的颜色&apos;,</div><div class="line">        left: &apos;center&apos;,</div><div class="line">        link: &apos;http://phping.sinaapp.com&apos;</div><div class="line">    &#125;,</div><div class="line">    tooltip: &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter: &apos;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125;&apos;</div><div class="line">    &#125;,</div><div class="line">    legend: &#123;</div><div class="line">        left: &apos;left&apos;,</div><div class="line">        data: [&apos;指数&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis: &#123;</div><div class="line">        type: &apos;category&apos;,</div><div class="line">        name: &apos;x&apos;,</div><div class="line">        splitLine: &#123;show: false&#125;,</div><div class="line">        data: [&apos;星期一&apos;, &apos;星期二&apos;, &apos;星期三&apos;, &apos;星期四&apos;, &apos;星期五&apos;, &apos;星期六&apos;, &apos;星期日&apos;]</div><div class="line">    &#125;,</div><div class="line">    grid: &#123;</div><div class="line">        left: &apos;3%&apos;,</div><div class="line">        right: &apos;4%&apos;,</div><div class="line">        bottom: &apos;3%&apos;,</div><div class="line">        containLabel: true</div><div class="line">    &#125;,</div><div class="line">    yAxis: &#123;</div><div class="line">        type: &apos;log&apos;,</div><div class="line">        name: &apos;y&apos;</div><div class="line">    &#125;,</div><div class="line">    series: [</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            name: &apos;指数&apos;,</div><div class="line">            type: &apos;line&apos;,</div><div class="line">            data:[]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;;</div><div class="line">if (option &amp;&amp; typeof option === &quot;object&quot;) &#123;</div><div class="line">    var startTime = +new Date();</div><div class="line">    option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">    option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div><div class="line">    myChart.setOption(option, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-走一个试试"><a href="#2-走一个试试" class="headerlink" title="2.走一个试试:"></a>2.走一个试试:</h3><p><img src="/images/2016-06-05/QQ20160605-3@2x.png" alt="QQ20160605-3@2x.png"></p>
-<p>==两条线是分出来了，但是中间是有个断点。如果你觉得这样影响需求的话，则直接在series[1].data里把这个点补出来即可。==</p>
-<h4 id="2-1原来的格式"><a href="#2-1原来的格式" class="headerlink" title="2.1原来的格式:"></a>2.1原来的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,128,256];</div></pre></td></tr></table></figure>
-<h4 id="2-2修改为现在的格式"><a href="#2-2修改为现在的格式" class="headerlink" title="2.2修改为现在的格式:"></a>2.2修改为现在的格式:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">option.series[0].data = [4, 8, 16, 32, 64,&apos;-&apos;,&apos;-&apos;];</div><div class="line">option.series[1].data = [&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,&apos;-&apos;,64,128,256];</div></pre></td></tr></table></figure>
-<p>再次刷新，是不是两条断线连上了呢。效果就跟文首的demo是一样的了。</p>
-<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六.总结"></a>六.总结</h2><ol>
-<li>遇见此类需求时，先看看api里提供了类似的方法没有,有的话，就不用费大头筋儿了；</li>
-<li>没有的话，就得转变思路了，将一个折线分成多个折线。</li>
-<li>巧妙利用四.3中的小知识点来绘制空点</li>
-<li>实际开发中可能要比这个demo要复杂一些，但是基本思路都是一样的。</li>
-<li><strong> demo下载点击</strong><a href="https://github.com/phping1/echarts3-series-segmented-color.git" target="_blank" rel="external">这里</a>。</li>
+        <h3 id="手把手教你开发nodejs微博网站-用户首页篇"><a href="#手把手教你开发nodejs微博网站-用户首页篇" class="headerlink" title="手把手教你开发nodejs微博网站-用户首页篇"></a>手把手教你开发nodejs微博网站-用户首页篇</h3><h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><blockquote>
+<ol>
+<li>接着<a href="http://phping1.github.io/2016/12/31/nodejsBlog-start/">上一篇</a>，本篇我们开始详细讲解用户首页的开发。</li>
+<li>使用<code>express-generator</code>来快速搭建一个简单的网站，能够在浏览器里通过localhost:3000访问，输出：’Welcome to Express’ 表明搭建成功。</li>
 </ol>
-<p>码字不易，转载请注明出处。</p>
+</blockquote>
+<p><strong>注明：</strong>只有上面的第二步安装成功，我们才能进行后面的工作。大家可以<a href="http://phping1.github.io/2016/12/19/nodejs-install-express-generator/"><strong>点这里</strong></a>有详细的介绍。</p>
+<h4 id="一-重中之重"><a href="#一-重中之重" class="headerlink" title="一.重中之重"></a>一.重中之重</h4><p><code>express-generator</code>安装成功之后，在工程目录下面执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm start</div></pre></td></tr></table></figure></p>
+<p>然后在浏览器上访问:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:3000/</div></pre></td></tr></table></figure>
+<p>输入如下：<br><img src="/images/2017-01-01/defaultIndex.png" alt="默认首页"></p>
+<p>看到没，一个简单的web网站已经搭建起来了，有了这个，我们在此基础上进行添砖加瓦，来为我们所用。</p>
+<h4 id="二-目录结构"><a href="#二-目录结构" class="headerlink" title="二. 目录结构"></a>二. 目录结构</h4><p>在进行编码开发之前，先来看一下使用<code>express-generator</code>快速搭建网站后的目录结构如下：</p>
+<p><img src="/images/2017-01-01/directory.png" alt="directory"></p>
+<p>在真正开发代码之前，我们温习一下一下<code>MVCM模型</code>。</p>
+<ul>
+<li>控制器(Controller)，一组行为的集合</li>
+<li>模型(Model),数据相关的操作和封装</li>
+<li>视图(View),视图的渲染</li>
+</ul>
+<p>详细的解释我这里不再赘述了，大家若想深入了解可以去网上查阅相关资料。<br>看完上面的目录结构，是缺少一个<code>模型</code>。<br>我们在mytest目录下面新建一个<code>models</code>文件夹，就是用来存放于数据库打交道的<code>模型</code>。<br><strong>我们的微博网站是以用户为中心的，比如用户相关的信息需要保存到数据库里，或者从数据库里查询用户信息的。</strong><br>因此在新建的 <code>models</code>文件夹下面新建一个<code>user.js</code>,来帮我们做这些事儿，<br>后面我们将会用到。</p>
+<h4 id="三-express-Router"><a href="#三-express-Router" class="headerlink" title="三.express.Router"></a>三.express.Router</h4><p>在添加路由之前，我先简单介绍一下<code>express.Router</code>。<br>使用<code>express.Router</code>可以创建模块化，可安装的路由处理程序。一个<code>express.Router</code>实例是一个完整的中间件和路由系统。因此，它经常被称为一个迷你应用程序。<br>我们来看官网的一个demo，先创建一个用来处理路由的文件<code>birds.js</code>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> router = express.Router()</div><div class="line"></div><div class="line"><span class="comment">// middleware that is specific to this router</span></div><div class="line">router.use(<span class="function"><span class="keyword">function</span> <span class="title">timeLog</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Time: '</span>, <span class="built_in">Date</span>.now())</div><div class="line">  next()</div><div class="line">&#125;)</div><div class="line"><span class="comment">// define the home page route</span></div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'Birds home page'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// define the about route</span></div><div class="line">router.get(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'About birds'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router</div></pre></td></tr></table></figure></p>
+<p>然后加载上面定义的路由模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> birds = <span class="built_in">require</span>(<span class="string">'./birds'</span>)</div><div class="line"><span class="comment">// ...</span></div><div class="line">app.use(<span class="string">'/birds'</span>,birds)</div></pre></td></tr></table></figure></p>
+<p>这样这个应用程序就能够处理  <code>/birds</code> and <code>/birds/about</code>这些请求了，同时也能调用timeLog中间件功能特定的路由。<br>具体想了解更多，更详细的语法，请点击<a href="http://expressjs.com/en/guide/routing.html" target="_blank" rel="external">这里</a>，本篇文章中我不再赘述。</p>
+<h4 id="三-添加路由"><a href="#三-添加路由" class="headerlink" title="三.添加路由"></a>三.添加路由</h4><p>我们使用 <code>express.Router</code>来写路由中间件。<br>在<code>routes/index.js</code>加载<code>express.Router</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var router = express.Router()</div></pre></td></tr></table></figure></p>
+<p>然后就可以开始添加各种路由了。<br>好，开始改代码了，是不是手痒痒。。。<br>在<code>routes/index.js</code>修改添加展示首页的路由处理,如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">router.get(<span class="string">'/'</span>,<span class="keyword">function</span> (req,res) &#123;</div><div class="line">	res.render(<span class="string">'index'</span>,&#123;</div><div class="line">	    title : <span class="string">'首页'</span></div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="四-加载路由"><a href="#四-加载路由" class="headerlink" title="四.加载路由"></a>四.加载路由</h4><p>在<code>app.js</code>里加载新添加的路由前，注意必须先加载路由文件哦。当然我们在使用<code>express-generator</code>时，<code>app.js</code>文件里已经加载过了，要不然那个默认页面是不会显示出来的。<br>在<code>app.js</code>第8行后面添加代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> routes = <span class="built_in">require</span>(<span class="string">'./routes/index'</span>)</div></pre></td></tr></table></figure></p>
+<p>同时，删除掉第9行的代码。<br>加载路由，修改25行代码为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="string">'/'</span>,routes)</div></pre></td></tr></table></figure>
+<h5 id="五-访问首页"><a href="#五-访问首页" class="headerlink" title="五.访问首页"></a>五.访问首页</h5><p>在工程所在目录下，使用<code>control + c</code> 终止当前进程，然后重新启动执行，这样我们的修改才能生效:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm start</div></pre></td></tr></table></figure></p>
+<p>在浏览器里访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localhost:3000</div></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<p><img src="/images/2017-01-01/index1.png" alt="nodejsBlog"></p>
+<h5 id="六-小结"><a href="#六-小结" class="headerlink" title="六.小结"></a>六.小结</h5><p>是不是小有成就感，虽然做的东西很简单，但是毕竟开始了呀。<br>当然，首页不可能会这么简单的，我会在后面的开发中继续完善首页，不要着急，一步一步深入。</p>
 
       
     </div>
@@ -354,11 +348,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/echarts3/"> #echarts3 </a>
-          
-            <a href="/tags/折线图/"> #折线图 </a>
-          
-            <a href="/tags/分段显示不同颜色/"> #分段显示不同颜色 </a>
+            <a href="/tags/nodejs-express-blog/"> #nodejs express blog </a>
           
         </div>
       
@@ -367,11 +357,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/19/echarts-line-drill-down/">手把手教你实现echarts3的折线图下钻drilldown功能系列篇一</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/31/nodejsBlog-start/">手把手教你开发nodejs微博网站-开站篇</a>
             
           </div>
         </div>
@@ -388,7 +378,7 @@
       <div class="comments" id="comments">
         
 
-<div class="ds-share" data-thread-key="2016/06/05/echarts3-series-different-color/" data-title="echarts3的折线图怎么分段显示不同的颜色" data-images="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-content="http://phping1.github.io/2016/06/05/echarts3-series-different-color/" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+<div class="ds-share" data-thread-key="2017/01/09/nodeJsBlog-index/" data-title="手把手教你开发nodejs微博网站-首页篇" data-images="http://phping1.github.io/2017/01/09/nodeJsBlog-index/" data-content="http://phping1.github.io/2017/01/09/nodeJsBlog-index/" data-url="http://phping1.github.io/2017/01/09/nodeJsBlog-index/">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -402,8 +392,8 @@
  </div>
 
           <!-- 评论框 -->
-          <div class="ds-thread" data-thread-key="2016/06/05/echarts3-series-different-color/"
-               data-title="echarts3的折线图怎么分段显示不同的颜色" data-url="http://phping1.github.io/2016/06/05/echarts3-series-different-color/">
+          <div class="ds-thread" data-thread-key="2017/01/09/nodeJsBlog-index/"
+               data-title="手把手教你开发nodejs微博网站-首页篇" data-url="http://phping1.github.io/2017/01/09/nodeJsBlog-index/">
           </div>
         
       </div>
@@ -538,7 +528,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-场景"><span class="nav-number">1.</span> <span class="nav-text">一.场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-效果图"><span class="nav-number">2.</span> <span class="nav-text">二.效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-echarts3的api支持吗"><span class="nav-number">3.</span> <span class="nav-text">三.echarts3的api支持吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-思路"><span class="nav-number">4.</span> <span class="nav-text">四.思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-折线图的数据点在哪里被赋值的"><span class="nav-number">4.1.</span> <span class="nav-text">1.折线图的数据点在哪里被赋值的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-拆分为多个series"><span class="nav-number">4.2.</span> <span class="nav-text">2.拆分为多个series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-普及一小技巧"><span class="nav-number">4.3.</span> <span class="nav-text">3.普及一小技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-转化数据集"><span class="nav-number">4.4.</span> <span class="nav-text">4.转化数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-摞代码"><span class="nav-number">5.</span> <span class="nav-text">五.摞代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-option的配置和主要代码如下："><span class="nav-number">5.1.</span> <span class="nav-text">1.option的配置和主要代码如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-走一个试试"><span class="nav-number">5.2.</span> <span class="nav-text">2.走一个试试:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1原来的格式"><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1原来的格式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2修改为现在的格式"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2修改为现在的格式:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-总结"><span class="nav-number">6.</span> <span class="nav-text">六.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手把手教你开发nodejs微博网站-用户首页篇"><span class="nav-number">1.</span> <span class="nav-text">手把手教你开发nodejs微博网站-用户首页篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一-重中之重"><span class="nav-number">1.2.</span> <span class="nav-text">一.重中之重</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-目录结构"><span class="nav-number">1.3.</span> <span class="nav-text">二. 目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-express-Router"><span class="nav-number">1.4.</span> <span class="nav-text">三.express.Router</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-添加路由"><span class="nav-number">1.5.</span> <span class="nav-text">三.添加路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-加载路由"><span class="nav-number">1.6.</span> <span class="nav-text">四.加载路由</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五-访问首页"><span class="nav-number">1.6.1.</span> <span class="nav-text">五.访问首页</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#六-小结"><span class="nav-number">1.6.2.</span> <span class="nav-text">六.小结</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
