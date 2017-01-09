@@ -277,31 +277,12 @@
 <p>然后在浏览器上访问:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:3000/</div></pre></td></tr></table></figure>
 <p>输入如下：<br><img src="/images/2017-01-01/defaultIndex.png" alt="默认首页"></p>
-<p>看到没，一个简单的web网站已经搭建起来了，有了这个，我们在此基础上进行添砖加瓦，来为我们所用。</p>
-<h4 id="二-目录结构"><a href="#二-目录结构" class="headerlink" title="二. 目录结构"></a>二. 目录结构</h4><p>在进行编码开发之前，先来看一下使用<code>express-generator</code>快速搭建网站后的目录结构如下：</p>
-<p><img src="/images/2017-01-01/directory.png" alt="directory"></p>
-<p>在真正开发代码之前，我们温习一下一下<code>MVCM模型</code>。</p>
-<ul>
-<li>控制器(Controller)，一组行为的集合</li>
-<li>模型(Model),数据相关的操作和封装</li>
-<li>视图(View),视图的渲染</li>
-</ul>
-<p>详细的解释我这里不再赘述了，大家若想深入了解可以去网上查阅相关资料。<br>看完上面的目录结构，是缺少一个<code>模型</code>。<br>我们在mytest目录下面新建一个<code>models</code>文件夹，就是用来存放于数据库打交道的<code>模型</code>。<br><strong>我们的微博网站是以用户为中心的，比如用户相关的信息需要保存到数据库里，或者从数据库里查询用户信息的。</strong><br>因此在新建的 <code>models</code>文件夹下面新建一个<code>user.js</code>,来帮我们做这些事儿，<br>后面我们将会用到。</p>
-<h4 id="三-express-Router"><a href="#三-express-Router" class="headerlink" title="三.express.Router"></a>三.express.Router</h4><p>在添加路由之前，我先简单介绍一下<code>express.Router</code>。<br>使用<code>express.Router</code>可以创建模块化，可安装的路由处理程序。一个<code>express.Router</code>实例是一个完整的中间件和路由系统。因此，它经常被称为一个迷你应用程序。<br>我们来看官网的一个demo，先创建一个用来处理路由的文件<code>birds.js</code>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> router = express.Router()</div><div class="line"></div><div class="line"><span class="comment">// middleware that is specific to this router</span></div><div class="line">router.use(<span class="function"><span class="keyword">function</span> <span class="title">timeLog</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Time: '</span>, <span class="built_in">Date</span>.now())</div><div class="line">  next()</div><div class="line">&#125;)</div><div class="line"><span class="comment">// define the home page route</span></div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'Birds home page'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// define the about route</span></div><div class="line">router.get(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'About birds'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router</div></pre></td></tr></table></figure></p>
-<p>然后加载上面定义的路由模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> birds = <span class="built_in">require</span>(<span class="string">'./birds'</span>)</div><div class="line"><span class="comment">// ...</span></div><div class="line">app.use(<span class="string">'/birds'</span>,birds)</div></pre></td></tr></table></figure></p>
-<p>这样这个应用程序就能够处理  <code>/birds</code> and <code>/birds/about</code>这些请求了，同时也能调用timeLog中间件功能特定的路由。<br>具体想了解更多，更详细的语法，请点击<a href="http://expressjs.com/en/guide/routing.html" target="_blank" rel="external">这里</a>，本篇文章中我不再赘述。</p>
-<h4 id="四-添加路由"><a href="#四-添加路由" class="headerlink" title="四.添加路由"></a>四.添加路由</h4><p>我们使用 <code>express.Router</code>来写路由中间件。<br>在<code>routes/index.js</code>加载<code>express.Router</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var router = express.Router()</div></pre></td></tr></table></figure></p>
-<p>然后就可以开始添加各种路由了。<br>好，开始改代码了，是不是手痒痒。。。<br>在<code>routes/index.js</code>修改添加展示首页的路由处理,如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">router.get(<span class="string">'/'</span>,<span class="keyword">function</span> (req,res) &#123;</div><div class="line">	res.render(<span class="string">'index'</span>,&#123;</div><div class="line">	    title : <span class="string">'首页'</span></div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<h4 id="五-加载路由"><a href="#五-加载路由" class="headerlink" title="五.加载路由"></a>五.加载路由</h4><p>在<code>app.js</code>里加载新添加的路由前，注意必须先加载路由文件哦。当然我们在使用<code>express-generator</code>时，<code>app.js</code>文件里已经加载过了，要不然那个默认页面是不会显示出来的。<br>在<code>app.js</code>第8行后面添加代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> routes = <span class="built_in">require</span>(<span class="string">'./routes/index'</span>)</div></pre></td></tr></table></figure></p>
-<p>同时，删除掉第9行的代码。<br>加载路由，修改25行代码为：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="string">'/'</span>,routes)</div></pre></td></tr></table></figure>
-<h5 id="六-访问首页"><a href="#六-访问首页" class="headerlink" title="六.访问首页"></a>六.访问首页</h5><p>在工程所在目录下，使用<code>control + c</code> 终止当前进程，然后重新启动执行，这样我们的修改才能生效:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm start</div></pre></td></tr></table></figure></p>
-<p>在浏览器里访问：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localhost:3000</div></pre></td></tr></table></figure>
-<p>输出如下：</p>
-<p><img src="/images/2017-01-01/index1.png" alt="nodejsBlog"></p>
-<h5 id="六-小结"><a href="#六-小结" class="headerlink" title="六.小结"></a>六.小结</h5><p>是不是小有成就感，虽然做的东西很简单，但是毕竟开始了呀。<br>当然，首页不可能会这么简单的，我会在后面的开发中继续完善首页，不要着急，一步一步深入。</p>
-
+<p>看到没，一个简单的web网站已经搭建起来了，有了这个，我们在此基础上进行添砖加瓦，来为我们所用。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/09/nodeJsBlog-index/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
