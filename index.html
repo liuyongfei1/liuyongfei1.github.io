@@ -213,6 +213,124 @@
           
           
             
+              <a class="post-title-link" href="/2017/02/06/nodejsBlog-db/">
+                手把手教你开发nodejs微博网站-连接数据库
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2017-02-05
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/nodejs/">nodejs</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/02/06/nodejsBlog-db/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/06/nodejsBlog-db/"></span>
+            </a>
+          </span>
+          
+        
+
+        
+        
+        	 <span id="/2017/02/06/nodejsBlog-db/"class="leancloud_visitors"  data-flag-title="手把手教你开发nodejs微博网站-连接数据库">
+                &nbsp; | &nbsp; 阅读次数
+                </span>
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><blockquote>
+<p>博客肯定是以用户为中心，包括用户的注册，用户的登录，用户发表留言，对留言进行评价等等功能，所以，自然离不开数据库。</p>
+</blockquote>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><h5 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h5><ol>
+<li>MongoDB是一个开源的NoSql数据库，相比mysql那样的关系型数据库，它更为轻巧，灵活，非常适合在数据规模很大，事务性不强的场合下使用</li>
+<li>MongoDB将数据存储为一个文档，数据结构由键值对(key=&gt;value)组成。字段值可以包含其他文档，数组及文档数组</li>
+<li>相对于mysql这类需要把对象属性转换成SQL语句才能保存下来 ，MongoDB这些可以直接保存JS对象成数据库的文档，来看一个MongoDB文档的示例：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"_id"</span> : ObjectId( <span class="string">"4f7fe8432b4a1077a7c551e8"</span> ),</div><div class="line">	name : <span class="string">'phping'</span>,</div><div class="line">	age : 28,</div><div class="line">	hobby : [<span class="string">'movies'</span>,<span class="string">'music'</span>,<span class="string">'nba'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可以看到数据格式为json，因此与javascript的亲和性很强，我们的项目也是使用MongoDB。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/06/nodejsBlog-db/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/"> #nodejs </a>
+          
+            <a href="/tags/连接数据库/"> #连接数据库 </a>
+          
+            <a href="/tags/MongoDB/"> #MongoDB </a>
+          
+            <a href="/tags/Robomongo/"> #Robomongo </a>
+          
+            <a href="/tags/mongoose/"> #mongoose </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2017/01/09/nodeJsBlog-index/">
                 手把手教你开发nodejs微博网站-首页篇
               </a>
@@ -1259,7 +1377,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1273,7 +1391,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
