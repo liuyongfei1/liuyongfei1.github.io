@@ -283,9 +283,16 @@
 </ul>
 <p><a href="https://robomongo.org/download" target="_blank" rel="external">点击这里下载</a></p>
 <ul>
-<li>创建连接<br>下载并安装成功后点击左上角的 Create 来创建一个连接，给该连接起个名字如: localhost，使用默认地址（localhost）和端口（27017）即可，点击 Save 保存，如下图：</li>
+<li><p>创建连接<br>下载并安装成功后点击左上角的 Create 来创建一个连接，给该连接起个名字如: localhost，使用默认地址（localhost）和端口（27017）即可，点击 Save 保存，如下图：<br><img src="/images/2017-02-06/addUser.png" alt="addUser"></p>
+</li>
+<li><p>添加数据<br>前面已经简单的介绍了mongodb中的一些概念，让我们使用Robomongo这个图形化管理工具来添加数据:</p>
+</li>
+<li>点插入文档：<br><img src="/images/2017-02-06/addUser.png" alt="Robomongo"></li>
+<li>会打开一个空白面板，让我们手动写入要添加的数据：<br><img src="/images/2017-02-06/addUser2.png" alt="Robomongo"></li>
+<li>写一个简单的测试数据如下：<br><img src="/images/2017-02-06/addUser21.png" alt="Robomongo"><br>其中左下角的按钮可以用来验证我们写入的数据格式，数据格式无误后点击右下角的保存按钮即可。</li>
+<li>查看新增加的文档:<br> <img src="/images/2017-02-06/addUser3.png" alt="Robomongo"></li>
+<li>这时，在你右边区域就可以看到我们刚才新增加的数据了:<br><img src="/images/2017-02-06/addUser31.png" alt="Robomongo"></li>
 </ul>
-<p><img src="/images/2017-02-06/Robomongo.png" alt="Robomongo"></p>
 <h4 id="使用Mongolass连接数据库"><a href="#使用Mongolass连接数据库" class="headerlink" title="使用Mongolass连接数据库"></a>使用Mongolass连接数据库</h4><p>好了，MongoDB安装成功了，我们来使用<a href="https://www.npmjs.com/package/mongoose" target="_blank" rel="external">Mongolass</a>连接数据库。</p>
 <h5 id="安装Mongolass"><a href="#安装Mongolass" class="headerlink" title="安装Mongolass"></a>安装Mongolass</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install mongoose</div></pre></td></tr></table></figure>
 <h5 id="连接MongoDB"><a href="#连接MongoDB" class="headerlink" title="连接MongoDB"></a>连接MongoDB</h5><p>首先,我们需要定义一个连接。如果您的应用程序只使用一个数据库,您应该使用<code>mongoose.connect</code>；<br>如果您需要创建额外的连接,使用<code>mongoose.createConnection</code>。</p>
