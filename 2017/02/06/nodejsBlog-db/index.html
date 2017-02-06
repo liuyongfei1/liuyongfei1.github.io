@@ -271,6 +271,54 @@
 </li>
 </ol>
 <p>可以看到数据格式为json，因此与javascript的亲和性很强，我们的项目也是使用MongoDB。<br><a id="more"></a></p>
+<h5 id="MongoD概念解析"><a href="#MongoD概念解析" class="headerlink" title="MongoD概念解析"></a>MongoD概念解析</h5><p>在<code>mongodb</code>中基本的概念是文档、集合、数据库。下表将帮助您更容易理解Mongo中的一些概念：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SQL术语/概念</th>
+<th style="text-align:right">MongoDB术语/概念</th>
+<th style="text-align:center">解释/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">database</td>
+<td style="text-align:right">database</td>
+<td style="text-align:center">数据库</td>
+</tr>
+<tr>
+<td style="text-align:left">table</td>
+<td style="text-align:right">collection</td>
+<td style="text-align:center">数据库表/集合</td>
+</tr>
+<tr>
+<td style="text-align:left">row</td>
+<td style="text-align:right">document</td>
+<td style="text-align:center">数据库记录集合/文档</td>
+</tr>
+<tr>
+<td style="text-align:left">column</td>
+<td style="text-align:right">field</td>
+<td style="text-align:center">数据字段/域</td>
+</tr>
+<tr>
+<td style="text-align:left">index</td>
+<td style="text-align:right">index</td>
+<td style="text-align:center">索引</td>
+</tr>
+<tr>
+<td style="text-align:left">table joins</td>
+<td style="text-align:right"></td>
+<td style="text-align:center">表连接，mongodb不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">primary key</td>
+<td style="text-align:right">primary key</td>
+<td style="text-align:center">主键,MongoDB自动将_id字段设置为主键</td>
+</tr>
+</tbody>
+</table>
+<p>通过下图实例我们也能更好的了解Mongo中的一些概念:<br><img src="/images/2017-02-06/Mapping-Table-to-Collection-1.png" alt="Robomongo"></p>
 <h5 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h5><p>大家可以针对自己的系统，参考下面的向导来进行安装，步骤都是非常的详细。这里不再赘述。</p>
 <ul>
 <li>Windows 用户向导：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/" target="_blank" rel="external">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
@@ -541,7 +589,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">1.</span> <span class="nav-text">连接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB"><span class="nav-number">1.2.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">MongoDB简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB安装"><span class="nav-number">1.2.2.</span> <span class="nav-text">MongoDB安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Robomongo"><span class="nav-number">1.2.3.</span> <span class="nav-text">Robomongo</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Mongolass连接数据库"><span class="nav-number">1.3.</span> <span class="nav-text">使用Mongolass连接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装Mongolass"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装Mongolass</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接MongoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">连接MongoDB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义一个模型"><span class="nav-number">1.3.3.</span> <span class="nav-text">定义一个模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#访问一个模型"><span class="nav-number">1.3.4.</span> <span class="nav-text">访问一个模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">1.</span> <span class="nav-text">连接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB"><span class="nav-number">1.2.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">MongoDB简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoD概念解析"><span class="nav-number">1.2.2.</span> <span class="nav-text">MongoD概念解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB安装"><span class="nav-number">1.2.3.</span> <span class="nav-text">MongoDB安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Robomongo"><span class="nav-number">1.2.4.</span> <span class="nav-text">Robomongo</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Mongolass连接数据库"><span class="nav-number">1.3.</span> <span class="nav-text">使用Mongolass连接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装Mongolass"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装Mongolass</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接MongoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">连接MongoDB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义一个模型"><span class="nav-number">1.3.3.</span> <span class="nav-text">定义一个模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#访问一个模型"><span class="nav-number">1.3.4.</span> <span class="nav-text">访问一个模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
