@@ -262,7 +262,7 @@
 
       
         <h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><blockquote>
-<p>博客肯定是以用户为中心，包括用户的注册，用户的登录，用户发表留言，对留言进行评价等等功能，所以，自然离不开数据库。</p>
+<p>博客肯定是以用户为中心，包括用户的注册，用户的登录，用户发表留言，对留言进行评价等等功能，所以，自然离不开数据库。<br>本篇文章将涉及到三个名词: <code>MongoDB,Robomongo,Mongolass</code>。看完该文后，就对它们有一个清晰的认识了。</p>
 </blockquote>
 <h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><h5 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h5><ol>
 <li>MongoDB是一个开源的NoSql数据库，相比mysql那样的关系型数据库，它更为轻巧，灵活，非常适合在数据规模很大，事务性不强的场合下使用</li>
@@ -325,7 +325,7 @@
 <li>Linux 用户向导：<a href="https://docs.mongodb.com/manual/administration/install-on-linux/" target="_blank" rel="external">https://docs.mongodb.com/manual/administration/install-on-linux/</a></li>
 <li>Mac 用户向导：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="external">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/</a></li>
 </ul>
-<h5 id="Robomongo"><a href="#Robomongo" class="headerlink" title="Robomongo"></a>Robomongo</h5><p>我使用的MongoDB 可视化管理工具是Robomongo,当然还有其它的可以使用，如:MongoChef等。</p>
+<h5 id="MongoDB可视化管理工具Robomongo"><a href="#MongoDB可视化管理工具Robomongo" class="headerlink" title="MongoDB可视化管理工具Robomongo"></a>MongoDB可视化管理工具Robomongo</h5><p>我使用的<code>MongoDB可视化管理工具是Robomongo</code>,当然还有其它的可以使用，如:MongoChef等。</p>
 <ul>
 <li>Robomongo<br>Robomongo 是一个基于 Shell 的跨平台开源 MongoDB 管理工具。嵌入了 JavaScript 引擎和 MongoDB mogo 。只要你会使用 mongo shell ，你就会使用 Robomongo。提供语法高亮、自动完成、差别视图等。</li>
 </ul>
@@ -341,7 +341,7 @@
 <li>查看新增加的文档:<br> <img src="/images/2017-02-06/addUser3.png" alt="Robomongo"></li>
 <li>这时，在你右边区域就可以看到我们刚才新增加的数据了:<br><img src="/images/2017-02-06/addUser31.png" alt="Robomongo"></li>
 </ul>
-<h4 id="Mongolass"><a href="#Mongolass" class="headerlink" title="Mongolass"></a>Mongolass</h4><p>好了，MongoDB安装成功了，我们来使用<code>Mongolass</code>连接数据库。<br>关于的更详细使用和api文档，可以点这里:</p>
+<h4 id="MongoDB驱动库Mongolass"><a href="#MongoDB驱动库Mongolass" class="headerlink" title="MongoDB驱动库Mongolass"></a>MongoDB驱动库Mongolass</h4><p>好了，MongoDB安装成功了，我们来使用<code>Mongolass</code>连接数据库。<br>关于的更详细使用和api文档，可以点这里:</p>
 <ul>
 <li><a href="http://mongoosejs.com/" target="_blank" rel="external">http://mongoosejs.com/</a></li>
 <li><a href="http://mongoosejs.com/docs/guide.html" target="_blank" rel="external">http://mongoosejs.com/docs/guide.html</a></li>
@@ -594,7 +594,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB"><span class="nav-number">2.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB简介"><span class="nav-number">2.1.</span> <span class="nav-text">MongoDB简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoD概念解析"><span class="nav-number">2.2.</span> <span class="nav-text">MongoD概念解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB安装"><span class="nav-number">2.3.</span> <span class="nav-text">MongoDB安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Robomongo"><span class="nav-number">2.4.</span> <span class="nav-text">Robomongo</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mongolass"><span class="nav-number">3.</span> <span class="nav-text">Mongolass</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装Mongolass"><span class="nav-number">3.1.</span> <span class="nav-text">安装Mongolass</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接MongoDB"><span class="nav-number">3.2.</span> <span class="nav-text">连接MongoDB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义一个模型"><span class="nav-number">3.3.</span> <span class="nav-text">定义一个模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#访问一个模型"><span class="nav-number">3.4.</span> <span class="nav-text">访问一个模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB"><span class="nav-number">2.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB简介"><span class="nav-number">2.1.</span> <span class="nav-text">MongoDB简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoD概念解析"><span class="nav-number">2.2.</span> <span class="nav-text">MongoD概念解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB安装"><span class="nav-number">2.3.</span> <span class="nav-text">MongoDB安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB可视化管理工具Robomongo"><span class="nav-number">2.4.</span> <span class="nav-text">MongoDB可视化管理工具Robomongo</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB驱动库Mongolass"><span class="nav-number">3.</span> <span class="nav-text">MongoDB驱动库Mongolass</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装Mongolass"><span class="nav-number">3.1.</span> <span class="nav-text">安装Mongolass</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接MongoDB"><span class="nav-number">3.2.</span> <span class="nav-text">连接MongoDB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义一个模型"><span class="nav-number">3.3.</span> <span class="nav-text">定义一个模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#访问一个模型"><span class="nav-number">3.4.</span> <span class="nav-text">访问一个模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
