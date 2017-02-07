@@ -9,3 +9,4 @@
 10. 修改文章:[nodejs新手小笔记之-express-generator安装](http://phping1.github.io/2016/12/19/nodejs-install-express-generator/)
 11. 添加文章:[手把手教你开发nodejs微博网站-连用户注册篇](http://phping1.github.io/2016/12/19/nodejsBlog-reg/)
 12. 更新 next主题版本 ，替换掉swiftype(要收费了)，使用 Local Search
+13. 更新 next主题版本后 ，修改 reward.swig文件里的部分代码使打赏功能能够使用
