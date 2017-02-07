@@ -6,4 +6,5 @@
 7. 修改文章:[手把手教你开发nodejs微博网站-连接数据库篇]-添加robomongo的使用截图(http://phping1.github.io/2017/02/06/nodeJsBlog-db/)
 8. 修改文章:[手把手教你开发nodejs微博网站-连接数据库篇]-添加Mongolass的使用链接(http://phping1.github.io/2017/02/06/nodeJsBlog-db/)
 9. 修改文章:[手把手教你开发nodejs微博网站-首页篇](http://phping1.github.io/2017/01/09/nodeJsBlog-index/)
-10.修改文章:[nodejs新手小笔记之-express-generator安装](http://phping1.github.io/2016/12/19/nodejs-install-express-generator/)
+10. 修改文章:[nodejs新手小笔记之-express-generator安装](http://phping1.github.io/2016/12/19/nodejs-install-express-generator/)
+11. 添加文章:[手把手教你开发nodejs微博网站-连用户注册篇](http://phping1.github.io/2016/12/19/nodejsBlog-reg/)
