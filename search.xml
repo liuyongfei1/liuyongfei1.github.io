@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[手把手教你开发nodejs微博网站-用户注册篇]]></title>
       <url>%2F2017%2F02%2F07%2FnodejsBlog-reg%2F</url>
-      <content type="text"><![CDATA[引子 上一篇主要讲解了本项目开发使用的数据库MongoDb,MongoDB 的可视化管理工具Robomongo，MongoDB 的驱动库Mongolass,已经具备了功能开发的基本条件。 本篇我主要讲解用户注册功能的开发。 目录结构在正式开发之前，我们先来看一下项目的目录结构,如下: 目录说明对应的主要文件及文件夹用处如下说明： app.js: 程序主文件 models: 存放操作数据库的文件 package.json: 存储项目名称、描述信息、作者、依赖等等信息 public: 存放静态文件，如样式、图片等 routes: 存放路由文件 views: 存放模板文件 Tip 我们遵循了MVC的开发模式: 控制器(Controller)，一组行为的集合 模型(Model),数据相关的操作和封装 视图(View),视图的渲染对MVC不太熟悉的童鞋可以自行查找一下资料，我这里不再赘述了。]]></content>
+      <content type="text"><![CDATA[引子 上一篇主要讲解了本项目开发使用的数据库MongoDb,MongoDB 的可视化管理工具Robomongo，MongoDB 的驱动库Mongolass,已经具备了功能开发的基本条件。 本篇我主要讲解用户注册功能的开发。 目录结构在正式开发之前，我们先来看一下项目的目录结构,如下: 目录说明对应的主要文件及文件夹用处如下说明： app.js: 程序主文件 models: 存放操作数据库的文件 package.json: 存储项目名称、描述信息、作者、依赖等等信息 public: 存放静态文件，如样式、图片等 routes: 存放路由文件 views: 存放模板文件 Tip 我们遵循了MVC的开发模式: 控制器(Controller)，一组行为的集合 模型(Model),数据相关的操作和封装 视图(View),视图的渲染对MVC不太熟悉的童鞋可以自行查找一下资料，我这里不再赘述了。 未完待续，敬请关注]]></content>
     </entry>
 
     
