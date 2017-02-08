@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://phping1.github.io/images/images.png">
 <meta property="og:image" content="http://phping1.github.io/images/2016-09-25/QQ20160926-0@2x.png">
 <meta property="og:image" content="http://phping1.github.io/images/2016-09-25/meng.jpg">
-<meta property="og:updated_time" content="2017-02-07T15:52:01.000Z">
+<meta property="og:updated_time" content="2017-02-08T13:58:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手教你实现echarts3的折线图下钻drilldown功能系列篇二">
 <meta name="twitter:description" content="开场白
@@ -477,7 +477,7 @@
 <p><strong>demo下载点击</strong> <a href="https://github.com/phping1/echarts3-line-drilldown.git" target="_blank" rel="external">这里</a>。</p>
 <hr>
 <h1 id="后续更新"><a href="#后续更新" class="headerlink" title="后续更新"></a>后续更新</h1><blockquote>
-<p>有下载过<a href="https://github.com/phping1/echarts3-line-drilldown.git" target="_blank" rel="external">demo代码</a>的小伙伴反应，点击月份的一个点时(比如点2016-09月份)，虽然会下钻出来09月份下的每一个天的数据，但是同时2016-09这个点却仍然在….<br><img src="/images/2016-09-25/QQ20160926-0@2x.png" alt="QQ20160926-0@2x.png"></p>
+<p>有下载过<a href="https://github.com/phping1/echarts3-line-drilldown.git" target="_blank" rel="external">demo代码</a>的小伙伴反应，点击月份的一个点时(比如点2016-09月份)，虽然会下钻出来09月份下的每一个天的数据，但是同时<code>2016-09</code>月份数据的这个点却仍然在，如下图：<br><img src="/images/2016-09-25/QQ20160926-0@2x.png" alt="QQ20160926-0@2x.png"></p>
 </blockquote>
 <h2 id="1-场景描述"><a href="#1-场景描述" class="headerlink" title="1.场景描述"></a>1.场景描述</h2><p>经了解后发现，代码都是从我的github仓库clone下来的，唯一不一样的是小伙伴儿是在windows操作系统上运行的，而在mac上根本没有这个情况，此时只有这张图能代表我的心情…<br><img src="/images/2016-09-25/meng.jpg" alt="meng.jpg"></p>
 <h2 id="2-原因分析"><a href="#2-原因分析" class="headerlink" title="2.原因分析"></a>2.原因分析</h2><p>原因猜想这个地方应该是一个echarts的bug，<strong>应该是下钻前和下钻后共用一个dom容器产生的原因。</strong><br>估计开发者们也都是用mac开发的，故没有发现，瞎猜哈。</p>
