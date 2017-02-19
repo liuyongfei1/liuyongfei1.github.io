@@ -7,3 +7,4 @@
 7. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加 express-formidable
 8. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加 express-formidable
 9. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 用户注册功能的代码
+10.更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加用户注册截图
