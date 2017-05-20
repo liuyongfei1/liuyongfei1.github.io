@@ -296,6 +296,192 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2017/05/20/react-rendering-elements/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="PHPING">
+    <meta itemprop="description" content="Rome was not built in a day!">
+    <meta itemprop="image" content="/images/phping.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="PHPING|记录工作中的点点滴滴">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="PHPING|记录工作中的点点滴滴" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/20/react-rendering-elements/" itemprop="url">
+                  React之渲染元素
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T00:00:00+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/20/react-rendering-elements/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/20/react-rendering-elements/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/20/react-rendering-elements/" class="leancloud_visitors" data-flag-title="React之渲染元素">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="React-渲染元素"><a href="#React-渲染元素" class="headerlink" title="React-渲染元素"></a>React-渲染元素</h1><h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><blockquote>
+<p>接着上一节JSX的讲解后：我们大概清楚了以下几个事儿:</p>
+<blockquote>
+<ol>
+<li>知道JSX是个什么东东</li>
+<li>为什么React要推荐使用JSX</li>
+<li>以及JSX的一些基本语法。</li>
+</ol>
+</blockquote>
+<p>本篇文章谈一下React是怎么渲染元素的。</p>
+</blockquote>
+<h3 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h3><p>元素是React应用中的最小部件，正是由一个或多个元素构建出来了组件。<br>一个元素用于描述你将在屏幕上看到的内容，比如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</div></pre></td></tr></table></figure></p>
+<h3 id="渲染元素到DOM"><a href="#渲染元素到DOM" class="headerlink" title="渲染元素到DOM"></a>渲染元素到DOM</h3><h4 id="根DOM节点"><a href="#根DOM节点" class="headerlink" title="根DOM节点"></a>根DOM节点</h4><p>假设我们的HTML文件中有这样的一个<code>&lt;div&gt;</code>:<br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div id="root"&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>我们称这是<strong>一个根DOM节点，该节点内的所有内容都是有React DOM管理</strong></p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>一个用React构建的应用程序通常只有一个根DOM节点。</li>
+<li>但是如果把这些应用程序整合到现有的app当中去，那么该app中就可能会包含多个相互独立的<strong>根DOM节点</strong>。</li>
+</ol>
+<h3 id="更新已渲染的元素"><a href="#更新已渲染的元素" class="headerlink" title="更新已渲染的元素"></a>更新已渲染的元素</h3><p>React元素是不可变的，一旦你创建了一个元素，就不能再修改其子元素或任何属性。<br>更新UI的唯一方法是创建一个新的元素，并将其传入到<code>ReactDOM.render()</code>方法。<br>来思考下时钟的例子,完整代码如下：<br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;rendering-elements&lt;/title&gt;</div><div class="line">    &lt;script src="../build/react.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;script src="../build/react-dom.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;script src="../build/browser.min.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;script src="../build/jquery.min.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;script type="text/babel"&gt;</div><div class="line">      function tick() &#123;</div><div class="line">        const element = (</div><div class="line">                &lt;div&gt;</div><div class="line">                    &lt;h1&gt;Hello,world!&lt;/h1&gt;</div><div class="line">                    &lt;h2&gt;It is &#123;new Date().toLocaleTimeString()&#125;&lt;/h2&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">        );</div><div class="line">        ReactDOM.render(</div><div class="line">          element,</div><div class="line">          document.getElementById('root')</div><div class="line">        )</div><div class="line">      &#125;</div><div class="line">      setInterval(tick,1000);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id="root"&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>以上代码，每隔1秒，就会通过<code>setInterval()</code>回调<code>ReactDOM.render()</code>方法来重新渲染元素。</p>
+<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意:"></a>注意:</h4><blockquote>
+<p>实际上，大多数 React 应用只会调用 ReactDOM.render() 一次。在接下来的章节中，我们将学习如何将这些代码封装到有状态的组件中。</p>
+</blockquote>
+<h3 id="React-只更新必需要更新的部分"><a href="#React-只更新必需要更新的部分" class="headerlink" title="React 只更新必需要更新的部分"></a>React 只更新必需要更新的部分</h3><p>React DOM 会将元素及其子元素与之前版本逐一对比, 并只对有必要更新的 DOM 进行更新, 以达到 DOM 所需的状态。<br>我们对 上一个例子 进行检查来验证这一点:<br><img src="/images/2017-05-20/react-render-elements.gif" alt="Alt text"><br>即使我们我们每隔 1 秒都重建了整个元素, 但实际上 React DOM 只更新了修改过的文本节点。</p>
+<p>本文做为自己加强记忆之篇，均参考自：<br><a href="http://www.css88.com/react/docs/rendering-elements.html，在此列出，大家共同学习。" target="_blank" rel="external">http://www.css88.com/react/docs/rendering-elements.html，在此列出，大家共同学习。</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2017/05/06/react-jsx/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1926,177 +2112,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2016/09/21/echarts-line-drill-down-code/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="PHPING">
-    <meta itemprop="description" content="Rome was not built in a day!">
-    <meta itemprop="image" content="/images/phping.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="PHPING|记录工作中的点点滴滴">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="PHPING|记录工作中的点点滴滴" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/21/echarts-line-drill-down-code/" itemprop="url">
-                  手把手教你实现echarts3的折线图下钻drilldown功能系列篇二
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-21T00:00:00+08:00">
-                2016-09-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/echarts3/" itemprop="url" rel="index">
-                    <span itemprop="name">echarts3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/09/21/echarts-line-drill-down-code/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/echarts-line-drill-down-code/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/21/echarts-line-drill-down-code/" class="leancloud_visitors" data-flag-title="手把手教你实现echarts3的折线图下钻drilldown功能系列篇二">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h1><blockquote>
-<p>好了,<a href="http://phping1.github.io/2016/09/19/echarts-line-drill-down/">上一篇</a>介绍了关于echarts下钻（drilldown）的一些信息，通过上一篇文章我们知道echarts折线图，柱状图没有支持下钻（drilldown）功能的api，那就需要我们自己动手，丰衣足食了。<br>这一篇我开始进行实质性的代码演示。你可以按照我的步骤一步一步来做，有什么疑问可以留言我。</p>
-</blockquote>
-<h1 id="一-效果贴图"><a href="#一-效果贴图" class="headerlink" title="一.效果贴图"></a>一.效果贴图</h1><p>为了避免枯燥无味，我先不贴代码，写贴上我的demo图,这里还会拿上一篇的那个demo图为例。</p>
-<h2 id="1-下钻（drilldown）前效果"><a href="#1-下钻（drilldown）前效果" class="headerlink" title="1.下钻（drilldown）前效果"></a>1.下钻（drilldown）前效果</h2><p><img src="/images/2016-09-20/QQ20160921-0@2x.png" alt="QQ20160921-0@2x.png"></p>
-<p>从图可以看出：<code>这是展示2016年1月一直到2016年9月份的数据的折线图。</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/21/echarts-line-drill-down-code/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2144,7 +2159,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2162,7 +2177,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
