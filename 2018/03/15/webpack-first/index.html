@@ -95,9 +95,9 @@
 <meta property="og:description" content="webpack系列之基本概念和使用前言最近在做vue项目，自然而然就接触到了webpack这个打包工具，借此把一些总结分享出来。webpack知识点比较多，打算做为一个系列分篇讲解，今天先分享第一篇：webpack系列之基本概念和使用。
 一. 什么是webpackwebpack可以看做是模块打包工具：它将各种静态资源（比如：JavaScript 文件，图片文件，样式文件等）视为模块，它能够对这些模">
 <meta property="og:image" content="http://phping1.github.io/images/2018-03-15/webpack-流程图.png">
-<meta property="og:image" content="http://phping1.github.io/./webpack-集成电路.jpeg">
+<meta property="og:image" content="http://phping1.github.io/images/2018-03-15/webpack-集成电路.jpeg">
 <meta property="og:image" content="http://phping1.github.io/images/2018-03-15//webpack-demo.png">
-<meta property="og:updated_time" content="2018-03-15T09:45:08.531Z">
+<meta property="og:updated_time" content="2018-03-15T09:52:50.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之基本概念和使用">
 <meta name="twitter:description" content="webpack系列之基本概念和使用前言最近在做vue项目，自然而然就接触到了webpack这个打包工具，借此把一些总结分享出来。webpack知识点比较多，打算做为一个系列分篇讲解，今天先分享第一篇：webpack系列之基本概念和使用。
@@ -426,7 +426,7 @@
 <a id="more"></a>
 <h4 id="二-为什么使用webpack"><a href="#二-为什么使用webpack" class="headerlink" title="二. 为什么使用webpack"></a>二. 为什么使用webpack</h4><p>先举一个大家都很熟悉的例子：</p>
 <blockquote>
-<p>一台计算机内部需要很多很多根线来连接单元器件，假如每条线不按规则摆放，将要占用极大的空间，且不好管理。幸好人们发明了集成电路，才有了现代计算机的板卡。<br><img src="./webpack-集成电路.jpeg" alt="Alt text"></p>
+<p>一台计算机内部需要很多很多根线来连接单元器件，假如每条线不按规则摆放，将要占用极大的空间，且不好管理。幸好人们发明了集成电路，才有了现代计算机的板卡。<br><img src="/images/2018-03-15/webpack-集成电路.jpeg" alt="Alt text"></p>
 </blockquote>
 <p>大家看，通过这个板卡，所有的元器件，电线都按规则摆放，规整有序，很大的节省了空间，而且也很方便管理。</p>
 <p>你可以把<code>webpack</code>看做是这个板卡，项目中的各种各样的<code>JavaScript</code>程序和依赖包可以看成是计算机内部需要的很多根线和单元器件，<code>webpack</code>通过<code>loader</code>将这些<code>JavaScript</code>程序和依赖包都转换成<code>JavaScript</code> 模块，就好比我们将单元器件和线按照一定的规则摆放，放在固定的位置方便管理，这样通过<code>webpack</code>我们就把一个项目中的复杂程序细化为了各种具有依赖关系的模块，从而使我们的项目管理起来更加方便。</p>
