@@ -87,25 +87,19 @@
 
 
 <meta name="description" content="webpack系列之loader及简单的使用一. loader有什么用
-webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。
-
-比如你的工程中，样式文件都使用了less语法，是不能被浏览器识别的，这时候我们就需要使用对应的loader，来把less语法转换成浏览器可以识别">
+webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack系列之loader的基本使用">
 <meta property="og:url" content="http://phping1.github.io/2018/04/16/webpack-loader/index.html">
 <meta property="og:site_name" content="PHPING|记录工作中的点点滴滴">
 <meta property="og:description" content="webpack系列之loader及简单的使用一. loader有什么用
-webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。
-
-比如你的工程中，样式文件都使用了less语法，是不能被浏览器识别的，这时候我们就需要使用对应的loader，来把less语法转换成浏览器可以识别">
+webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。">
 <meta property="og:image" content="http://phping1.github.io/images/2018-04-16/webpack-loader-demo.png">
-<meta property="og:updated_time" content="2018-04-16T06:31:23.661Z">
+<meta property="og:updated_time" content="2018-04-16T06:33:35.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之loader的基本使用">
 <meta name="twitter:description" content="webpack系列之loader及简单的使用一. loader有什么用
-webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。
-
-比如你的工程中，样式文件都使用了less语法，是不能被浏览器识别的，这时候我们就需要使用对应的loader，来把less语法转换成浏览器可以识别">
+webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。">
 <meta name="twitter:image" content="http://phping1.github.io/images/2018-04-16/webpack-loader-demo.png">
 
 
@@ -427,6 +421,7 @@ webpack本身只能打包Javascript文件，对于其他资源例如 css，图�
         <h2 id="webpack系列之loader及简单的使用"><a href="#webpack系列之loader及简单的使用" class="headerlink" title="webpack系列之loader及简单的使用"></a>webpack系列之loader及简单的使用</h2><h3 id="一-loader有什么用"><a href="#一-loader有什么用" class="headerlink" title="一. loader有什么用"></a>一. loader有什么用</h3><blockquote>
 <p><code>webpack</code>本身只能打包<code>Javascript</code>文件，对于其他资源例如 <code>css</code>，图片，或者其他的语法集比如<code>jsx</code>，是没有办法加载的。 这就需要对应的<code>loader</code>将资源转化，加载进来。</p>
 </blockquote>
+<a id="more"></a>
 <p><strong>比如</strong><br>你的工程中，样式文件都使用了<code>less</code>语法，是不能被浏览器识别的，这时候我们就需要使用对应的<code>loader</code>，来把<code>less</code>语法转换成浏览器可以识别的<code>css</code>语法。</p>
 <p>例如一个简单的<code>less</code>文件：<br><strong>转换前：</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">    <span class="selector-tag">p</span> &#123;</div><div class="line">        <span class="attribute">font-weight</span>:bold;</div><div class="line">        <span class="attribute">padding-left</span>: <span class="number">30px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>转换后：</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.demo</span> <span class="selector-tag">p</span> &#123;</div><div class="line">    <span class="attribute">font-weight</span>: bold;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">30px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
