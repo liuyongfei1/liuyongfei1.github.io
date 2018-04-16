@@ -296,6 +296,241 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2018/04/16/webpack-loader/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="PHPING">
+    <meta itemprop="description" content="Rome was not built in a day!">
+    <meta itemprop="image" content="/images/phping.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="PHPING|记录工作中的点点滴滴">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="PHPING|记录工作中的点点滴滴" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/16/webpack-loader/" itemprop="url">
+                  webpack系列之loader的基本使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T00:00:00+08:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/16/webpack-loader/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/16/webpack-loader/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/04/16/webpack-loader/" class="leancloud_visitors" data-flag-title="webpack系列之loader的基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="webpack系列之loader及简单的使用"><a href="#webpack系列之loader及简单的使用" class="headerlink" title="webpack系列之loader及简单的使用"></a>webpack系列之loader及简单的使用</h2><h3 id="一-loader有什么用"><a href="#一-loader有什么用" class="headerlink" title="一. loader有什么用"></a>一. loader有什么用</h3><blockquote>
+<p><code>webpack</code>本身只能打包<code>Javascript</code>文件，对于其他资源例如 <code>css</code>，图片，或者其他的语法集比如<code>jsx</code>，是没有办法加载的。 这就需要对应的<code>loader</code>将资源转化，加载进来。</p>
+</blockquote>
+<p><strong>比如</strong><br>你的工程中，样式文件都使用了<code>less</code>语法，是不能被浏览器识别的，这时候我们就需要使用对应的<code>loader</code>，来把<code>less</code>语法转换成浏览器可以识别的<code>css</code>语法。</p>
+<p>例如一个简单的<code>less</code>文件：<br><strong>转换前：</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">    <span class="selector-tag">p</span> &#123;</div><div class="line">        <span class="attribute">font-weight</span>:bold;</div><div class="line">        <span class="attribute">padding-left</span>: <span class="number">30px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>转换后：</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.demo</span> <span class="selector-tag">p</span> &#123;</div><div class="line">    <span class="attribute">font-weight</span>: bold;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">30px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>后面的案例也是拿这个<code>less</code>文件来做演示的。</p>
+<h3 id="二-loader是什么"><a href="#二-loader是什么" class="headerlink" title="二. loader是什么"></a>二. loader是什么</h3><p>先来看一下官方对<code>loader</code>的一个解释：</p>
+<blockquote>
+<p>A loader is a node module exporting a function</p>
+</blockquote>
+<p>翻译过来：<code>loader</code>就是一个<code>export</code>出来的<code>function</code>。</p>
+<hr>
+<p>既然是 <code>node module</code>，所以如果你自己要自定义一个<code>loader</code>，完全可以这么写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">source</span>) </span>&#123;</div><div class="line">   <span class="comment">// todo</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>解释</strong></p>
+<ul>
+<li>其中<code>source</code>参数是这个<code>loader</code> 要处理的源文件的字符串</li>
+<li>返回经过<strong>“翻译”</strong>后的<code>webpack</code> 能够处理的有效模块</li>
+</ul>
+<p>如果你所写的 <code>loader</code> 需要依赖其他模块的话，那么同样以 <code>module</code> 的写法，将依赖放在文件的顶部引进来即可：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">source</span>) </span>&#123;</div><div class="line">   <span class="comment">// todo</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果你希望将处理后的结果（不止一个）返回给下一个 <code>loader</code>，那么就需要调用 <code>webpack</code> 所提供的 <code>API</code>。</p>
+<p>由于本篇我们只讲<code>loader</code>的基本使用，故这里不再深入讲解，有兴趣的可以<a href="https://webpack.js.org/api/loaders/" target="_blank" rel="external">点击</a>这里学习。</p>
+<h3 id="三-使用loader"><a href="#三-使用loader" class="headerlink" title="三. 使用loader"></a>三. 使用loader</h3><p>在看了前面的介绍后，接下来给大家介绍一下怎么使用<code>loader</code>。</p>
+<h4 id="使用loader的方式"><a href="#使用loader的方式" class="headerlink" title="使用loader的方式"></a>使用loader的方式</h4><p>有三种使用方式，如下：</p>
+<ul>
+<li><a href="https://doc.webpack-china.org/concepts/loaders/#configuration" target="_blank" rel="external">配置</a><strong>（推荐）</strong>：在 <code>webpack.config.js</code> 文件中指定 <code>loader</code>。</li>
+<li><a href="https://doc.webpack-china.org/concepts/loaders/#inline" target="_blank" rel="external">内联</a>：在每个 <code>import</code> 语句中显式指定 <code>loader</code>。</li>
+<li><a href="https://doc.webpack-china.org/concepts/loaders/#cli" target="_blank" rel="external">CLI</a>：在 <code>shell</code> 命令中指定它们。</li>
+</ul>
+<hr>
+<p><strong>以上三种方式，我们在开发过程中推荐使用第一种方式：</strong></p>
+<p>比如你想使用<code>webpack</code>来打包样式文件，则可以在<code>webpack.config.js</code>里添加如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">    rules: [</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.css$/</span>,  <span class="comment">// 正则匹配所有.css后缀的样式文件</span></div><div class="line">            use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>] <span class="comment">// 使用这两个loader来加载样式文件</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>module.rules</code> 允许你在 <code>webpack</code> 配置中指定多个 <code>loader</code>。 这是展示 <code>loader</code> 的一种简明方式，并且有助于使代码变得简洁。</p>
+<p><strong>上述rules的作用：</strong><br><code>webpack</code>在打包过程中，凡是遇到后缀为<code>css</code>的文件，就会使用<code>style-loader</code>和<code>css-loader</code>去加载这个文件。</p>
+<h3 id="四-案例"><a href="#四-案例" class="headerlink" title="四.案例"></a>四.案例</h3><p>在对<code>loader</code>有了一个大概的认识后，来做一个小案例，需求如下：</p>
+<blockquote>
+<p>将上一篇（<code>webpack</code>系列之基本概念和使用）的<code>demo</code>输出文字居中并用黑框圈起来</p>
+</blockquote>
+<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p>代码目录结构如下：<br>├── node_modules<br>├── app<br>│   ├── bundle.js<br>│   └── index.html<br>├── package-lock.json<br>├── package.json<br>├── src<br>│   ├── index.js<br>│   └── main.less<br>└── webpack.config.js</p>
+<h4 id="1-安装loader"><a href="#1-安装loader" class="headerlink" title="1. 安装loader"></a>1. 安装loader</h4><p>我们必须使用 <code>loader</code> 告诉 <code>webpack</code> 加载 <code>less</code> 文件，为此，需要首先安装相对应的 <code>loader</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev less</div><div class="line">npm install --save-dev less-loader</div><div class="line">npm install --save-dev css-loader</div><div class="line">npm install --save-dev style-loader</div></pre></td></tr></table></figure>
+<p>这些<code>loader</code>的作用如下：</p>
+<ul>
+<li>安装<code>less-loader</code>后可以在<code>js</code>中使用<code>require</code>的方式来加载<code>less</code>文件了；</li>
+<li>安装<code>css-loader</code>后可以在<code>js</code>中加载<code>css</code>文件；</li>
+<li>安装<code>style-loader</code>的目的是为了让加载的<code>css</code>作为<code>style</code>标签内容插入到<code>html</code>中。</li>
+</ul>
+<h4 id="2-配置loader"><a href="#2-配置loader" class="headerlink" title="2. 配置loader"></a>2. 配置loader</h4><p><strong>webpack.config.js代码如下：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    devtool: <span class="string">'eval-source-map'</span>,</div><div class="line">    entry:  __dirname + <span class="string">"/src/index.js"</span>,  <span class="comment">//入口文件</span></div><div class="line">    output: &#123;</div><div class="line">        path: __dirname + <span class="string">"/app"</span>,  <span class="comment">//打包后的文件存放的地方</span></div><div class="line">        filename: <span class="string">"bundle.js"</span> <span class="comment">//打包后输出文件的文件名</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        rules: [</div><div class="line">            &#123;</div><div class="line">                test: <span class="regexp">/\.less$/</span>,</div><div class="line">                use: [<span class="string">'style-loader'</span>,<span class="string">'css-loader'</span>, <span class="string">'less-loader'</span>]</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-新建样式文件"><a href="#3-新建样式文件" class="headerlink" title="3.新建样式文件"></a>3.新建样式文件</h4><p><code>main.less</code>代码如下：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">    <span class="selector-tag">p</span> &#123;</div><div class="line">        <span class="attribute">font-weight</span>:bold;</div><div class="line">        <span class="attribute">padding-left</span>: <span class="number">30px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="4-修改入口文件"><a href="#4-修改入口文件" class="headerlink" title="4. 修改入口文件"></a>4. 修改入口文件</h4><p>在入口文件<code>index.js</code>里引入我们的样式文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span> (<span class="string">'./main.less'</span>);</div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">element.className = <span class="string">'demo'</span>;</div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">p.innerText = <span class="string">'webpack系列之loader的基本使用！'</span>;</div><div class="line">element.appendChild(p);</div><div class="line"><span class="built_in">document</span>.body.appendChild(element);</div></pre></td></tr></table></figure></p>
+<h4 id="5-打包"><a href="#5-打包" class="headerlink" title="5.打包"></a>5.打包</h4><p>在项目根目录（<code>webpack-demo</code>）下执行打包命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  webpack-demo webpack</div></pre></td></tr></table></figure>
+<p>打包成功，会输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Hash: 1bb51c6a348686a223db</div><div class="line">Version: webpack 3.10.0</div><div class="line">Time: 1077ms</div><div class="line">    Asset     Size  Chunks             Chunk Names</div><div class="line">bundle.js  53.8 kB       0  [emitted]  main</div><div class="line">   [0] ./src/index.js 273 bytes &#123;0&#125; [built]</div><div class="line">   [1] ./src/main.less 1.19 kB &#123;0&#125; [built]</div><div class="line">   [2] ./node_modules/css-loader!./node_modules/less-loader/dist/cjs.js!./src/main.less 304 bytes &#123;0&#125; [built]</div></pre></td></tr></table></figure></p>
+<h4 id="6-查看结果"><a href="#6-查看结果" class="headerlink" title="6. 查看结果"></a>6. 查看结果</h4><p>在浏览器里刷新<code>index.html</code>：<br>你会发现<strong>输出的文字被一个黑框给圈了起来，并且加粗显示</strong>，这就表明我们的样式文件已经生效了，而且从截图当中也可以看见样式文件也插入到了html中。<br><img src="/images/2018-04-16/webpack-loader-demo.png" alt="Alt text"></p>
+<h3 id="五-常用loader"><a href="#五-常用loader" class="headerlink" title="五.常用loader"></a>五.常用loader</h3><h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><ol>
+<li><a href="https://www.npmjs.com/package/css-loader" target="_blank" rel="external">css-loader</a> : 解析<code>css</code>文件中代码</li>
+<li><a href="https://www.npmjs.com/package/style-loader" target="_blank" rel="external">style-loader</a> : 将<code>css</code>模块作为样式导出到<code>DOM</code>中</li>
+<li><a href="https://www.npmjs.com/package/less-loader" target="_blank" rel="external">less-loader</a> : 加载和转义<code>less</code>文件</li>
+<li><a href="https://www.npmjs.com/package/sass-loader" target="_blank" rel="external">sass-loader</a> : 加载和转义<code>sass/scss</code>文件</li>
+</ol>
+<h4 id="脚本转换编译"><a href="#脚本转换编译" class="headerlink" title="脚本转换编译"></a>脚本转换编译</h4><ol>
+<li><a href="https://www.npmjs.com/package/script-loader" target="_blank" rel="external">script-loader</a> : 在全局上下文中执行一次<code>javascript</code>文件，不需要解析</li>
+<li><a href="https://www.npmjs.com/package/babel-loader" target="_blank" rel="external">babel-loader</a> : 加载<code>ES6</code> 代码后使用<code>Babel</code>转义为<code>ES5</code>后浏览器才能解析</li>
+</ol>
+<h4 id="Files文件"><a href="#Files文件" class="headerlink" title="Files文件"></a>Files文件</h4><ol>
+<li><a href="https://www.npmjs.com/package/url-loader" target="_blank" rel="external">url-loader</a> : 多数用于加载图片资源,超过文件大小显示则返回<code>data URL</code></li>
+<li><a href="https://www.npmjs.com/package/raw-loader" target="_blank" rel="external">raw-loader</a> : 加载文件原始内容<code>(utf-8</code>格式)</li>
+</ol>
+<h4 id="加载框架"><a href="#加载框架" class="headerlink" title="加载框架"></a>加载框架</h4><ol>
+<li><a href="https://www.npmjs.com/package/vue-loader" target="_blank" rel="external">vue-loader</a> : 加载和转义<code>vue</code>组件</li>
+<li><a href="https://www.npmjs.com/package/react-hot-loader" target="_blank" rel="external">react-hot-loader</a> : 动态刷新和转义<code>react</code>组件中修改的部分</li>
+</ol>
+<h3 id="六-总结"><a href="#六-总结" class="headerlink" title="六. 总结"></a>六. 总结</h3><p>本篇向大家介绍了loader有什么用，什么是loader，以及怎么使用loader这些基础知识，如果有兴趣想了解得更深入一些，可以看看<a href="https://doc.webpack-china.org/contribute/writing-a-loader" target="_blank" rel="external">怎么编写一个loader</a>。<br>下一篇会给大家介绍：<strong>webpack系列之Plugin及简单的使用</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2018/03/15/webpack-first/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1845,184 +2080,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2016/12/31/nodejsBlog-start/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="PHPING">
-    <meta itemprop="description" content="Rome was not built in a day!">
-    <meta itemprop="image" content="/images/phping.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="PHPING|记录工作中的点点滴滴">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="PHPING|记录工作中的点点滴滴" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/31/nodejsBlog-start/" itemprop="url">
-                  手把手教你开发nodejs微博网站-开站篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-31T00:00:00+08:00">
-                2016-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/31/nodejsBlog-start/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/31/nodejsBlog-start/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/31/nodejsBlog-start/" class="leancloud_visitors" data-flag-title="手把手教你开发nodejs微博网站-开站篇">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="手把手教你开发nodejs微博网站-开站篇"><a href="#手把手教你开发nodejs微博网站-开站篇" class="headerlink" title="手把手教你开发nodejs微博网站-开站篇"></a>手把手教你开发nodejs微博网站-开站篇</h3><h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><blockquote>
-<p>本项目参考Nodejs开发指南一书的第5章，受限于书中的nodejs和express版本太低，相当一部分代码在新版本的nodejs和express下都是无法使用,因此自己通过nodejs社区和参考网上的一些问题解决方式，最终完成了一个社交微博网站的雏形。</p>
-</blockquote>
-<h4 id="一-项目功能"><a href="#一-项目功能" class="headerlink" title="一.项目功能"></a>一.项目功能</h4><p>微博网站以用户为中心，包括:</p>
-<ol>
-<li>用户注册</li>
-<li>用户登录</li>
-<li>用户发表信息</li>
-<li>显示用户发表的信息</li>
-<li>权限控制</li>
-<li>其它功能</li>
-</ol>
-<p>由于要保存用户信息，这里要牵涉到数据库连接，我使用的是<code>Mongodb</code>。<br>本人也是<code>nodejs</code>的初学者，暂时先完成了着一些基本的功能。<br>还有其它的功能点，比如:对微博的评论，转发等功能会在后面的学习中一步一步完善。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/31/nodejsBlog-start/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2070,7 +2127,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
