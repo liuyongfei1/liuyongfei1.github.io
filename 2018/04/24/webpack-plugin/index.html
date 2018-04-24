@@ -87,25 +87,19 @@
 
 
 <meta name="description" content="webpack系列之plugin及简单的使用一.plugin有什么用
-plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader所不能完成的复杂功能，使用plugin丰富的自定义API，可以控制webpack编译流程的每个环节，实现对webpack的自定义功能扩展。
-
-举例我们移山web项目中就使用了HtmlWebpackPlugin插件，它帮助我们做了下面几">
+plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader所不能完成的复杂功能，使用plugin丰富的自定义API，可以控制webpack编译流程的每个环节，实现对webpack的自定义功能扩展。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack系列之plugin及简单的使用">
 <meta property="og:url" content="http://phping1.github.io/2018/04/24/webpack-plugin/index.html">
 <meta property="og:site_name" content="PHPING|记录工作中的点点滴滴">
 <meta property="og:description" content="webpack系列之plugin及简单的使用一.plugin有什么用
-plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader所不能完成的复杂功能，使用plugin丰富的自定义API，可以控制webpack编译流程的每个环节，实现对webpack的自定义功能扩展。
-
-举例我们移山web项目中就使用了HtmlWebpackPlugin插件，它帮助我们做了下面几">
+plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader所不能完成的复杂功能，使用plugin丰富的自定义API，可以控制webpack编译流程的每个环节，实现对webpack的自定义功能扩展。">
 <meta property="og:image" content="http://phping1.github.io/./webpack-plugin.png">
-<meta property="og:updated_time" content="2018-04-24T06:22:02.088Z">
+<meta property="og:updated_time" content="2018-04-24T06:33:39.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之plugin及简单的使用">
 <meta name="twitter:description" content="webpack系列之plugin及简单的使用一.plugin有什么用
-plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader所不能完成的复杂功能，使用plugin丰富的自定义API，可以控制webpack编译流程的每个环节，实现对webpack的自定义功能扩展。
-
-举例我们移山web项目中就使用了HtmlWebpackPlugin插件，它帮助我们做了下面几">
+plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader所不能完成的复杂功能，使用plugin丰富的自定义API，可以控制webpack编译流程的每个环节，实现对webpack的自定义功能扩展。">
 <meta name="twitter:image" content="http://phping1.github.io/./webpack-plugin.png">
 
 
@@ -427,13 +421,14 @@ plugin是webpack核心功能，通过plugin（插件）webpack可以实现loader
         <h2 id="webpack系列之plugin及简单的使用"><a href="#webpack系列之plugin及简单的使用" class="headerlink" title="webpack系列之plugin及简单的使用"></a>webpack系列之plugin及简单的使用</h2><h3 id="一-plugin有什么用"><a href="#一-plugin有什么用" class="headerlink" title="一.plugin有什么用"></a>一.plugin有什么用</h3><blockquote>
 <p><code>plugin</code>是<code>webpack</code>核心功能，通过<code>plugin（插件）webpack</code>可以实现<code>loader</code>所不能完成的复杂功能，使用<code>plugin</code>丰富的自定义<code>API</code>，可以控制<code>webpack</code>编译流程的每个环节，<strong>实现对<code>webpack</code>的自定义功能扩展。</strong></p>
 </blockquote>
-<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p>我们<code>移山web</code>项目中就使用了<code>HtmlWebpackPlugin</code>插件，它帮助我们做了下面几件事儿：</p>
+<a id="more"></a>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p>我们实际项目中就使用了<code>HtmlWebpackPlugin</code>插件，它帮助我们做了下面几件事儿：</p>
 <ol>
 <li>在工程打包成功后会自动生成一个<code>html</code>模板文件</li>
 <li>同时所依赖的<code>CSS/JS</code>也都会被自动引入到这个<code>html</code>模板文件中</li>
 <li>设置生成<code>hash</code>添加在引入文件地址的末尾，类似于我们常用的时间戳，来解决可能会遇到的缓存问题。</li>
 </ol>
-<p><code>移山web</code>项目打包后生成的模板文件如下：<br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=utf-8&gt;</div><div class="line">  &lt;title&gt;移山&lt;/title&gt;</div><div class="line">  &lt;link rel=icon href=/static/assets/favicon.ico type=image/x-icon&gt;</div><div class="line">  &lt;link href=/static/css/app.37f937e3e08602bbb89778796e294cf1.css rel=stylesheet&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=app&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js&gt;&lt;/script&gt;</div><div class="line">&lt;script type=text/javascript src=/static/js/vendor.d903c30c8b95cb48653b.js&gt;&lt;/script&gt;</div><div class="line">&lt;script type=text/javascript src=/static/js/app.0c675ae0a3c300e0af57.js&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>项目打包后生成的模板文件如下：<br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=utf-8&gt;</div><div class="line">  &lt;title&gt;移山&lt;/title&gt;</div><div class="line">  &lt;link rel=icon href=/static/assets/favicon.ico type=image/x-icon&gt;</div><div class="line">  &lt;link href=/static/css/app.37f937e3e08602bbb89778796e294cf1.css rel=stylesheet&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=app&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js&gt;&lt;/script&gt;</div><div class="line">&lt;script type=text/javascript src=/static/js/vendor.d903c30c8b95cb48653b.js&gt;&lt;/script&gt;</div><div class="line">&lt;script type=text/javascript src=/static/js/app.0c675ae0a3c300e0af57.js&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <h3 id="二-什么是plugin"><a href="#二-什么是plugin" class="headerlink" title="二.什么是plugin"></a>二.什么是plugin</h3><blockquote>
 <p><code>plugin</code>是一个具有 <code>apply</code>方法的 <code>js</code>对象。 <code>apply</code>方法会被 <code>webpack</code>的 <code>compiler</code>（编译器）对象调用，并且 <code>compiler</code> 对象可在整个 <code>compilation</code>（编译）生命周期内访问。</p>
 </blockquote>
