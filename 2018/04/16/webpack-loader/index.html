@@ -94,13 +94,13 @@ webpack本身只能打包Javascript文件，对于其他资源例如 css，图�
 <meta property="og:site_name" content="PHPING|记录工作中的点点滴滴">
 <meta property="og:description" content="webpack系列之loader及简单的使用一. loader有什么用
 webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。">
-<meta property="og:image" content="http://phping1.github.io/images/2018-04-16/webpack-loader-demo.png">
-<meta property="og:updated_time" content="2018-04-16T06:33:35.474Z">
+<meta property="og:image" content="http://phping1.github.io/images/2018-04-24/webpack-plugin.png">
+<meta property="og:updated_time" content="2018-04-24T06:20:18.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之loader的基本使用">
 <meta name="twitter:description" content="webpack系列之loader及简单的使用一. loader有什么用
 webpack本身只能打包Javascript文件，对于其他资源例如 css，图片，或者其他的语法集比如jsx，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。">
-<meta name="twitter:image" content="http://phping1.github.io/images/2018-04-16/webpack-loader-demo.png">
+<meta name="twitter:image" content="http://phping1.github.io/images/2018-04-24/webpack-plugin.png">
 
 
 
@@ -473,7 +473,7 @@ webpack本身只能打包Javascript文件，对于其他资源例如 css，图�
 <h4 id="5-打包"><a href="#5-打包" class="headerlink" title="5.打包"></a>5.打包</h4><p>在项目根目录（<code>webpack-demo</code>）下执行打包命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  webpack-demo webpack</div></pre></td></tr></table></figure>
 <p>打包成功，会输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Hash: 1bb51c6a348686a223db</div><div class="line">Version: webpack 3.10.0</div><div class="line">Time: 1077ms</div><div class="line">    Asset     Size  Chunks             Chunk Names</div><div class="line">bundle.js  53.8 kB       0  [emitted]  main</div><div class="line">   [0] ./src/index.js 273 bytes &#123;0&#125; [built]</div><div class="line">   [1] ./src/main.less 1.19 kB &#123;0&#125; [built]</div><div class="line">   [2] ./node_modules/css-loader!./node_modules/less-loader/dist/cjs.js!./src/main.less 304 bytes &#123;0&#125; [built]</div></pre></td></tr></table></figure></p>
-<h4 id="6-查看结果"><a href="#6-查看结果" class="headerlink" title="6. 查看结果"></a>6. 查看结果</h4><p>在浏览器里刷新<code>index.html</code>：<br>你会发现<strong>输出的文字被一个黑框给圈了起来，并且加粗显示</strong>，这就表明我们的样式文件已经生效了，而且从截图当中也可以看见样式文件也插入到了html中。<br><img src="/images/2018-04-16/webpack-loader-demo.png" alt="Alt text"></p>
+<h4 id="6-查看结果"><a href="#6-查看结果" class="headerlink" title="6. 查看结果"></a>6. 查看结果</h4><p>在浏览器里刷新<code>index.html</code>：<br>你会发现<strong>输出的文字被一个黑框给圈了起来，并且加粗显示</strong>，这就表明我们的样式文件已经生效了，而且从截图当中也可以看见样式文件也插入到了html中。<br><img src="/images/2018-04-24/webpack-plugin.png" alt="Alt text"></p>
 <h3 id="五-常用loader"><a href="#五-常用loader" class="headerlink" title="五.常用loader"></a>五.常用loader</h3><h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><ol>
 <li><a href="https://www.npmjs.com/package/css-loader" target="_blank" rel="external">css-loader</a> : 解析<code>css</code>文件中代码</li>
 <li><a href="https://www.npmjs.com/package/style-loader" target="_blank" rel="external">style-loader</a> : 将<code>css</code>模块作为样式导出到<code>DOM</code>中</li>
@@ -567,6 +567,10 @@ webpack本身只能打包Javascript文件，对于其他资源例如 css，图�
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/04/24/webpack-plugin/" rel="prev" title="webpack系列之plugin及简单的使用">
+                webpack系列之plugin及简单的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -658,7 +662,7 @@ webpack本身只能打包Javascript文件，对于其他资源例如 css，图�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
