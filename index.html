@@ -296,7 +296,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2019/03/10/datalab/">
+  <link itemprop="mainEntityOfPage" href="http://phping1.github.io/2020/04/14/datalab/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="PHPING">
@@ -321,8 +321,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/03/10/datalab/" itemprop="url">
-                  数据开放实验室平台介绍
+                <a class="post-title-link" href="/2020/04/14/datalab/" itemprop="url">
+                  未命名
                 </a>
               
             
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-10T00:00:00+08:00">
-                2019-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-14T18:39:30+08:00">
+                2020-04-14
               </time>
             
 
@@ -349,28 +349,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数芯/" itemprop="url" rel="index">
-                    <span itemprop="name">数芯</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -379,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/10/datalab/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/10/datalab/" itemprop="commentCount"></span>
+                <a href="/2020/04/14/datalab/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/04/14/datalab/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,7 +368,7 @@
 
           
           
-             <span id="/2019/03/10/datalab/" class="leancloud_visitors" data-flag-title="数据开放实验室平台介绍">
+             <span id="/2020/04/14/datalab/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -419,10 +397,52 @@
       
         
           
-            <h1 id="数据开放实验室平台介绍"><a href="#数据开放实验室平台介绍" class="headerlink" title="数据开放实验室平台介绍"></a>数据开放实验室平台介绍</h1><h2 id="实验室简介"><a href="#实验室简介" class="headerlink" title="实验室简介"></a>实验室简介</h2><blockquote>
+            <h2 id="数据开放实验室平台介绍"><a href="#数据开放实验室平台介绍" class="headerlink" title="数据开放实验室平台介绍"></a>数据开放实验室平台介绍</h2><h3 id="实验室简介"><a href="#实验室简介" class="headerlink" title="实验室简介"></a>实验室简介</h3><blockquote>
 <p>禧云数据开放平台（代号：数据开放实验室，以下简称实验室），是一套安全、高效、自助式的数据开放平台，实验室在不暴露隐私数据的前提下，通过多种安全机制实现数据授权，为使用人员提供SQL交互式查询分析、数据定制下载能力，对分析结果提供自助式报表配置功能。</p>
 </blockquote>
-
+<p>实验室项目分为两个平台：</p>
+<ul>
+<li>一个是供数据分析人员使用的（数据开放实验室），可以进行SQL交互式查询分析、数据定制；</li>
+<li>另一个是供实验室管理人员使用的（实验室管控端），可以对数据进行授权，然后开放给数据分析人员使用。</li>
+</ul>
+<h3 id="数据开放实验室"><a href="#数据开放实验室" class="headerlink" title="数据开放实验室"></a>数据开放实验室</h3><h4 id="数据列表"><a href="#数据列表" class="headerlink" title="数据列表"></a>数据列表</h4><p>数据分析人员登录成功后，可以查看给自己授权的数据列表的相关元数据信息：<br><img src="./数据列表.png" alt="Alt text"></p>
+<h4 id="查询分析"><a href="#查询分析" class="headerlink" title="查询分析"></a>查询分析</h4><p>数据分析人员可以通过数状展示的数据列表查看表、表字段信息，还可以手写<code>SQL</code> 语句，支持语法高亮，语法报错检查：<br><img src="./数据查询.png" alt="Alt text"></p>
+<h5 id="用到的技术"><a href="#用到的技术" class="headerlink" title="用到的技术"></a>用到的技术</h5><ul>
+<li><p>前端</p>
+<ol>
+<li><a href="https://element.faas.ele.me/#/zh-CN/component/tree#" target="_blank" rel="external">el-tree</a>：树状展示表、字段数据;</li>
+<li><a href="https://github.com/cnu4/vue-codemirror-lite" target="_blank" rel="external">vue-codemirror-lite</a> ：<code>SQL</code>交互式查询；</li>
+<li><a href="https://www.npmjs.com/package/websocket-heartbeat-js" target="_blank" rel="external">websocket-heartbeat-js</a>：实时显示查询日志、显示查询结果。</li>
+</ol>
+</li>
+<li><p>服务端</p>
+<ol>
+<li><a href="https://docs.oracle.com/cd/E72987_01/wls/WLAPI/weblogic/websocket/WebSocketListener.html" target="_blank" rel="external">WebSocketListener</a> WebSocket 服务端； </li>
+<li><code>SQL</code> 语句规则校验；<ul>
+<li>是否选择库；</li>
+<li>表是否授权过；</li>
+<li>字段是否授权过；</li>
+<li>不能有 <code>delete、update、truncate</code>等关键字；</li>
+<li>检查是否使用<code>limit</code>，是否在限定的范围之内。</li>
+</ul>
+</li>
+<li>使用多线程启动查询任务；</li>
+<li>实时向客户端发送查询结果。</li>
+</ol>
+</li>
+</ul>
+<h4 id="发布API"><a href="#发布API" class="headerlink" title="发布API"></a>发布API</h4><p>当<code>SQL</code>语句有查询结果时，可以发布<code>API</code>：<br><img src="./发布API.png" alt="Alt text"></p>
+<p>支持执行类型：周期性发送邮件：<br><img src="./保存API.png" alt="Alt text"></p>
+<p>服务端主要处理逻辑：</p>
+<ol>
+<li>创建hive表；</li>
+<li>向新建的hive表导入数据；</li>
+<li>创建mysql表;</li>
+<li>将hive表的数据导入到mysql表，实现数据加速。</li>
+</ol>
+<h4 id="API列表"><a href="#API列表" class="headerlink" title="API列表"></a>API列表</h4><p>API保存成功后，可以在API列表里查看创建成功的API数据。为避免数据量过大影响网络，我们对数据做了批次限制：<br><img src="./数据定制.png" alt="Alt text"><br>点击【确定】按钮，可以对数据进行定制。</p>
+<p>服务端主要处理逻辑：</p>
+<h3 id="遇见的难点及解决办法"><a href="#遇见的难点及解决办法" class="headerlink" title="遇见的难点及解决办法"></a>遇见的难点及解决办法<img src="./datalab.md" alt="Alt text"></h3>
           
         
       
