@@ -109,7 +109,10 @@
 <meta property="og:image" content="http://phping1.github.io/images/2019-04-10/发布API.png">
 <meta property="og:image" content="http://phping1.github.io/images/2019-04-10/保存API.png">
 <meta property="og:image" content="http://phping1.github.io/images/2019-04-10/数据定制.png">
-<meta property="og:updated_time" content="2020-04-16T14:32:32.539Z">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/API定制邮件通知.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/文件下载入口.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/文件下载.png">
+<meta property="og:updated_time" content="2020-04-17T07:11:58.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据开放实验室平台介绍">
 <meta name="twitter:description" content="数据开放实验室平台介绍实验室简介
@@ -446,8 +449,8 @@
 <li>另一个是供实验室管理人员使用的（实验室管控端），可以对数据进行授权，然后开放给数据分析人员使用。</li>
 </ul>
 <a id="more"></a>
-<h3 id="数据开放实验室"><a href="#数据开放实验室" class="headerlink" title="数据开放实验室"></a>数据开放实验室</h3><h4 id="数据列表"><a href="#数据列表" class="headerlink" title="数据列表"></a>数据列表</h4><p>数据分析人员登录成功后，可以查看给自己授权的数据列表的相关元数据信息：<br><img src="/images/2019-04-10/数据列表.png" alt="Alt text"></p>
-<h4 id="查询分析"><a href="#查询分析" class="headerlink" title="查询分析"></a>查询分析</h4><p>数据分析人员可以通过数状展示的数据列表查看表、表字段信息，还可以手写<code>SQL</code> 语句，支持语法高亮，语法报错检查：<br><img src="/images/2019-04-10/数据查询.png" alt="Alt text"></p>
+<h3 id="数据开放实验室"><a href="#数据开放实验室" class="headerlink" title="数据开放实验室"></a>数据开放实验室</h3><h4 id="1-数据列表"><a href="#1-数据列表" class="headerlink" title="1.数据列表"></a>1.数据列表</h4><p>数据分析人员登录成功后，可以查看给自己授权的数据列表的相关元数据信息：<br><img src="/images/2019-04-10/数据列表.png" alt="Alt text"></p>
+<h4 id="2-查询分析"><a href="#2-查询分析" class="headerlink" title="2.查询分析"></a>2.查询分析</h4><p>数据分析人员可以通过数状展示的数据列表查看表、表字段信息，还可以手写<code>SQL</code> 语句，支持语法高亮，语法报错检查：<br><img src="/images/2019-04-10/数据查询.png" alt="Alt text"></p>
 <h5 id="用到的技术"><a href="#用到的技术" class="headerlink" title="用到的技术"></a>用到的技术</h5><ul>
 <li><p>前端</p>
 <ol>
@@ -472,7 +475,7 @@
 </ol>
 </li>
 </ul>
-<h4 id="发布API"><a href="#发布API" class="headerlink" title="发布API"></a>发布API</h4><p>当<code>SQL</code>语句有查询结果时，可以发布<code>API</code>：<br><img src="/images/2019-04-10/发布API.png" alt="Alt text"></p>
+<h4 id="3-发布API"><a href="#3-发布API" class="headerlink" title="3.发布API"></a>3.发布API</h4><p>当<code>SQL</code>语句有查询结果时，可以发布<code>API</code>：<br><img src="/images/2019-04-10/发布API.png" alt="Alt text"></p>
 <p>支持一次发送、周期性发送邮件：<br><img src="/images/2019-04-10/保存API.png" alt="Alt text"></p>
 <p>服务端主要处理逻辑：</p>
 <ol>
@@ -481,9 +484,28 @@
 <li>创建mysql表;</li>
 <li>将hive表的数据导入到mysql表，实现数据加速。</li>
 </ol>
-<h4 id="API列表"><a href="#API列表" class="headerlink" title="API列表"></a>API列表</h4><p>API保存成功后，可以在API列表里查看创建成功的API数据。为避免数据量过大影响网络，我们对数据做了批次限制：<br><img src="/images/2019-04-10/数据定制.png" alt="Alt text"><br>点击【确定】按钮，可以对数据进行定制。</p>
+<h4 id="4-API列表"><a href="#4-API列表" class="headerlink" title="4.API列表"></a>4.API列表</h4><h5 id="4-1-数据定制"><a href="#4-1-数据定制" class="headerlink" title="4.1 数据定制"></a>4.1 数据定制</h5><p>API保存成功后，可以在API列表里查看创建成功的API数据。为避免数据量过大影响网络，我们对数据做了批次限制：<br><img src="/images/2019-04-10/数据定制.png" alt="Alt text"><br>点击【确定】按钮，可以对数据进行定制。定制成功后，邮件通知：<br><img src="/images/2019-04-10/API定制邮件通知.png" alt="Alt text"></p>
 <p>服务端主要处理逻辑：</p>
-<h3 id="遇见的难点及解决办法"><a href="#遇见的难点及解决办法" class="headerlink" title="遇见的难点及解决办法"></a>遇见的难点及解决办法</h3><h4 id="难点1"><a href="#难点1" class="headerlink" title="难点1"></a>难点1</h4>
+<ol>
+<li>使用线程池异步下载数据；</li>
+<li>根据<code>API</code>从 对应的<code>mysql</code>表读取数据，写入<code>CSV</code>文件：<ul>
+<li>数据小于指定阈值，则一次性写入 <code>CSV</code>文件；</li>
+<li>数据大于指定阈值，则分批次写入 <code>CSV</code>文件。</li>
+</ul>
+</li>
+<li>将文件上传至<code>HDFS</code>指定路径；</li>
+<li>获取<code>API</code>收件人的邮箱地址，给收件人发送邮箱，提示收件人数据定制完毕。<h5 id="4-2-数据下载"><a href="#4-2-数据下载" class="headerlink" title="4.2 数据下载"></a>4.2 数据下载</h5>数据定制完毕，可以对数据进行下载：<br><img src="/images/2019-04-10/文件下载入口.png" alt="Alt text"><br><img src="/images/2019-04-10/文件下载.png" alt="Alt text"></li>
+</ol>
+<p>服务端主要处理逻辑：</p>
+<ol>
+<li>判断<code>HDFS</code>上是否有该文件；</li>
+<li>将文件从<code>HDFS</code>上下载到部署实验室服务所在的服务器上：<ul>
+<li>如果服务器上存在该文件，则先删除再下载；</li>
+</ul>
+</li>
+<li>循环数据，将指定的字节写入输出流，返回给浏览器下载。</li>
+</ol>
+<h3 id="遇见的难点及解决办法"><a href="#遇见的难点及解决办法" class="headerlink" title="遇见的难点及解决办法"></a>遇见的难点及解决办法</h3>
       
     </div>
 
@@ -761,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据开放实验室平台介绍"><span class="nav-number">1.</span> <span class="nav-text">数据开放实验室平台介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验室简介"><span class="nav-number">1.1.</span> <span class="nav-text">实验室简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据开放实验室"><span class="nav-number">1.2.</span> <span class="nav-text">数据开放实验室</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据列表"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">查询分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用到的技术"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">用到的技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布API"><span class="nav-number">1.2.3.</span> <span class="nav-text">发布API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API列表"><span class="nav-number">1.2.4.</span> <span class="nav-text">API列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇见的难点及解决办法"><span class="nav-number">1.3.</span> <span class="nav-text">遇见的难点及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#难点1"><span class="nav-number">1.3.1.</span> <span class="nav-text">难点1</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据开放实验室平台介绍"><span class="nav-number">1.</span> <span class="nav-text">数据开放实验室平台介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验室简介"><span class="nav-number">1.1.</span> <span class="nav-text">实验室简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据开放实验室"><span class="nav-number">1.2.</span> <span class="nav-text">数据开放实验室</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数据列表"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.数据列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-查询分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.查询分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用到的技术"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">用到的技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-发布API"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.发布API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-API列表"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.API列表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-数据定制"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">4.1 数据定制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-数据下载"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4.2 数据下载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇见的难点及解决办法"><span class="nav-number">1.3.</span> <span class="nav-text">遇见的难点及解决办法</span></a></li></ol></li></ol></div>
             
 
           </div>
