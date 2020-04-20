@@ -112,7 +112,17 @@
 <meta property="og:image" content="http://phping1.github.io/images/2019-04-10/API定制邮件通知.png">
 <meta property="og:image" content="http://phping1.github.io/images/2019-04-10/文件下载入口.png">
 <meta property="og:image" content="http://phping1.github.io/images/2019-04-10/文件下载.png">
-<meta property="og:updated_time" content="2020-04-18T11:40:21.022Z">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/仓库管理.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/仓库表管理.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/新增企业.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/授权数据表入口.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/weishouquan.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/授权数据表.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/授权字段规则2.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/授权字段规则1.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/保存授权表.png">
+<meta property="og:image" content="http://phping1.github.io/images/2019-04-10/新增授权数据.png">
+<meta property="og:updated_time" content="2020-04-20T10:17:12.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据开放实验室平台介绍">
 <meta name="twitter:description" content="数据开放实验室平台介绍实验室简介
@@ -505,7 +515,65 @@
 </li>
 <li>循环数据，将指定的字节写入输出流，返回给浏览器下载。</li>
 </ol>
-<h3 id="遇见的难点及解决办法"><a href="#遇见的难点及解决办法" class="headerlink" title="遇见的难点及解决办法"></a>遇见的难点及解决办法</h3>
+<h3 id="三-数据开放实验室管理后台功能"><a href="#三-数据开放实验室管理后台功能" class="headerlink" title="三. 数据开放实验室管理后台功能"></a>三. 数据开放实验室管理后台功能</h3><p>管理后台供实验室管理人员使用，主要提供账号开通、数据授权功能。</p>
+<h4 id="仓库管理"><a href="#仓库管理" class="headerlink" title="仓库管理"></a>仓库管理</h4><p>管理员可以查看当前仓库列表、新增仓库，同步元数据：<br><img src="/images/2019-04-10/仓库管理.png" alt="Alt text"></p>
+<p>服务端处理逻辑：</p>
+<ol>
+<li>获取数据仓库的<code>mysql</code>元数据库表，将元数据同步至实验室平台的<code>mysql</code>库。</li>
+</ol>
+<h4 id="仓库表管理"><a href="#仓库表管理" class="headerlink" title="仓库表管理"></a>仓库表管理</h4><p><img src="/images/2019-04-10/仓库表管理.png" alt="Alt text"></p>
+<p>服务端处理逻辑：</p>
+<ol>
+<li>可以对单个表进行重新初始化。</li>
+</ol>
+<h4 id="账号开通"><a href="#账号开通" class="headerlink" title="账号开通"></a>账号开通</h4><p>打开企业列表，点击【新增企业】，可以开通账号。在弹窗里录入企业信息：<br><img src="/images/2019-04-10/新增企业.png" alt="Alt text"></p>
+<h4 id="数据授权"><a href="#数据授权" class="headerlink" title="数据授权"></a>数据授权</h4><p>从企业列表里找到要操作的账号，在操作栏里点击【授权数据表】按钮：<br><img src="/images/2019-04-10/授权数据表入口.png" alt="Alt text"></p>
+<p>在该界面可以看到该账号已经授权的数据表和未授权的数据表：<br><img src="/images/2019-04-10/weishouquan.png" alt="Alt text"></p>
+<p>该界面会列出该表的所有字段，勾选将要授权的字段，设置授权规则：<br><img src="/images/2019-04-10/授权数据表.png" alt="Alt text"></p>
+<p>对该字段设置原样复制：<br><img src="/images/2019-04-10/授权字段规则2.png" alt="Alt text"></p>
+<p>对该字段设置脱敏规则，取值范围限制：<br><img src="/images/2019-04-10/授权字段规则1.png" alt="Alt text"></p>
+<p>对字段设置完授权规则后，点击保存：<br><img src="/images/2019-04-10/保存授权表.png" alt="Alt text"></p>
+<p>服务端保存成功后，数据分析人员登录【数据开放实验室】就可以看到刚刚授权成功的数据表了：<br><img src="/images/2019-04-10/新增授权数据.png" alt="Alt text"></p>
+<p>点击初始化数据按钮：</p>
+<ol>
+<li>调用<code>Spark SQL</code>的<code>ThriftServer</code>服务，为指定的表导入数据；<br>服务端主要处理逻辑：</li>
+<li>保存该企业与当前数据表、字段设置规则相关数据；</li>
+<li>使用线程池，来创建表对应的<code>hive</code>表；</li>
+</ol>
+<p>重要功能点：</p>
+<ol>
+<li>可以为该企业授权多个数据表；</li>
+<li>可以区分该企业已经授权的表和尚未授权的表；</li>
+<li>可以将要授权的某个表的字段进行授权；</li>
+<li>可以对将要授权的字段进行规则设置，比如是原样复制，还是脱敏设置、取值范围设置。 </li>
+</ol>
+<h3 id="四、遇见的难点及解决办法"><a href="#四、遇见的难点及解决办法" class="headerlink" title="四、遇见的难点及解决办法"></a>四、遇见的难点及解决办法</h3><h4 id="1-数据授权"><a href="#1-数据授权" class="headerlink" title="1. 数据授权"></a>1. 数据授权</h4><ol>
+<li>由于每个企业可以定制多个数据表，那么就存在多个企业都需要定制同一个数据表的可能，由于每个企业对数据表的需求可能不一致，所以设置规则就有可能不一样，那么怎么去设计企业定制的数据表呢？</li>
+</ol>
+<p><strong>解决办法：为每个企业授权一个表的同时，后台其实会做一个拷贝的动作，创建出来一个与源表结构一致的新表。</strong></p>
+<h4 id="2-授权字段规则设置"><a href="#2-授权字段规则设置" class="headerlink" title="2. 授权字段规则设置"></a>2. 授权字段规则设置</h4><p>处于数据安全的角度考虑，有些表的字段可能需要进行脱敏处理、数据可能需要取值范围限制。</p>
+<p>解决办法：</p>
+<ul>
+<li>建一个字段表，存放该字段的授权规则。分别有 加密方法、加密参数、过滤方法、过滤参数（<code>json</code>字符串）等字段；</li>
+<li>如果该字段选择原样复制，不加任何规则限制，则对应的加密方法、加密参数、过滤方法、过滤参数都插入空值。</li>
+</ul>
+<h4 id="3-数据分析人员数据查询校验"><a href="#3-数据分析人员数据查询校验" class="headerlink" title="3. 数据分析人员数据查询校验"></a>3. 数据分析人员数据查询校验</h4><p>实验室管理员在给数据分析人员授权数据表、字段之后，怎么去保证数据分析人员在自己的权限范围内查询数据呢？<br>解决办法：</p>
+<ul>
+<li>对用户提交的<code>SQL</code>语句进行规则校验；<ul>
+<li><code>SQL</code>语句不能为空；</li>
+<li>去掉该<code>SQL</code>语句最后的分号；</li>
+<li>判断<code>SQL</code>语句内部是否包含分号，如果包含分号，则不允许查询；</li>
+<li>不能有<code>delete、update、truncate、insert、alert、create、drop、rename</code>等关键字；</li>
+<li>是否选择了数据库；</li>
+<li>表是否授过权；</li>
+<li>字段是否授过权；</li>
+<li>是否有必备的关键词比如：<code>select、 from</code>；</li>
+<li>是否使用了<code>limit</code>；</li>
+<li><code>limit</code> 是否在限制的范围之内。</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -787,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据开放实验室平台介绍"><span class="nav-number">1.</span> <span class="nav-text">数据开放实验室平台介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验室简介"><span class="nav-number">1.1.</span> <span class="nav-text">实验室简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据开放实验室"><span class="nav-number">1.2.</span> <span class="nav-text">数据开放实验室</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数据列表"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.数据列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-查询分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.查询分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用到的技术"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">用到的技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-发布API"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.发布API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-API列表"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.API列表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-数据定制"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">4.1 数据定制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-数据下载"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4.2 数据下载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇见的难点及解决办法"><span class="nav-number">1.3.</span> <span class="nav-text">遇见的难点及解决办法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据开放实验室平台介绍"><span class="nav-number">1.</span> <span class="nav-text">数据开放实验室平台介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验室简介"><span class="nav-number">1.1.</span> <span class="nav-text">实验室简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据开放实验室"><span class="nav-number">1.2.</span> <span class="nav-text">数据开放实验室</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数据列表"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.数据列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-查询分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.查询分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用到的技术"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">用到的技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-发布API"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.发布API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-API列表"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.API列表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-数据定制"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">4.1 数据定制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-数据下载"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4.2 数据下载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-数据开放实验室管理后台功能"><span class="nav-number">1.3.</span> <span class="nav-text">三. 数据开放实验室管理后台功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库管理"><span class="nav-number">1.3.1.</span> <span class="nav-text">仓库管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库表管理"><span class="nav-number">1.3.2.</span> <span class="nav-text">仓库表管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#账号开通"><span class="nav-number">1.3.3.</span> <span class="nav-text">账号开通</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据授权"><span class="nav-number">1.3.4.</span> <span class="nav-text">数据授权</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、遇见的难点及解决办法"><span class="nav-number">1.4.</span> <span class="nav-text">四、遇见的难点及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数据授权"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 数据授权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-授权字段规则设置"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 授权字段规则设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-数据分析人员数据查询校验"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 数据分析人员数据查询校验</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
