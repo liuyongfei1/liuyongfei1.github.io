@@ -7,6 +7,6 @@
 7. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加 express-formidable
 8. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加 express-formidable
 9. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 用户注册功能的代码
-10.更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加用户注册截图
-11.添加文章：[说说对JSX的认识](http://phping1.github.io/2017/05/06/react-jsx/)
-12.添加文章：[手把手教你怎么使用Vuex系列一](http://localhost:4000/2017/08/17/vuex-step-counter/#more)
+10. 更新文章：[手把手教你开发nodejs微博网站-用户注册篇](http://phping1.github.io/2017/02/07/nodejsBlog-reg/)- 添加用户注册截图
+11. 添加文章：[说说对JSX的认识](http://phping1.github.io/2017/05/06/react-jsx/)
+12. 添加文章：[手把手教你怎么使用Vuex系列一](http://localhost:4000/2017/08/17/vuex-step-counter/#more)
